@@ -59,7 +59,7 @@ section{position:relative}
 .in.rv,.rv.in{opacity:1;transform:none}
 .w1{display:inline-block;overflow:hidden;vertical-align:top}.w1>b{display:inline-block;font-weight:inherit;transform:translateY(105%);transition:transform .9s var(--ease);transition-delay:var(--d)}
 .in .w1>b{transform:none}
-.marq{overflow:hidden;border-block:1px solid #0001;padding:18px 0;direction:ltr}
+.marq{overflow:hidden;border-block:1px solid #0001;padding:calc(74px + env(safe-area-inset-top,0px)) 0 18px;direction:ltr}
 .marq div{display:flex;gap:60px;width:max-content;animation:mq 30s linear infinite;font:800 22px Syne;letter-spacing:.2em;white-space:nowrap}
 @keyframes mq{to{transform:translateX(-50%)}}
 /* collections */
@@ -457,19 +457,6 @@ img{max-width:100%}
 </nav>
 
 <main id="top">
-<header class="hero" id="hero">
- <div class="blob" data-p=".12" style="width:46vw;height:46vw;top:-10vw;inset-inline-start:-14vw"></div>
- <div class="blob" data-p="-.08" style="width:30vw;height:30vw;bottom:-8vw;inset-inline-end:10vw"></div>
- <div class="wrap">
-  <div>
-   <div class="wm" style="font-size:20px;margin-bottom:22px;opacity:0;transition:1s .3s" id="heroWm">VESTRA</div>
-   <h1 id="h1"></h1>
-   <p data-i="heroP"></p>
-   <div class="cta"><a class="btn" href="#shop" data-i="heroCta"></a><a class="lk" href="#shop" id="heroNew" data-i="heroNew"></a></div>
-  </div>
-  <div class="visor" id="visor" role="img" aria-label="VESTRA campaign (placeholder artwork)"></div>
- </div>
-</header>
 <div class="marq" aria-hidden="true"><div id="mq"></div></div>
 
 <section class="sec" id="manifesto"><div class="wrap">
@@ -582,12 +569,12 @@ function applyLang(){document.documentElement.lang=L;document.documentElement.di
  document.querySelectorAll("[data-i]").forEach(e=>e.textContent=t(e.dataset.i));
  document.querySelectorAll("[data-ph]").forEach(e=>e.placeholder=t(e.dataset.ph));
  document.querySelectorAll("[data-words]").forEach(e=>{words(e,t(e.dataset.words));e.classList.remove("in");io.observe(e)});
- $("#h1").innerHTML=t("hl").map((l,i)=>`<span class="ln"><span style="transition-delay:${.6+i*.18}s">${i==0&&L=="ar"?"ســـتــايــلــك.":l}</span></span>`).join("");
+ const h1El=$("#h1");if(h1El)h1El.innerHTML=t("hl").map((l,i)=>`<span class="ln"><span style="transition-delay:${.6+i*.18}s">${i==0&&L=="ar"?"ســـتــايــلــك.":l}</span></span>`).join("");
  $("#mq").innerHTML=Array(16).fill("VESTRA — "+(L=="ar"?"STYLE":"STYLE")+" —").join(" ");
  $("#sort").innerHTML=[["newest","newest"],["best","best"],["pl","pl"],["ph","ph"]].map(([v,k])=>`<option value="${v}" ${S.sort==v?"selected":""}>${t(k)}</option>`).join("");
  $("#chips").innerHTML=["all","tee","hood","pants","jacket"].map(c=>`<button class="chip" aria-pressed="${S.cat==c}" data-c="${c}">${c=="all"?t("all"):t("cats")[c]}</button>`).join("");
  $("#cols").innerHTML=t("col").map((c,i)=>`<a class="col rv" style="--d:${i*.08}s" href="#shop" data-f="${["new","all","tee","hood","best"][i]}"><div class="art reveal-img">${art(P[[3,0,1,4,2][i]],0,i%2)}</div><div class="t"><h3>${c[0]}</h3><small>${c[1]}</small></div></a>`).join("");
- $("#visor").innerHTML=figure();$("#sigArt").innerHTML=art(P[3],0,0);
+ $("#sigArt").innerHTML=art(P[3],0,0);
  renderGrid();renderCart();observe();if(location.hash.startsWith("#p="))openPD(+location.hash.slice(3),true)}
 function list(){let a=P.filter(p=>(S.cat=="all"||S.cat=="new"&&p.n||S.cat=="best"&&p.b>=3||p.t==S.cat)&&(nm(p)+" "+ds(p)).toLowerCase().includes(S.q.toLowerCase()));
  const s=S.sort;return a.sort((x,y)=>s=="pl"?x.p-y.p:s=="ph"?y.p-x.p:s=="best"?y.b-x.b:y.id-x.id)}
@@ -633,7 +620,7 @@ $("#q").oninput=e=>{S.q=e.target.value;renderGrid()};$("#sort").onchange=e=>{S.s
 $("#chips").onclick=e=>{const b=e.target.closest("[data-c]");if(!b)return;S.cat=b.dataset.c;$("#chips").querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",x==b));renderGrid()};
 $("#cols").onclick=e=>{const a=e.target.closest("[data-f]");if(!a)return;S.cat=a.dataset.f;$("#chips").querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",x.dataset.c==S.cat));renderGrid()};
 const setNew=()=>{S.cat="new";S.sort="newest";applyLang()};
-$("#nNew").onclick=setNew;$("#heroNew").onclick=setNew;
+$("#nNew").onclick=setNew;const heroNewEl=$("#heroNew");if(heroNewEl)heroNewEl.onclick=setNew;
 $("#nSearch").onclick=()=>{$("#shop").scrollIntoView();setTimeout(()=>$("#q").focus(),500)};
 $("#lang").onclick=()=>{L=L=="ar"?"en":"ar";try{localStorage.setItem("vestra-lang",L)}catch(e){}applyLang()};
 $("#nlf").onsubmit=e=>{e.preventDefault();toast(t("nlOk"));e.target.reset()};
@@ -648,13 +635,11 @@ const dockLinks=[...document.querySelectorAll(".dock [data-s]")];
 new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)dockLinks.forEach(a=>a.classList.toggle("on",a.dataset.s==e.target.id))}),{threshold:.35}).observe&&["collections","shop"].forEach(id=>new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)dockLinks.forEach(a=>a.classList.toggle("on",a.dataset.s==id))}),{threshold:.2}).observe(document.getElementById(id)));
 let tk=0;const ps=[...document.querySelectorAll("[data-p]")],fr=$("#frame");
 function frame(){tk=0;const y=scrollY,h=innerHeight;ps.forEach(e=>{if(e.id=="sigArt")return;e.style.transform=`translate3d(0,${y*e.dataset.p}px,0)`});
- const vs=$("#visor");if(vs&&y<h)vs.style.translate=`0 ${y*.06}px`;
- const r=fr.getBoundingClientRect(),k=Math.min(1,Math.max(0,(h-r.top)/(h*.9)));const m=18*(1-k);
+  const r=fr.getBoundingClientRect(),k=Math.min(1,Math.max(0,(h-r.top)/(h*.9)));const m=18*(1-k);
  fr.style.clipPath=`inset(${m}% ${m*1.2}% round 28px)`;$("#sigArt").style.transform=`scale(${1.15-k*.1}) translateY(${(.5-k)*30}px)`}
 if(!RM){addEventListener("scroll",()=>{tk||(tk=requestAnimationFrame(frame))},{passive:true});frame()}else fr.style.clipPath="none";
 /* ===== init ===== */
 Cart.load();applyLang();
-requestAnimationFrame(()=>setTimeout(()=>{$("#hero").classList.add("go");$("#heroWm").style.opacity=1},60));
 addEventListener("hashchange",()=>{if(location.hash.startsWith("#p="))openPD(+location.hash.slice(3),true)});
 </script>
 <script>
@@ -714,13 +699,13 @@ async function mutOrders(fn,providedDoc){
  const next=STORE_WRITE_CHAIN.then(job,job);STORE_WRITE_CHAIN=next.catch(()=>{});return next;
 }
 /* ---- images / content state (stored inside the existing store bin as "images" and "content") ---- */
-const IMG0=()=>({hero:"",sig:"",footer:"",col:["","","","",""],prev:{}});
+const IMG0=()=>({sig:"",footer:"",col:["","","","",""],prev:{}});
 let IMG=IMG0(),CNT={ar:{},en:{}},AD=null;
 const okUrl=u=>typeof u=="string"&&u.length<2000&&/^(https?:\/\/|\/(?!\/))[^\s"'<>]+$/i.test(u); /* permanent URLs only: https://… or /assets/… (never blob:, data:, file:) */
 const normImg=x=>{const b=IMG0();if(!x||typeof x!="object")return b;
  const bad=(x.bad&&typeof x.bad=="object"&&!Array.isArray(x.bad))?{...x.bad}:{};
- const keep=(k,v)=>{if(typeof v=="string"&&v.trim()&&!okUrl(v)){bad[k]=v;if(k=="hero")console.warn("[VESTRA] stored hero value is not a permanent URL (blob:/data:/invalid) and was NOT used:",v.slice(0,80))}};
- ["hero","sig","footer"].forEach(k=>{if(okUrl(x[k]))b[k]=x[k];else keep(k,x[k])});
+ const keep=(k,v)=>{if(typeof v=="string"&&v.trim()&&!okUrl(v)){bad[k]=v;}};
+ ["sig","footer"].forEach(k=>{if(okUrl(x[k]))b[k]=x[k];else keep(k,x[k])});
  if(Array.isArray(x.col))for(let i=0;i<5;i++){if(okUrl(x.col[i]))b.col[i]=x.col[i];else keep("col"+i,x.col[i])}
  if(x.prev&&typeof x.prev=="object")for(const k in x.prev)if(Array.isArray(x.prev[k]))b.prev[k]=x.prev[k].filter(okUrl).slice(0,6);
  if(Object.keys(bad).length)b.bad=bad;return b};
@@ -741,28 +726,12 @@ function applyContent(){for(const l of["ar","en"]){CK.forEach(([k])=>{T[l][k]=T0
 /* ---- image-aware rendering (storefront) ---- */
 const imgTag=(u,alt,eager)=>`<img src="${esc(u)}" alt="${esc(alt)}" ${eager?'fetchpriority="high" data-hero="1"':'loading="lazy"'} decoding="async" referrerpolicy="no-referrer" onerror="vImgErr(this)" style="width:100%;height:100%;object-fit:cover;display:block">`;
 const _a=art;art=function(p,ci=0,v=0){if(!p)return"";const im=Array.isArray(p.img)?p.img.filter(okUrl):[];return im.length?imgTag(im[v%im.length],(p.nm&&p.nm[1])||"VESTRA"):_a(p,ci,v)};
-const HERO_FALLBACK=""; /* optional project asset, e.g. "/assets/hero.jpg" (put the file in /assets in the repo) */
-const _fig=figure;figure=function(){try{return IMG.hero?imgTag(IMG.hero,"VESTRA",true):(okUrl(HERO_FALLBACK)?imgTag(HERO_FALLBACK,"VESTRA",true):_fig())}catch(e){console.warn(e);return _fig()}};
-/* ---- hero resilience: last-known-good cache, retry, never-blank fallback ---- */
+/* ---- image cache: last-known-good ---- */
 const IMG_CACHE_KEY="vestra-img-cache-v1";
-function cacheImgs(){try{localStorage.setItem(IMG_CACHE_KEY,JSON.stringify({images:{hero:IMG.hero,sig:IMG.sig,footer:IMG.footer,col:IMG.col},at:Date.now()}))}catch(e){}}
+function cacheImgs(){try{localStorage.setItem(IMG_CACHE_KEY,JSON.stringify({images:{sig:IMG.sig,footer:IMG.footer,col:IMG.col},at:Date.now()}))}catch(e){}}
 function readImgCache(){try{const c=JSON.parse(localStorage.getItem(IMG_CACHE_KEY)||"null");return c&&c.images?normImg(c.images):null}catch(e){return null}}
-function paintHero(){const v=document.getElementById("visor");if(!v)return;v.removeAttribute("data-hero-failed");v.innerHTML=figure()}
-let heroRetry=0,heroRecT=0;
-function scheduleHeroRecovery(n=0){if(heroRecT||n>3||!IMG.hero)return;heroRecT=setTimeout(()=>{heroRecT=0;const u=IMG.hero;if(!u)return;const i=new Image();i.referrerPolicy="no-referrer";i.onload=()=>{heroRetry=0;paintHero()};i.onerror=()=>scheduleHeroRecovery(n+1);i.src=u},[15e3,45e3,12e4,3e5][n])}
-function vImgErr(el){
- if(!el.dataset.hero){el.style.visibility="hidden";return}
- console.warn("[VESTRA] hero image failed to load:",el.getAttribute("src"));
- const v=document.getElementById("visor");if(!v)return;
- if(heroRetry<1&&IMG.hero){heroRetry++;setTimeout(()=>paintHero(),1200);return}
- v.setAttribute("data-hero-failed","1");
- v.innerHTML=(okUrl(HERO_FALLBACK)&&el.getAttribute("src")!==HERO_FALLBACK)?imgTag(HERO_FALLBACK,"VESTRA",true):_fig();
- scheduleHeroRecovery()}
+function vImgErr(el){el.style.visibility="hidden"}
 window.vImgErr=vImgErr; /* inline onerror="" handlers can only see globals */
-function heroCheck(){const v=document.getElementById("visor");if(!v||!IMG.hero)return;const im=v.querySelector("img[data-hero]");if(!im||v.hasAttribute("data-hero-failed")||(im.complete&&!im.naturalWidth)){heroRetry=0;paintHero()}}
-addEventListener("pageshow",e=>{if(e.persisted)heroCheck()});
-document.addEventListener("visibilitychange",()=>{if(!document.hidden)heroCheck()});
-addEventListener("online",heroCheck);
 async function getStoreRetry(){let err;for(let i=0;i<3;i++){try{return await getStore()}catch(e){err=e;if(/^HTTP (401|403|404)/.test(e.message||""))break;await new Promise(r=>setTimeout(r,700*(i+1)))}}throw err}
 const hasStock=p=>p&&typeof p.stock=="number"&&isFinite(p.stock);
 const _add=add;add=function(id,ci,sz,q){const p=P.find(x=>x.id==id);if(hasStock(p)&&p.stock<=0)return toast(L=="ar"?"نفد من المخزون":"Out of stock");_add(id,ci,sz,q)};
@@ -782,7 +751,7 @@ const _al=applyLang;applyLang=function(){_al();try{applyImages();soldOut()}catch
 const _rg=renderGrid;renderGrid=function(){_rg();try{soldOut()}catch(e){}};
 function purgeCart(){const n=Cart.items.length;Cart.items=Cart.items.filter(i=>P.some(p=>p.id==i.id));if(Cart.items.length!=n)Cart.save()}
 function syncStore(){if(Array.isArray(ALL))P.splice(0,P.length,...ALL.filter(p=>p&&!p.hidden));purgeCart();applyContent();applyLang()}
-(async()=>{{const c=readImgCache();if(c&&c.hero){IMG=c;try{paintHero();applyImages()}catch(e){console.warn(e)}}}try{const d=await getStoreRetry();if(d&&typeof d=="object"&&!Array.isArray(d)){if(Array.isArray(d.products))ALL=d.products;Object.assign(ST,d.settings||{});PROMOS=Array.isArray(d.promos)?d.promos:[{code:"yasiiiin0",type:"percent",value:20,active:true}];IMG=normImg(d.images);CNT=normCnt(d.content);AD=normAd(d.ad);PAY=normPay(d.payments);syncStore();cacheImgs();try{autoAd()}catch(e){console.warn(e)}}}catch(e){console.warn("store load failed",e)}})();
+(async()=>{{const c=readImgCache();if(c){IMG=c;try{applyImages()}catch(e){console.warn(e)}}}try{const d=await getStoreRetry();if(d&&typeof d=="object"&&!Array.isArray(d)){if(Array.isArray(d.products))ALL=d.products;Object.assign(ST,d.settings||{});PROMOS=Array.isArray(d.promos)?d.promos:[{code:"yasiiiin0",type:"percent",value:20,active:true}];IMG=normImg(d.images);CNT=normCnt(d.content);AD=normAd(d.ad);PAY=normPay(d.payments);syncStore();cacheImgs();try{autoAd()}catch(e){console.warn(e)}}}catch(e){console.warn("store load failed",e)}})();
 
 /* ---- announcement popup (stored inside the existing store bin as "ad") ---- */
 const adClean=(v,n)=>String(v==null?"":v).replace(/[<>]/g,"").replace(/\s+/g," ").trim().slice(0,n);
@@ -1140,12 +1109,12 @@ const loadTest=u=>new Promise(r=>{const i=new Image;const t=setTimeout(()=>r({ok
 async function uploadImg(f){const k=hostKey();if(!k)throw Error("لا توجد خدمة استضافة صور مُعدّة");if(!/^image\//.test(f.type))throw Error("الملف ليس صورة");if(f.size>16*1048576)throw Error("حجم الصورة أكبر من 16MB");const fd=new FormData();fd.append("image",f);const r=await fetch("https://api.imgbb.com/1/upload?key="+encodeURIComponent(k),{method:"POST",body:fd});let j=null;try{j=await r.json()}catch(e){}if(!r.ok||!j||!j.success)throw Error((j&&j.error&&j.error.message)||"HTTP "+r.status);const u=j.data&&(j.data.url||j.data.display_url);if(!okUrl(u))throw Error("رد غير متوقع من خدمة الاستضافة");return u}
 const noUp=()=>atoast("رفع الصور من الجهاز غير مفعّل: لا توجد خدمة استضافة مُعدّة. الصق رابط صورة مباشر، أو أضف مفتاح ImgBB من الإعدادات.","er");
 const upBtn=(att)=>hostKey()?`<label class="btn2 up-l">${ico("upload")} رفع<input type="file" accept="image/*" ${att}></label>`:`<button type="button" class="btn2" data-noup>${ico("upload")} رفع</button>`;
-const slots=()=>[{k:"hero",t:"الصورة الرئيسية (Hero)",s:"الصفحة الرئيسية — أعلى الصفحة",fb:()=>_fig()},
+const slots=()=>[
  ...[0,1,2,3,4].map(i=>({k:"col"+i,t:`المجموعة ${i+1}: ${T.ar.col[i][0]}`,s:"الصفحة الرئيسية — المجموعات",fb:()=>colDef(i)})),
  {k:"sig",t:"صورة التوقيع (Signature)",s:"الصفحة الرئيسية — قسم «التفاصيل هي اللي بتفرق»",fb:()=>P[3]?_a(P[3],0,0):""},
  {k:"footer",t:"بانر الفوتر (اختياري)",s:"أسفل الصفحة — أعلى الفوتر",fb:()=>""}];
-const getS=(im,k)=>k=="hero"?im.hero:k=="sig"?im.sig:k=="footer"?im.footer:im.col[+k.slice(3)];
-const setS=(im,k,v)=>{if(k=="hero")im.hero=v;else if(k=="sig")im.sig=v;else if(k=="footer")im.footer=v;else im.col[+k.slice(3)]=v};
+const getS=(im,k)=>k=="sig"?im.sig:k=="footer"?im.footer:im.col[+k.slice(3)];
+const setS=(im,k,v)=>{if(k=="sig")im.sig=v;else if(k=="footer")im.footer=v;else im.col[+k.slice(3)]=v};
 const pushPrev=(im,k,u)=>{const a=(im.prev[k]||[]).filter(x=>x!==u);a.unshift(u);im.prev[k]=a.slice(0,6)};
 function slotHTML(s){const cur=getS(IMG,s.k),prev=(IMG.prev[s.k]||[]).filter(u=>u!==cur);
  return`<div class="sl" data-k="${s.k}"><div class="hd"><div><b>${esc(s.t)}</b><span>${esc(s.s)}</span></div><span class="bd ${cur?"s-delivered":""}">${cur?"صورة مخصصة":"افتراضي"}</span></div><div class="pv"><span class="tg">${cur?"الحالية في المتجر":"الافتراضية"}</span>${cur?imgTag(cur,s.t):(s.fb()||'<span style="color:var(--am);font-size:13px">غير مفعّل — لا توجد صورة</span>')}</div>
