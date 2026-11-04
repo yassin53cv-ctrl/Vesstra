@@ -919,25 +919,45 @@ function playAdminSuccessSound(){
  try{
   const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;
   const ctx=new AC(),now=ctx.currentTime;
-  // Short, bright mobile-wallet style confirmation chime.
-  const notes=[
-   {f:784.00,t:0,d:.11,v:.105},
-   {f:1046.50,t:.12,d:.13,v:.12},
-   {f:1318.51,t:.27,d:.19,v:.11},
-   {f:1046.50,t:.49,d:.23,v:.085}
-  ];
-  notes.forEach(({f,t,d,v})=>{
+
+  // A playful cash-register "cha-ching" confirmation sound.
+  const master=ctx.createGain();
+  master.gain.setValueAtTime(.72,now);
+  master.connect(ctx.destination);
+
+  // Mechanical register ka-chunk.
+  const clickBuffer=ctx.createBuffer(1,Math.floor(ctx.sampleRate*.075),ctx.sampleRate);
+  const clickData=clickBuffer.getChannelData(0);
+  for(let i=0;i<clickData.length;i++){
+   const fade=1-i/clickData.length;
+   clickData[i]=(Math.random()*2-1)*fade*fade;
+  }
+  const click=ctx.createBufferSource(),clickFilter=ctx.createBiquadFilter(),clickGain=ctx.createGain();
+  click.buffer=clickBuffer;
+  clickFilter.type="bandpass";clickFilter.frequency.setValueAtTime(1150,now);clickFilter.Q.value=.8;
+  clickGain.gain.setValueAtTime(.0001,now);
+  clickGain.gain.exponentialRampToValueAtTime(.32,now+.006);
+  clickGain.gain.exponentialRampToValueAtTime(.0001,now+.075);
+  click.connect(clickFilter);clickFilter.connect(clickGain);clickGain.connect(master);
+  click.start(now);
+
+  // Bright metallic cash-register bell with a layered "ching".
+  [
+   [1568,0,.48,.20],[2093,.012,.62,.16],[2637,.025,.42,.10],
+   [3136,.035,.34,.065],[1174,.16,.55,.09],[1760,.17,.68,.12]
+  ].forEach(([freq,delay,duration,volume])=>{
    const osc=ctx.createOscillator(),gain=ctx.createGain(),filter=ctx.createBiquadFilter();
-   osc.type="triangle";
-   osc.frequency.setValueAtTime(f,now+t);
-   filter.type="lowpass";filter.frequency.setValueAtTime(3200,now+t);
-   gain.gain.setValueAtTime(.0001,now+t);
-   gain.gain.exponentialRampToValueAtTime(v,now+t+.012);
-   gain.gain.exponentialRampToValueAtTime(.0001,now+t+d);
-   osc.connect(filter);filter.connect(gain);gain.connect(ctx.destination);
-   osc.start(now+t);osc.stop(now+t+d+.025);
+   osc.type="sine";
+   osc.frequency.setValueAtTime(freq,now+delay);
+   filter.type="highpass";filter.frequency.setValueAtTime(650,now+delay);
+   gain.gain.setValueAtTime(.0001,now+delay);
+   gain.gain.exponentialRampToValueAtTime(volume,now+delay+.008);
+   gain.gain.exponentialRampToValueAtTime(.0001,now+delay+duration);
+   osc.connect(filter);filter.connect(gain);gain.connect(master);
+   osc.start(now+delay);osc.stop(now+delay+duration+.03);
   });
-  ctx.resume().catch(()=>{});setTimeout(()=>ctx.close().catch(()=>{}),1000);
+
+  setTimeout(()=>ctx.close().catch(()=>{}),1200);
  }catch(e){}
 }
 async function pwSuccess(o,card){o.dataset.lock="1";document.removeEventListener("keydown",o._k);
