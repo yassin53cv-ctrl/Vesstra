@@ -371,6 +371,47 @@ img{max-width:100%}
 .ads-em{display:grid;place-items:center;height:300px;padding:20px;text-align:center;color:var(--am);font-size:13px}
 @media(max-width:1100px){.ads-g{grid-template-columns:1fr}}
 
+
+/* ===== VESTRA checkout entrance motion ===== */
+#mo.checkout-full.on{
+  animation:vestraCheckoutBackdrop .42s ease-out both;
+  background:rgba(5,5,5,.78);
+  -webkit-backdrop-filter:blur(7px);
+  backdrop-filter:blur(7px);
+}
+#mo.checkout-full .mdl{
+  animation:vestraCheckoutPage .78s cubic-bezier(.16,1,.3,1) both;
+  transform-origin:50% 100%;
+}
+#mo.checkout-full h3{
+  animation:vestraCheckoutHeading .65s .12s cubic-bezier(.16,1,.3,1) both;
+}
+#mo.checkout-full #cf > *{
+  animation:vestraCheckoutField .58s cubic-bezier(.16,1,.3,1) both;
+}
+#mo.checkout-full #cf > *:nth-child(1){animation-delay:.16s}
+#mo.checkout-full #cf > *:nth-child(2){animation-delay:.21s}
+#mo.checkout-full #cf > *:nth-child(3){animation-delay:.26s}
+#mo.checkout-full #cf > *:nth-child(4){animation-delay:.31s}
+#mo.checkout-full #cf > *:nth-child(5){animation-delay:.36s}
+#mo.checkout-full #cf > *:nth-child(6){animation-delay:.41s}
+#mo.checkout-full #cf > *:nth-child(7){animation-delay:.46s}
+#mo.checkout-full #cf > *:nth-child(8){animation-delay:.51s}
+#mo.checkout-full #cf > *:nth-child(9){animation-delay:.56s}
+@keyframes vestraCheckoutBackdrop{from{opacity:0}to{opacity:1}}
+@keyframes vestraCheckoutPage{
+  0%{opacity:0;transform:translateY(48px) scale(.985)}
+  65%{opacity:1}
+  100%{opacity:1;transform:translateY(0) scale(1)}
+}
+@keyframes vestraCheckoutHeading{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:none}}
+@keyframes vestraCheckoutField{from{opacity:0;transform:translateY(13px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){
+  #mo.checkout-full.on,#mo.checkout-full .mdl,#mo.checkout-full h3,#mo.checkout-full #cf>*{
+    animation:none!important;transform:none!important;opacity:1!important
+  }
+}
+
 </style>
 </head>
 <body>
