@@ -412,6 +412,38 @@ img{max-width:100%}
   }
 }
 
+
+/* Refined promo-code feedback */
+.promo-line{gap:9px;align-items:stretch}
+.promo-line input{transition:border-color .22s,box-shadow .22s,background .22s}
+.promo-line input:focus{border-color:#9b876b!important;box-shadow:0 0 0 3px rgba(155,135,107,.13);outline:0}
+.promo-line input[aria-invalid="true"]{border-color:#c65353!important;background:#fffafa}
+.promo-apply{min-width:104px;display:inline-flex;align-items:center;justify-content:center;gap:7px;transition:background .22s,color .22s,transform .22s,box-shadow .22s}
+.promo-apply:active{transform:scale(.96)}
+.promo-apply.is-applied{background:#e8f5ec;color:#176b3a;box-shadow:inset 0 0 0 1px #cce8d5;letter-spacing:.045em}
+.promo-apply.is-error{background:#f8e9e8;color:#a33131}
+.promo-button-check{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;background:#21834b;color:white;font:900 12px Arial;animation:promoButtonTick .35s cubic-bezier(.2,.8,.2,1) both}
+.promo-feedback{display:flex;align-items:center;gap:7px;min-height:0;margin-top:9px;padding:0;line-height:1.55;opacity:0;transform:translateY(-4px);transition:opacity .22s,transform .22s}
+.promo-feedback:not(:empty){opacity:1;transform:translateY(0)}
+.promo-feedback.good{color:#176b3a}
+.promo-feedback.promo-error{color:#a33131}
+.promo-feedback-icon{width:17px;height:17px;flex:0 0 17px;display:inline-grid;place-items:center;border-radius:50%;background:#f7e6e5;color:#a33131;font:900 11px Arial}
+.promo-feedback.good .promo-feedback-icon{background:#e0f2e6;color:#176b3a}
+.promo-applied{display:flex;align-items:center;gap:8px;width:fit-content;max-width:100%;padding:9px 12px;margin-top:10px;border:1px solid #d4eadb;border-radius:12px;background:linear-gradient(135deg,#f2faf4,#e8f5ec);color:#176b3a;animation:promoAppliedIn .32s ease both}
+.promo-applied-check{width:19px;height:19px;flex:0 0 19px;display:grid;place-items:center;border-radius:50%;background:#21834b;color:#fff;font:900 12px Arial}
+.promo-applied-note{margin-inline-start:4px;padding:3px 7px;border-radius:20px;background:#d8eddf;color:#176b3a;font:800 9px Syne,sans-serif;letter-spacing:.08em}
+.promo-success{position:absolute;inset:0;z-index:30;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(12,12,12,.34);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);animation:promoOverlayIn .22s ease both}
+.promo-success-card{width:min(330px,100%);padding:28px 23px 24px;border:1px solid rgba(255,255,255,.75);border-radius:25px;background:linear-gradient(145deg,#fff,#f7f5f1);color:#111;text-align:center;box-shadow:0 24px 70px rgba(0,0,0,.22);animation:promoCardIn .42s cubic-bezier(.16,1,.3,1) both}
+.promo-check{width:68px;height:68px;margin:0 auto 16px;border-radius:50%;background:linear-gradient(145deg,#e9f8ee,#d8efdf);color:#21834b;display:grid;place-items:center;box-shadow:0 0 0 8px rgba(33,131,75,.07);animation:promoCheckIn .5s .08s cubic-bezier(.16,1,.3,1) both}
+.promo-check svg{width:35px;height:35px;stroke:currentColor;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:30;stroke-dashoffset:30;animation:promoDrawCheck .38s .3s ease forwards}
+.promo-success-card h4{font:800 20px Syne,sans-serif;margin:0 0 8px;letter-spacing:-.02em}
+.promo-success-card p{font:600 13px Syne,sans-serif;color:#62625e;margin:0 0 14px}
+.promo-success-card p b{color:#176b3a}
+.promo-success-code{display:inline-block;padding:7px 13px;border:1px dashed #b9d8c2;border-radius:9px;background:#f0f8f2;color:#176b3a;font:800 11px Syne,sans-serif;letter-spacing:.12em}
+.promo-success.leaving{opacity:0;transition:opacity .2s ease}
+@keyframes promoOverlayIn{from{opacity:0}}@keyframes promoCardIn{from{opacity:0;transform:translateY(15px) scale(.94)}}@keyframes promoCheckIn{from{opacity:0;transform:scale(.45) rotate(-18deg)}to{opacity:1;transform:scale(1) rotate(0)}}@keyframes promoDrawCheck{to{stroke-dashoffset:0}}@keyframes promoAppliedIn{from{opacity:0;transform:translateY(5px)}}@keyframes promoButtonTick{from{transform:scale(.3) rotate(-30deg);opacity:0}to{transform:scale(1) rotate(0);opacity:1}}
+@media(prefers-reduced-motion:reduce){.promo-feedback,.promo-success,.promo-success-card,.promo-check,.promo-check svg,.promo-applied,.promo-button-check{animation:none!important;transition:none!important}}
+
 </style>
 </head>
 <body>
@@ -804,7 +836,46 @@ pmg.onclick=async e=>{const cp=e.target.closest("[data-cp]");if(cp){const k=cp.d
  const b=e.target.closest("[data-pm]");if(!b||b.disabled)return;pmSel=b.dataset.pm;o.querySelector("#er").textContent="";drawPM();const pw=pmg.querySelector(".pm-pw");if(pw)pw.scrollIntoView({block:"nearest",behavior:"smooth"})};
 drawPM();
 const promoInput=o.querySelector("#promoInput"),promoFeedback=o.querySelector("#promoFeedback"),promoApply=o.querySelector("#promoApply");
-const applyPromo=()=>{const code=promoInput.value.trim().toLowerCase();promoFeedback.classList.remove("good");promoFeedback.textContent="";if(!code){promoFeedback.textContent="Please enter a promo code.";return}const found=(PROMOS||[]).find(x=>String(x.code||"").trim().toLowerCase()===code&&x.active!==false&&+x.value>0);if(!found){appliedPromo=null;discount=0;o.querySelector("#promoDiscountRow").style.display="none";o.querySelector("#promoApplied").hidden=true;o.querySelector("#checkoutTotal").textContent=money(sub+ship);setTot();promoFeedback.textContent="Invalid promo code. Please try again.";return}appliedPromo={code:String(found.code).trim(),type:found.type||"percent",value:+found.value};discount=appliedPromo.type==="fixed"?Math.min(sub,appliedPromo.value):Math.min(sub,sub*appliedPromo.value/100);promoFeedback.textContent="";promoFeedback.classList.add("good");promoFeedback.textContent="Promo code applied successfully.";o.querySelector("#promoDiscountRow").style.display="flex";o.querySelector("#promoDiscountAmount").textContent="-"+money(discount);o.querySelector("#checkoutTotal").textContent=money(calcTotal());setTot();const label=o.querySelector("#promoApplied");label.hidden=false;label.textContent=`${appliedPromo.code.toUpperCase()} · ${appliedPromo.type==="fixed"?money(appliedPromo.value):appliedPromo.value+"% OFF"}`;const pop=document.createElement("div");pop.className="promo-success";pop.style.cssText="position:absolute;inset:0;z-index:30;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(0,0,0,.28);animation:none;backdrop-filter:none;-webkit-backdrop-filter:none";pop.innerHTML=`<div class="promo-success-card" style="animation:none;box-shadow:0 8px 28px #0002"><div class="promo-check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></svg></div><h4>Success!</h4><p>You received a ${appliedPromo.type==="fixed"?money(appliedPromo.value):appliedPromo.value+"%"} discount</p></div>`;o.querySelector(".mdl").appendChild(pop);setTimeout(()=>{pop.remove()},1050)};
+const applyPromo=()=>{
+ const code=promoInput.value.trim().toLowerCase();
+ promoFeedback.classList.remove("good","promo-error");
+ promoFeedback.innerHTML="";
+ promoApply.classList.remove("is-applied","is-error");
+ promoApply.innerHTML="APPLY";
+ if(!code){
+  promoFeedback.classList.add("promo-error");
+  promoFeedback.innerHTML='<span class="promo-feedback-icon">!</span><span>Please enter a promo code.</span>';
+  promoInput.focus();return;
+ }
+ const found=(PROMOS||[]).find(x=>String(x.code||"").trim().toLowerCase()===code&&x.active!==false&&+x.value>0);
+ if(!found){
+  appliedPromo=null;discount=0;
+  o.querySelector("#promoDiscountRow").style.display="none";
+  o.querySelector("#promoApplied").hidden=true;
+  o.querySelector("#checkoutTotal").textContent=money(sub+ship);setTot();
+  promoFeedback.classList.add("promo-error");
+  promoFeedback.innerHTML='<span class="promo-feedback-icon">×</span><span>Promo code not found. Check the code and try again.</span>';
+  promoApply.classList.add("is-error");promoInput.setAttribute("aria-invalid","true");
+  return;
+ }
+ promoInput.removeAttribute("aria-invalid");
+ appliedPromo={code:String(found.code).trim(),type:found.type||"percent",value:+found.value};
+ discount=appliedPromo.type==="fixed"?Math.min(sub,appliedPromo.value):Math.min(sub,sub*appliedPromo.value/100);
+ o.querySelector("#promoDiscountRow").style.display="flex";
+ o.querySelector("#promoDiscountAmount").textContent="-"+money(discount);
+ o.querySelector("#checkoutTotal").textContent=money(calcTotal());setTot();
+ const label=o.querySelector("#promoApplied");
+ label.hidden=false;
+ label.innerHTML=`<span class="promo-applied-check" aria-hidden="true">✓</span><span><b>${appliedPromo.code.toUpperCase()}</b> · ${appliedPromo.type==="fixed"?money(appliedPromo.value):appliedPromo.value+"% OFF"}</span><span class="promo-applied-note">APPLIED</span>`;
+ promoFeedback.classList.add("good");
+ promoFeedback.innerHTML='<span class="promo-feedback-icon">✓</span><span>Promo code applied successfully — your discount is active.</span>';
+ promoApply.classList.add("is-applied");promoApply.innerHTML='<span class="promo-button-check" aria-hidden="true">✓</span> APPLIED';
+ const pop=document.createElement("div");
+ pop.className="promo-success";
+ pop.innerHTML=`<div class="promo-success-card"><div class="promo-check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></svg></div><h4>Discount applied!</h4><p>You saved <b>${money(discount)}</b> on this order.</p><span class="promo-success-code">${appliedPromo.code.toUpperCase()}</span></div>`;
+ o.querySelector(".mdl").appendChild(pop);
+ setTimeout(()=>{pop.classList.add("leaving");setTimeout(()=>pop.remove(),220)},1250);
+};
 promoApply.onclick=applyPromo;promoInput.addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();applyPromo()}});
 o.querySelector("#sf").onchange=async e=>{const f=e.target.files[0];if(!f)return;try{shot=await shrink(f);o.querySelector("#sp").innerHTML=`<img src="${shot}" alt="">`}catch(x){o.querySelector("#er").textContent=tr("الصورة مش مقروءة","Unreadable image")}};
 o.querySelector("#cf").onsubmit=async e=>{e.preventDefault();const er=o.querySelector("#er"),b=o.querySelector("#cs");if(!pmSel||!pmInfo(pmSel).avail)return er.textContent=tr("اختر طريقة الدفع","Please select a payment method");if(!shot)return er.textContent=tr("لازم ترفع سكرين التحويل","Screenshot required");b.disabled=true;er.textContent="…";
