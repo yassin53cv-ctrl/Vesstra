@@ -8,6 +8,9 @@
 <title>VESTRA — ستايلك. هويتك.</title>
 <meta name="description" content="VESTRA: ملابس عصرية بتصميم مينيمال وجودة فاخرة. اكتشف المجموعة الجديدة.">
 <meta name="color-scheme" content="light">
+<script>/* VESTRA track page mode: index.html?page=track opens the standalone tracking page */
+(function(){try{if(new URLSearchParams(location.search).get("page")==="track"){document.documentElement.classList.add("vs-tk-mode");document.title="VESTRA \u2014 Track Your Order"}}catch(e){}})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@500;700;900&family=Syne:wght@600;800&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
 <style>
@@ -639,6 +642,66 @@ html[dir=rtl]{--vs-d:-1}
  .vs-lt span{opacity:0}.vs-lt span:first-child{opacity:1}
 }
 .promo-applied[hidden]{display:none}
+
+/* ===== VESTRA Track Order (standalone page + entry links) ===== */
+.vs-tk-ban{display:flex;justify-content:center;align-items:center;gap:8px;margin:12px auto 0;width:max-content;max-width:92%;padding:8px 18px;border-radius:30px;background:#0a0a0a;color:#fff;font:700 12px/1.4 'Alexandria','Syne',sans-serif;letter-spacing:.06em;transition:transform .35s var(--ease),background .3s}
+.vs-tk-ban:hover{transform:translateY(-2px);background:#1b1b1b}.vs-tk-ban svg{width:15px;height:15px;flex:none}
+.vs-tk-cart{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:12px;padding:13px 20px;border-radius:40px;border:1px solid #0a0a0a;color:#0a0a0a;font-weight:700;font-size:14px;transition:background .3s,color .3s}
+.vs-tk-cart:hover{background:#0a0a0a;color:#fff}.vs-tk-cart svg{width:17px;height:17px;flex:none}
+html:not([lang=en]) .t-en,html[lang=en] .t-ar{display:none}
+#trackPage{display:none}
+html.vs-tk-mode body>*:not(#trackPage):not(script):not(style){display:none!important}
+html.vs-tk-mode #trackPage{display:block;min-height:100vh;min-height:100dvh;background:var(--bg)}
+.tk-top{background:#0a0a0a;color:#fff;padding:calc(18px + env(safe-area-inset-top,0px)) clamp(18px,5vw,56px) 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-radius:0 0 28px 28px}
+.tk-top .wm{font-size:24px;letter-spacing:.12em}.tk-top a{display:inline-flex;align-items:center;gap:8px;font-size:13px;padding:9px 16px;border-radius:30px;background:#ffffff1c;transition:background .3s}.tk-top a:hover{background:#ffffff33}
+.tk-wrap{max-width:640px;margin:0 auto;padding:clamp(34px,7vw,64px) 18px calc(60px + env(safe-area-inset-bottom,0px))}
+.tk-wrap h1{font:900 clamp(30px,6vw,48px)/1.15 'Alexandria',sans-serif;letter-spacing:-.01em}
+html[lang=en] .tk-wrap h1{font-family:'Syne',sans-serif;font-weight:800}
+.tk-sub{color:var(--g2);margin:10px 0 28px}
+.tk-card{background:#fff;border-radius:26px;padding:clamp(20px,4vw,32px);box-shadow:0 24px 60px -34px rgba(0,0,0,.35);border:1px solid #0001}
+.tk-card label{display:block;font-size:13px;color:var(--g2);margin:0 0 14px}
+.tk-card input{display:block;width:100%;margin-top:6px;background:var(--bg);border:1px solid #0002;border-radius:14px;padding:13px 16px;font:inherit;font-size:16px;color:var(--ink);outline:0;transition:border-color .3s,box-shadow .3s;direction:ltr;text-align:start}
+.tk-card input:focus{border-color:#0a0a0a;box-shadow:0 0 0 4px #0a0a0a10}
+.tk-card .btn{width:100%;justify-content:center;margin-top:6px;cursor:pointer}.tk-card .btn:disabled{opacity:.55;cursor:wait}
+.tk-msg{margin-top:16px;padding:13px 16px;border-radius:14px;background:#e7dccb;color:#17130d;font-size:14px;line-height:1.6}.tk-msg.err{background:#f1dcd8;color:#5a1f18}.tk-msg:empty{display:none}
+.tk-res{margin-top:22px}.tk-res:empty{display:none}
+.tk-res .tk-card{animation:tkIn .7s var(--ease) both}
+.tk-hd{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:22px;padding-bottom:16px;border-bottom:1px solid #0001}
+.tk-hd b{font:800 18px Syne,sans-serif;letter-spacing:.05em;direction:ltr}.tk-hd small{color:var(--g2);font-size:12px}
+.tk-pill{padding:6px 14px;border-radius:30px;background:#0a0a0a;color:#fff;font-size:12px;font-weight:700}.tk-pill.cx{background:#5a1f18}
+.tk-tl{list-style:none;padding:0;margin:0}
+.tk-st{position:relative;padding-inline-start:64px;padding-bottom:30px;min-height:74px}
+.tk-st:last-child{padding-bottom:0;min-height:44px}
+.tk-nd{position:absolute;top:0;inset-inline-start:0;width:44px;height:44px;border-radius:50%;border:2px solid #0a0a0a22;background:#fff;display:grid;place-items:center;color:#0a0a0a44;z-index:1}
+.tk-nd svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.tk-st:not(:last-child)::after{content:"";position:absolute;inset-inline-start:21px;top:44px;bottom:0;width:2px;background:#0a0a0a14}
+.tk-st:not(:last-child)::before{content:"";position:absolute;inset-inline-start:21px;top:44px;bottom:0;width:2px;background:#0a0a0a;z-index:1;transform:scaleY(0);transform-origin:top;opacity:0}
+.tk-st h4{font:800 16px/1.4 'Alexandria',sans-serif;padding-top:2px;color:#0a0a0a55}.tk-st p{font-size:13px;color:var(--g2);margin-top:2px;opacity:.7}
+.tk-st.done .tk-nd,.tk-st.now .tk-nd{background:#0a0a0a;border-color:#0a0a0a;color:#fff}
+.tk-st.done h4,.tk-st.now h4{color:#0a0a0a}
+.tk-st.now .tk-nd{box-shadow:0 0 0 5px #e7dccb}
+.tk-st.cx .tk-nd{background:#5a1f18;border-color:#5a1f18;box-shadow:0 0 0 5px #f1dcd8}.tk-st.cx h4{color:#5a1f18}
+.tk-st.lit::before{opacity:1;animation:tkLine .55s var(--ease) forwards;animation-delay:calc(var(--i)*.28s + .25s)}
+.tk-go .tk-st{animation:tkIn .6s var(--ease) both;animation-delay:calc(var(--i)*.14s)}
+.tk-go .tk-st.done .tk-nd,.tk-go .tk-st.now .tk-nd,.tk-go .tk-st.cx .tk-nd{animation:tkPop .6s var(--ease) both;animation-delay:calc(var(--i)*.28s + .1s)}
+.tk-go .tk-st.now .tk-nd{animation:tkPop .6s var(--ease) both,tkPulse 2s ease-out 1.4s infinite;animation-delay:calc(var(--i)*.28s + .1s),calc(var(--i)*.28s + 1s)}
+@keyframes tkIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes tkPop{0%{transform:scale(.5)}70%{transform:scale(1.12)}100%{transform:scale(1)}}
+@keyframes tkLine{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes tkPulse{0%{box-shadow:0 0 0 0 #e7dccbcc}100%{box-shadow:0 0 0 14px #e7dccb00}}
+@media(prefers-reduced-motion:reduce){.tk-go .tk-st,.tk-go .tk-nd,.tk-st.lit::before,.tk-res .tk-card{animation:none!important}.tk-st.lit::before{transform:none}}
+
+.tk-card,.tk-wrap{font-family:'Alexandria',sans-serif}
+.tk-result{animation:tkIn .65s var(--ease) both}
+.tk-section-title{font:800 13px/1.5 'Alexandria',sans-serif;letter-spacing:.04em;margin:22px 0 13px;color:#171717}
+.tk-date{display:block;margin-top:7px;color:var(--g2);font:500 11px 'Alexandria',sans-serif}
+.tk-item{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;padding:12px 0;border-bottom:1px solid #00000010;font-size:13px}
+.tk-item b{display:block;font-weight:700}.tk-item small{display:block;color:var(--g2);font-size:11px;margin-top:5px}.tk-item strong{white-space:nowrap;font:700 12px Syne,sans-serif;direction:ltr}
+.tk-total{display:flex;justify-content:space-between;align-items:center;padding-top:16px;margin-top:5px;border-top:1px solid #0002;font-size:14px}.tk-total b{font:800 18px Syne,sans-serif;direction:ltr}
+.tk-updated,.tk-muted{font-size:11px;color:var(--g2);margin-top:12px}.tk-cancel-note{padding:14px;border-radius:12px;background:#f1dcd8;color:#5a1f18;font-size:13px}
+#tkBtn.is-loading{position:relative;pointer-events:none;opacity:.8}#tkBtn.is-loading:after{content:"";width:15px;height:15px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:tkSpin .7s linear infinite;margin-inline-start:10px}@keyframes tkSpin{to{transform:rotate(360deg)}}
+@media(max-width:480px){.tk-wrap{padding-inline:14px}.tk-top{border-radius:0 0 20px 20px}.tk-item{font-size:12px}}
+
 </style>
 </head>
 <body>
@@ -652,7 +715,7 @@ html[dir=rtl]{--vs-d:-1}
 </nav>
 
 <main id="top">
-<div class="marq" aria-hidden="true"><div id="mq"></div></div>
+<div class="marq"><div id="mq" aria-hidden="true"></div><a class="vs-tk-ban" id="trkBan" href="?page=track"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg><span class="t-ar">تتبع طلبك</span><span class="t-en">TRACK ORDER</span></a></div>
 
 <section class="sec" id="manifesto"><div class="wrap">
  <h2 class="big" data-words="man"></h2>
@@ -694,12 +757,28 @@ html[dir=rtl]{--vs-d:-1}
  <p id="credit" dir="ltr" style="color:#666;margin-top:10px;font-size:12px;letter-spacing:.04em">website by <a href="https://yassiiiin.vercel.app/" target="_blank" rel="noopener noreferrer" style="text-decoration:none"><b style="color:#aaa;font-weight:700">Yassin Khaled</b></a></p>
 </div></footer>
 
+<div id="trackPage" aria-label="Track order">
+ <header class="tk-top"><span class="wm">VESTRA</span><a href="index.html" id="tkBack"><span class="t-ar">← العودة للمتجر</span><span class="t-en">← Back to store</span></a></header>
+ <div class="tk-wrap">
+  <h1><span class="t-ar">تتبع طلبك</span><span class="t-en">Track your order</span></h1>
+  <p class="tk-sub"><span class="t-ar">اكتب رقم الطلب ورقم الموبايل المستخدم في الطلب.</span><span class="t-en">Enter your order ID and the phone number used for the order.</span></p>
+  <form class="tk-card" id="tkForm" novalidate>
+   <label><span class="t-ar">رقم الطلب</span><span class="t-en">Order ID</span><input id="tkId" name="order_id" placeholder="VS-XXXXXX" autocomplete="off" autocapitalize="characters" required></label>
+   <label><span class="t-ar">رقم الموبايل</span><span class="t-en">Phone number</span><input id="tkPh" name="phone" type="tel" inputmode="tel" placeholder="01XXXXXXXXX" autocomplete="tel" required></label>
+   <button class="btn" id="tkBtn" type="submit"><span class="t-ar">تتبع طلبي</span><span class="t-en">TRACK MY ORDER</span></button>
+   <div class="tk-msg" id="tkMsg" role="status" aria-live="polite"></div>
+  </form>
+  <div class="tk-res" id="tkRes" aria-live="polite"></div>
+ </div>
+</div>
+
 <div class="ov" id="ov"></div>
 <aside class="drawer" id="drawer" aria-label="Cart" aria-hidden="true">
  <div class="row"><h2 data-i="bag" style="font-weight:900;font-size:28px"></h2><button class="x" id="cx" aria-label="Close">×</button></div>
  <div class="items" id="items"></div>
  <div class="row" style="font-weight:700;font-size:18px;margin-bottom:14px"><span data-i="sub"></span><span class="price" id="subt"></span></div>
  <button class="btn" style="justify-content:center" id="chk" data-i="checkout"></button>
+ <a class="vs-tk-cart" id="trkCart" href="?page=track"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg><span class="t-ar">تتبع الطلب</span><span class="t-en">Track Order</span></a>
 </aside>
 <div class="pd" id="pd" role="dialog" aria-modal="true" aria-label="Product"><div class="wrap" id="pdc"></div></div>
 <div class="toast" id="toast" role="status"></div>
@@ -1452,6 +1531,54 @@ PAGES.img=m=>{const hk=hostKey();
    b.disabled=true;const ok=await run(()=>persist((d,im)=>{const arr=Array.isArray(d.products)?d.products:JSON.parse(JSON.stringify(ALL)),p=arr.find(x=>x.id==id);if(!p)throw Error("المنتج لم يعد موجوداً");const old=Array.isArray(p.img)?p.img:[];p.img=vals;d.products=arr;old.filter(u=>!vals.includes(u)).forEach(u=>pushPrev(im,"p"+id,u))}),"تم حفظ صور المنتج — تظهر الآن في المتجر ✓");b.disabled=false;if(ok)rerender(c)}}};
 })();
 
+</script>
+<script>
+/* ===== VESTRA Track Order — direct JSONBin lookup ===== */
+(function(){
+ const $=s=>document.getElementById(s), ar=()=>document.documentElement.lang!=="en", tx=(a,e)=>ar()?a:e;
+ const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+ const digits=s=>String(s??"").replace(/\D/g,"");
+ function normPhone(v){let n=digits(v);if(n.startsWith("0020"))n=n.slice(4);else if(n.startsWith("20")&&n.length>=12)n=n.slice(2);if(n.startsWith("0"))n=n.slice(1);return n}
+ const STEPS=[
+  {k:"new",ar:"تم استلام الطلب",en:"Order Received",da:"استلمنا طلبك وبنراجعه.",de:"We have received your order."},
+  {k:"confirmed",ar:"تم التأكيد",en:"Confirmed",da:"تم تأكيد طلبك.",de:"Your order is confirmed."},
+  {k:"preparing",ar:"جاري تجهيز الطلب",en:"Preparing",da:"بنجهز طلبك بعناية.",de:"We are preparing your order."},
+  {k:"shipped",ar:"تم الشحن",en:"Shipped",da:"طلبك في الطريق إليك.",de:"Your order is on its way."},
+  {k:"delivered",ar:"تم التسليم",en:"Delivered",da:"وصل طلبك. استمتع!",de:"Your order has arrived. Enjoy!"},
+  {k:"cancelled",ar:"تم الإلغاء",en:"Cancelled",da:"تم إلغاء هذا الطلب.",de:"This order was cancelled."}
+ ];
+ const ALIAS={received:"new",order_received:"new",pending:"new",preparing_your_order:"preparing",canceled:"cancelled",complete:"delivered",completed:"delivered"};
+ const ICON='<path d="M5 12l5 5L20 7"/>';
+ const msg=(m,err=false)=>{const b=$("tkMsg");if(b){b.textContent=m||"";b.className="tk-msg"+(err?" err":"")}};
+ function render(o,id){
+  let st=String(o.status||"new").toLowerCase().trim().replace(/[\s-]+/g,"_");st=ALIAS[st]||st;
+  const idx=STEPS.findIndex(x=>x.k===st);if(idx<0){msg(tx("حالة الطلب غير معروفة حالياً. تواصل معنا للمساعدة.","The order status is currently unavailable. Please contact us."),true);return}
+  const cancelled=st==="cancelled", visible=STEPS.slice(0,5), current=cancelled?5:Math.min(idx,4), status=STEPS[idx];
+  const items=Array.isArray(o.items)?o.items:[];
+  const itemHtml=items.map(it=>`<div class="tk-item"><div><b>${esc(it.nm||it.name||it.title||tx("منتج","Product"))}</b><small>${[it.size,it.col].filter(Boolean).map(esc).join(" · ")}${it.q?` · ${tx("الكمية","Qty")}: ${esc(it.q)}`:""}</small></div><strong>${esc((+it.price||0)*(+it.q||1)).toLocaleString("en-US")} EGP</strong></div>`).join("")||`<p class="tk-muted">${tx("تفاصيل المنتجات غير متاحة.","Product details are unavailable.")}</p>`;
+  const timeline=visible.map((x,i)=>{const c=cancelled?(i===0?"done":"off"):(i<current?"done":i===current?"now":"off");return `<li class="tk-st ${c}${!cancelled&&i<current?" lit":""}" style="--i:${i}"><span class="tk-nd"><svg viewBox="0 0 24 24" aria-hidden="true">${ICON}</svg></span><h4>${tx(x.ar,x.en)}</h4>${c!=="off"?`<p>${tx(x.da,x.de)}</p>`:""}</li>`}).join("");
+  const date=o.at?new Date(+o.at).toLocaleDateString(ar()?"ar-EG":"en-US",{year:"numeric",month:"short",day:"numeric"}):"—";
+  const updated=o.updated_at||o.updatedAt||o.at;
+  const updatedText=updated?(typeof updated==="number"?new Date(updated).toLocaleString(ar()?"ar-EG":"en-US"):String(updated)):"";
+  $("tkRes").innerHTML=`<section class="tk-card tk-result"><div class="tk-hd"><div><small>${tx("رقم الطلب","ORDER NUMBER")}</small><br><b>${esc(id)}</b><small class="tk-date">${tx("تاريخ الطلب","Order date")}: ${esc(date)}</small></div><span class="tk-pill${cancelled?" cx":""}">${tx(status.ar,status.en)}</span></div><h3 class="tk-section-title">${tx("حالة طلبك","ORDER PROGRESS")}</h3>${cancelled?`<p class="tk-cancel-note">${tx("تم إلغاء هذا الطلب.","This order has been cancelled.")}</p>`:`<ol class="tk-tl tk-go">${timeline}</ol>`}<div class="tk-order-info"><h3 class="tk-section-title">${tx("تفاصيل الطلب","ORDER DETAILS")}</h3>${itemHtml}<div class="tk-total"><span>${tx("الإجمالي","Total")}</span><b>${(+o.total||0).toLocaleString("en-US")} EGP</b></div>${updatedText?`<p class="tk-updated">${tx("آخر تحديث","Last update")}: ${esc(updatedText)}</p>`:""}</div></section>`;
+  const ol=$("tkRes").querySelector(".tk-tl");if(ol){ol.classList.remove("tk-go");void ol.offsetWidth;ol.classList.add("tk-go")}msg("");
+ }
+ async function track(e){
+  e.preventDefault();const id=$("tkId").value.trim().toUpperCase(),phone=normPhone($("tkPh").value),btn=$("tkBtn");$("tkRes").innerHTML="";
+  if(!id||phone.length<10){msg(tx("اكتب رقم الطلب ورقم موبايل صحيح.","Please enter your order ID and a valid phone number."),true);return}
+  if(typeof DB==="undefined"||typeof CFG==="undefined"){msg(tx("تعذر تهيئة خدمة الطلبات. حدّث الصفحة وحاول مرة أخرى.","Order service could not initialize. Refresh and try again."),true);return}
+  btn.disabled=true;btn.classList.add("is-loading");msg(tx("جاري البحث عن طلبك...","Searching for your order..."));
+  try{
+   const orders=await getOrders();
+   if(!Array.isArray(orders))throw Error("Invalid orders data");
+   const order=orders.find(o=>String(o?.id??o?.order_id??"").trim().toUpperCase()===id&&normPhone(o?.phone??o?.tel??o?.mobile??"")===phone);
+   if(!order){msg(tx("مفيش طلب مطابق للبيانات دي. راجع رقم الطلب ورقم الموبايل.","No order matches these details. Please check your order number and phone."),true);return}
+   render(order,order.id||id);
+  }catch(err){console.error("VESTRA tracking error:",err);msg(tx("حصلت مشكلة أثناء البحث. حاول مرة أخرى بعد قليل.","Something went wrong while searching. Please try again shortly."),true)}
+  finally{btn.disabled=false;btn.classList.remove("is-loading")}
+ }
+ const form=$("tkForm");if(form)form.addEventListener("submit",track);
+})();
 </script>
 </body>
 </html>
