@@ -9,7 +9,7 @@
 <meta name="description" content="VESTRA: ملابس عصرية بتصميم مينيمال وجودة فاخرة. اكتشف المجموعة الجديدة.">
 <meta name="color-scheme" content="light">
 <script>/* VESTRA track page mode: index.html?page=track opens the standalone tracking page */
-(function(){try{if(new URLSearchParams(location.search).get("page")==="track"){document.documentElement.classList.add("vs-tk-mode");document.title="VESTRA \u2014 Track Your Order"}}catch(e){}})();
+(function(){try{if(new URLSearchParams(location.search).get("page")==="track"){document.documentElement.classList.add("vs-tk-mode");document.title="VESTRA \u2014 Order tracking"}}catch(e){}})();
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@500;700;900&family=Syne:wght@600;800&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
@@ -760,7 +760,7 @@ html[lang=en] .tk-wrap h1{font-family:'Syne',sans-serif;font-weight:800}
 <div id="trackPage" aria-label="Track order">
  <header class="tk-top"><span class="wm">VESTRA</span><a href="index.html" id="tkBack"><span class="t-ar">← العودة للمتجر</span><span class="t-en">← Back to store</span></a></header>
  <div class="tk-wrap">
-  <h1><span class="t-ar">تتبع طلبك</span><span class="t-en">Track your order</span></h1>
+  <h1><span class="t-ar">تتبع طلبك</span><span class="t-en">Order tracking</span></h1>
   <p class="tk-sub"><span class="t-ar">اكتب رقم الطلب ورقم الموبايل المستخدم في الطلب.</span><span class="t-en">Enter your order ID and the phone number used for the order.</span></p>
   <form class="tk-card" id="tkForm" novalidate>
    <label><span class="t-ar">رقم الطلب</span><span class="t-en">Order ID</span><input id="tkId" name="order_id" placeholder="VS-XXXXXX" autocomplete="off" autocapitalize="characters" required></label>
@@ -778,7 +778,7 @@ html[lang=en] .tk-wrap h1{font-family:'Syne',sans-serif;font-weight:800}
  <div class="items" id="items"></div>
  <div class="row" style="font-weight:700;font-size:18px;margin-bottom:14px"><span data-i="sub"></span><span class="price" id="subt"></span></div>
  <button class="btn" style="justify-content:center" id="chk" data-i="checkout"></button>
- <a class="vs-tk-cart" id="trkCart" href="?page=track"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg><span class="t-ar">تتبع الطلب</span><span class="t-en">Track Order</span></a>
+
 </aside>
 <div class="pd" id="pd" role="dialog" aria-modal="true" aria-label="Product"><div class="wrap" id="pdc"></div></div>
 <div class="toast" id="toast" role="status"></div>
