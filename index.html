@@ -8,6 +8,9 @@
 <title>VESTRA — ستايلك. هويتك.</title>
 <meta name="description" content="VESTRA: ملابس عصرية بتصميم مينيمال وجودة فاخرة. اكتشف المجموعة الجديدة.">
 <meta name="color-scheme" content="light">
+<script>/* VESTRA track page mode: index.html?page=track opens the standalone tracking page */
+(function(){try{if(new URLSearchParams(location.search).get("page")==="track"){document.documentElement.classList.add("vs-tk-mode");document.title="VESTRA \u2014 Track Your Order"}}catch(e){}})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@500;700;900&family=Syne:wght@600;800&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
 <style>
@@ -640,39 +643,53 @@ html[dir=rtl]{--vs-d:-1}
 }
 .promo-applied[hidden]{display:none}
 
-/* ===== VESTRA order tracking ===== */
-.track-sec{padding:clamp(82px,11vw,150px) 0;background:#e9e7e1;color:#111;overflow:hidden}
-.track-head{max-width:760px;margin:0 auto 46px;text-align:center}.track-head .tag{color:#817b70;letter-spacing:.28em}
-.track-title{font:800 clamp(42px,8vw,92px)/.98 Syne,Arial,sans-serif;letter-spacing:-.065em;direction:ltr}.track-title em{font-style:normal;color:#928875}
-.track-head>p{margin:22px auto 0;color:#68645d;font-size:14px;max-width:420px}
-.track-panel{max-width:760px;margin:auto;background:#faf9f6;border:1px solid #d8d4ca;border-radius:28px;padding:clamp(22px,5vw,48px);box-shadow:0 28px 80px #29251d12;position:relative;overflow:hidden}
-.track-panel:before{content:"";position:absolute;width:280px;height:280px;border-radius:50%;right:-150px;top:-190px;background:#e7dfd0;pointer-events:none}
-.track-panel-top{position:relative;display:flex;align-items:center;gap:12px;padding-bottom:22px;border-bottom:1px solid #e5e1d8;font:700 10px Syne,sans-serif;letter-spacing:.16em;color:#777268;direction:ltr}
-.track-mark{width:34px;height:34px;display:grid;place-items:center;border-radius:11px;background:#111;color:#e7dccb;font:800 17px Syne}
-.track-live{margin-inline-start:auto;display:flex;align-items:center;gap:7px;color:#777268}.track-live i{width:7px;height:7px;border-radius:50%;background:#37a66b;box-shadow:0 0 0 4px #37a66b1c;animation:trackPulse 1.8s infinite}
-.track-form{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:26px}.track-form label{display:block;min-width:0;text-align:start}
-.track-form label>span{display:block;margin-bottom:9px;font:700 10px Syne,sans-serif;letter-spacing:.13em;color:#777268;direction:ltr}
-.track-form input{width:100%;height:56px;border:1px solid #dcd8cf;border-radius:13px;background:#fff;padding:0 16px;color:#111;font:600 14px Syne,Arial,sans-serif;direction:ltr;text-align:left;outline:0;transition:border-color .25s,box-shadow .25s}
-.track-form input:focus{border-color:#171717;box-shadow:0 0 0 4px #1717170c}.track-form input::placeholder{color:#aaa69e;font-weight:500}
-.track-submit{grid-column:1/-1;min-height:58px;padding:0 22px;border-radius:14px;background:#111;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:15px;font:800 12px Syne,sans-serif;letter-spacing:.14em;transition:transform .25s,background .25s;direction:ltr}
-.track-submit:hover{background:#292720;transform:translateY(-2px)}.track-submit:active{transform:scale(.985)}.track-submit:disabled{opacity:.65;cursor:wait;transform:none}.track-submit b{font-size:20px;color:#e7dccb;font-weight:500}
-.track-privacy{grid-column:1/-1;text-align:center;color:#99948a;font-size:11px;margin-top:-5px}
-.track-feedback{margin-top:18px;padding:13px 16px;border-radius:12px;background:#f5e9e5;color:#a43d32;font-size:12px;line-height:1.7;text-align:center}.track-feedback.ok{background:#e8f3eb;color:#237548}
-.track-result{margin-top:28px;padding-top:24px;border-top:1px solid #e5e1d8;animation:trackRise .65s cubic-bezier(.16,1,.3,1) both}
-.track-order-meta{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;margin-bottom:24px}.track-order-meta small{display:block;color:#898479;font:700 10px Syne,sans-serif;letter-spacing:.13em;margin-bottom:5px}.track-order-meta strong{font:800 20px Syne,sans-serif;direction:ltr;display:block}
-.track-status-pill{display:inline-flex;align-items:center;gap:7px;padding:8px 13px;border-radius:30px;background:#eee9df;color:#5d5548;font:700 10px Syne,sans-serif;letter-spacing:.06em}.track-status-pill i{width:7px;height:7px;border-radius:50%;background:currentColor}
-.track-timeline{display:grid;grid-template-columns:repeat(4,1fr);position:relative;margin:28px 0 24px;direction:ltr}.track-timeline:before{content:"";position:absolute;left:8%;right:8%;top:16px;height:2px;background:#e1ddd4}
-.track-progress{position:absolute;left:8%;top:16px;height:2px;background:#9b8d74;width:0;transition:width 1.1s cubic-bezier(.16,1,.3,1)}
-.track-step{position:relative;z-index:1;text-align:center;min-width:0}.track-step-dot{width:33px;height:33px;margin:0 auto 11px;border:1px solid #d7d2c8;border-radius:50%;background:#faf9f6;display:grid;place-items:center;color:#aaa397;font:700 12px Syne;transition:all .45s}
-.track-step.done .track-step-dot{background:#111;border-color:#111;color:#e7dccb}.track-step.active .track-step-dot{background:#e7dccb;border:1px solid #9b8d74;color:#111;box-shadow:0 0 0 5px #9b8d741c}
-.track-step b{display:block;font:700 10px Syne,sans-serif;color:#aaa397}.track-step.done b,.track-step.active b{color:#25231f}
-.track-order-info{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:24px}.track-info-cell{padding:14px 16px;border-radius:13px;background:#f0eee8;min-width:0}.track-info-cell small{display:block;color:#8b8579;font-size:10px;margin-bottom:4px}.track-info-cell strong{display:block;color:#24221e;font:700 13px Syne,Arial,sans-serif;overflow-wrap:anywhere}
-.track-cancelled{padding:20px;border-radius:15px;background:#f7e9e7;color:#a43d32;text-align:center;font-size:13px;line-height:1.8}.track-cancelled b{display:block;font:800 14px Syne,sans-serif;margin-bottom:4px}
-.track-foot{max-width:760px;margin:22px auto 0;display:flex;justify-content:space-between;gap:12px;color:#928d82;font:700 9px Syne,sans-serif;letter-spacing:.18em;direction:ltr}
-.track-spin{width:15px;height:15px;border:2px solid #ffffff55;border-top-color:#e7dccb;border-radius:50%;display:inline-block;vertical-align:middle;margin-inline-end:9px;animation:trackSpin .7s linear infinite}
-@keyframes trackSpin{to{transform:rotate(360deg)}}@keyframes trackPulse{50%{box-shadow:0 0 0 7px #37a66b08;opacity:.65}}@keyframes trackRise{from{opacity:0;transform:translateY(18px)}}
-@media(max-width:600px){.track-sec{padding:82px 0}.track-head{margin-bottom:30px}.track-title{font-size:clamp(39px,11vw,60px)}.track-panel{border-radius:21px;padding:20px 16px}.track-form{grid-template-columns:1fr;gap:13px}.track-submit,.track-privacy{grid-column:1}.track-form input{height:53px}.track-step b{font-size:9px}.track-step-dot{width:29px;height:29px}.track-timeline:before,.track-progress{top:14px}.track-foot{font-size:8px}}
-@media(prefers-reduced-motion:reduce){.track-live i{animation:none}.track-progress{transition:none}}
+/* ===== VESTRA Track Order (standalone page + entry links) ===== */
+.vs-tk-ban{display:flex;justify-content:center;align-items:center;gap:8px;margin:12px auto 0;width:max-content;max-width:92%;padding:8px 18px;border-radius:30px;background:#0a0a0a;color:#fff;font:700 12px/1.4 'Alexandria','Syne',sans-serif;letter-spacing:.06em;transition:transform .35s var(--ease),background .3s}
+.vs-tk-ban:hover{transform:translateY(-2px);background:#1b1b1b}.vs-tk-ban svg{width:15px;height:15px;flex:none}
+.vs-tk-cart{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:12px;padding:13px 20px;border-radius:40px;border:1px solid #0a0a0a;color:#0a0a0a;font-weight:700;font-size:14px;transition:background .3s,color .3s}
+.vs-tk-cart:hover{background:#0a0a0a;color:#fff}.vs-tk-cart svg{width:17px;height:17px;flex:none}
+html:not([lang=en]) .t-en,html[lang=en] .t-ar{display:none}
+#trackPage{display:none}
+html.vs-tk-mode body>*:not(#trackPage):not(script):not(style){display:none!important}
+html.vs-tk-mode #trackPage{display:block;min-height:100vh;min-height:100dvh;background:var(--bg)}
+.tk-top{background:#0a0a0a;color:#fff;padding:calc(18px + env(safe-area-inset-top,0px)) clamp(18px,5vw,56px) 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-radius:0 0 28px 28px}
+.tk-top .wm{font-size:24px;letter-spacing:.12em}.tk-top a{display:inline-flex;align-items:center;gap:8px;font-size:13px;padding:9px 16px;border-radius:30px;background:#ffffff1c;transition:background .3s}.tk-top a:hover{background:#ffffff33}
+.tk-wrap{max-width:640px;margin:0 auto;padding:clamp(34px,7vw,64px) 18px calc(60px + env(safe-area-inset-bottom,0px))}
+.tk-wrap h1{font:900 clamp(30px,6vw,48px)/1.15 'Alexandria',sans-serif;letter-spacing:-.01em}
+html[lang=en] .tk-wrap h1{font-family:'Syne',sans-serif;font-weight:800}
+.tk-sub{color:var(--g2);margin:10px 0 28px}
+.tk-card{background:#fff;border-radius:26px;padding:clamp(20px,4vw,32px);box-shadow:0 24px 60px -34px rgba(0,0,0,.35);border:1px solid #0001}
+.tk-card label{display:block;font-size:13px;color:var(--g2);margin:0 0 14px}
+.tk-card input{display:block;width:100%;margin-top:6px;background:var(--bg);border:1px solid #0002;border-radius:14px;padding:13px 16px;font:inherit;font-size:16px;color:var(--ink);outline:0;transition:border-color .3s,box-shadow .3s;direction:ltr;text-align:start}
+.tk-card input:focus{border-color:#0a0a0a;box-shadow:0 0 0 4px #0a0a0a10}
+.tk-card .btn{width:100%;justify-content:center;margin-top:6px;cursor:pointer}.tk-card .btn:disabled{opacity:.55;cursor:wait}
+.tk-msg{margin-top:16px;padding:13px 16px;border-radius:14px;background:#e7dccb;color:#17130d;font-size:14px;line-height:1.6}.tk-msg.err{background:#f1dcd8;color:#5a1f18}.tk-msg:empty{display:none}
+.tk-res{margin-top:22px}.tk-res:empty{display:none}
+.tk-res .tk-card{animation:tkIn .7s var(--ease) both}
+.tk-hd{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:22px;padding-bottom:16px;border-bottom:1px solid #0001}
+.tk-hd b{font:800 18px Syne,sans-serif;letter-spacing:.05em;direction:ltr}.tk-hd small{color:var(--g2);font-size:12px}
+.tk-pill{padding:6px 14px;border-radius:30px;background:#0a0a0a;color:#fff;font-size:12px;font-weight:700}.tk-pill.cx{background:#5a1f18}
+.tk-tl{list-style:none;padding:0;margin:0}
+.tk-st{position:relative;padding-inline-start:64px;padding-bottom:30px;min-height:74px}
+.tk-st:last-child{padding-bottom:0;min-height:44px}
+.tk-nd{position:absolute;top:0;inset-inline-start:0;width:44px;height:44px;border-radius:50%;border:2px solid #0a0a0a22;background:#fff;display:grid;place-items:center;color:#0a0a0a44;z-index:1}
+.tk-nd svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.tk-st:not(:last-child)::after{content:"";position:absolute;inset-inline-start:21px;top:44px;bottom:0;width:2px;background:#0a0a0a14}
+.tk-st:not(:last-child)::before{content:"";position:absolute;inset-inline-start:21px;top:44px;bottom:0;width:2px;background:#0a0a0a;z-index:1;transform:scaleY(0);transform-origin:top;opacity:0}
+.tk-st h4{font:800 16px/1.4 'Alexandria',sans-serif;padding-top:2px;color:#0a0a0a55}.tk-st p{font-size:13px;color:var(--g2);margin-top:2px;opacity:.7}
+.tk-st.done .tk-nd,.tk-st.now .tk-nd{background:#0a0a0a;border-color:#0a0a0a;color:#fff}
+.tk-st.done h4,.tk-st.now h4{color:#0a0a0a}
+.tk-st.now .tk-nd{box-shadow:0 0 0 5px #e7dccb}
+.tk-st.cx .tk-nd{background:#5a1f18;border-color:#5a1f18;box-shadow:0 0 0 5px #f1dcd8}.tk-st.cx h4{color:#5a1f18}
+.tk-st.lit::before{opacity:1;animation:tkLine .55s var(--ease) forwards;animation-delay:calc(var(--i)*.28s + .25s)}
+.tk-go .tk-st{animation:tkIn .6s var(--ease) both;animation-delay:calc(var(--i)*.14s)}
+.tk-go .tk-st.done .tk-nd,.tk-go .tk-st.now .tk-nd,.tk-go .tk-st.cx .tk-nd{animation:tkPop .6s var(--ease) both;animation-delay:calc(var(--i)*.28s + .1s)}
+.tk-go .tk-st.now .tk-nd{animation:tkPop .6s var(--ease) both,tkPulse 2s ease-out 1.4s infinite;animation-delay:calc(var(--i)*.28s + .1s),calc(var(--i)*.28s + 1s)}
+@keyframes tkIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes tkPop{0%{transform:scale(.5)}70%{transform:scale(1.12)}100%{transform:scale(1)}}
+@keyframes tkLine{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes tkPulse{0%{box-shadow:0 0 0 0 #e7dccbcc}100%{box-shadow:0 0 0 14px #e7dccb00}}
+@media(prefers-reduced-motion:reduce){.tk-go .tk-st,.tk-go .tk-nd,.tk-st.lit::before,.tk-res .tk-card{animation:none!important}.tk-st.lit::before{transform:none}}
 </style>
 </head>
 <body>
@@ -680,14 +697,13 @@ html[dir=rtl]{--vs-d:-1}
  <a class="logo" href="#top" aria-label="vestra"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="square"><path d="M3 4l9 16 9-16"/><path d="M8 4l4 7 4-7" opacity=".5"/></svg></a>
  <a href="#shop" data-s="shop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 14.5L16 10 4 20"/><path d="M12 3l9 4-1 5-4-2"/><path d="M12 3L3 7l1 5 4-2"/></svg><span data-i="nShop"></span></a>
  <a href="#shop" id="nNew"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.4 5.6L20 9.2l-4.2 3.9L17 19l-5-3-5 3 1.2-5.9L4 9.2l5.6-.6z"/></svg><span data-i="nNew"></span></a>
- <a href="#track" id="nTrack" aria-label="Track your order"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v11H3z"/><path d="M14 11h4l3 3v4h-7z"/><circle cx="7.5" cy="18" r="2"/><circle cx="17.5" cy="18" r="2"/><path d="M7 10h4M7 13h3"/></svg><span data-track-nav>Track Order</span></a>
  <button id="nSearch" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></button>
  <button id="nBag" aria-label="Cart" style="opacity:1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 01-8 0"/></svg><i id="cnt">0</i></button>
  <button id="lang" aria-label="Language"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg><span id="lt">EN</span></button>
 </nav>
 
 <main id="top">
-<div class="marq" aria-hidden="true"><div id="mq"></div></div>
+<div class="marq"><div id="mq" aria-hidden="true"></div><a class="vs-tk-ban" id="trkBan" href="?page=track"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg><span class="t-ar">تتبع طلبك</span><span class="t-en">TRACK ORDER</span></a></div>
 
 <section class="sec" id="manifesto"><div class="wrap">
  <h2 class="big" data-words="man"></h2>
@@ -709,23 +725,6 @@ html[dir=rtl]{--vs-d:-1}
  <div class="grid" id="grid" aria-live="polite"></div>
 </div></section>
 
-<section class="track-sec sec" id="track">
- <div class="wrap">
-  <div class="track-head"><span class="tag" data-track-kicker>VESTRA CARE</span><h2 class="track-title"><span data-track-title>YOUR ORDER.</span><br><em data-track-title2>YOUR JOURNEY.</em></h2><p data-track-intro>Every step, from our studio to your door.</p></div>
-  <div class="track-panel">
-   <div class="track-panel-top"><span class="track-mark">V.</span><span data-track-secure>PRIVATE ORDER LOOKUP</span><span class="track-live"><i></i><span data-track-live>LIVE STATUS</span></span></div>
-   <form id="trackForm" class="track-form" novalidate>
-    <label><span data-track-order-label>ORDER NUMBER</span><input id="trackOrderId" name="order_id" type="text" autocomplete="off" placeholder="e.g. VS-8F21A4" required></label>
-    <label><span data-track-phone-label>PHONE NUMBER</span><input id="trackPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="The phone used at checkout" required></label>
-    <button class="track-submit" id="trackSubmit" type="submit"><span data-track-btn>TRACK MY ORDER</span><b aria-hidden="true">↗</b></button>
-    <p class="track-privacy" data-track-privacy>Your order number and phone number are used only to verify your order.</p>
-   </form>
-   <div id="trackFeedback" class="track-feedback" role="status" aria-live="polite" hidden></div><div id="trackResult" class="track-result" hidden></div>
-  </div>
-  <div class="track-foot"><span>VESTRA</span><span data-track-foot>MADE TO MOVE WITH YOU.</span></div>
- </div>
-</section>
-
 <section class="dark show sec" id="signature"><div class="wrap">
  <span class="tag rv" data-i="tagS"></span>
  <h2 class="big" data-words="sigH"></h2>
@@ -746,12 +745,28 @@ html[dir=rtl]{--vs-d:-1}
  <p id="credit" dir="ltr" style="color:#666;margin-top:10px;font-size:12px;letter-spacing:.04em">website by <a href="https://yassiiiin.vercel.app/" target="_blank" rel="noopener noreferrer" style="text-decoration:none"><b style="color:#aaa;font-weight:700">Yassin Khaled</b></a></p>
 </div></footer>
 
+<div id="trackPage" aria-label="Track order">
+ <header class="tk-top"><span class="wm">VESTRA</span><a href="index.html" id="tkBack"><span class="t-ar">← العودة للمتجر</span><span class="t-en">← Back to store</span></a></header>
+ <div class="tk-wrap">
+  <h1><span class="t-ar">تتبع طلبك</span><span class="t-en">Track your order</span></h1>
+  <p class="tk-sub"><span class="t-ar">اكتب رقم الطلب ورقم الموبايل المستخدم في الطلب.</span><span class="t-en">Enter your order ID and the phone number used for the order.</span></p>
+  <form class="tk-card" id="tkForm" novalidate>
+   <label><span class="t-ar">رقم الطلب</span><span class="t-en">Order ID</span><input id="tkId" name="order_id" placeholder="VS-XXXXXX" autocomplete="off" autocapitalize="characters" required></label>
+   <label><span class="t-ar">رقم الموبايل</span><span class="t-en">Phone number</span><input id="tkPh" name="phone" type="tel" inputmode="tel" placeholder="01XXXXXXXXX" autocomplete="tel" required></label>
+   <button class="btn" id="tkBtn" type="submit"><span class="t-ar">تتبع طلبي</span><span class="t-en">TRACK MY ORDER</span></button>
+   <div class="tk-msg" id="tkMsg" role="status" aria-live="polite"></div>
+  </form>
+  <div class="tk-res" id="tkRes" aria-live="polite"></div>
+ </div>
+</div>
+
 <div class="ov" id="ov"></div>
 <aside class="drawer" id="drawer" aria-label="Cart" aria-hidden="true">
  <div class="row"><h2 data-i="bag" style="font-weight:900;font-size:28px"></h2><button class="x" id="cx" aria-label="Close">×</button></div>
  <div class="items" id="items"></div>
  <div class="row" style="font-weight:700;font-size:18px;margin-bottom:14px"><span data-i="sub"></span><span class="price" id="subt"></span></div>
  <button class="btn" style="justify-content:center" id="chk" data-i="checkout"></button>
+ <a class="vs-tk-cart" id="trkCart" href="?page=track"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg><span class="t-ar">تتبع الطلب</span><span class="t-en">Track Order</span></a>
 </aside>
 <div class="pd" id="pd" role="dialog" aria-modal="true" aria-label="Product"><div class="wrap" id="pdc"></div></div>
 <div class="toast" id="toast" role="status"></div>
@@ -1505,55 +1520,58 @@ PAGES.img=m=>{const hk=hostKey();
 })();
 
 </script>
-
 <script>
-/* Secure lookup: Make webhook validates BOTH order_id and phone against JSONBin.
-   Expected response: {found:true,order:{id,status,at,total,items:[{nm,q}]}} */
-(()=>{
- const TRACK_WEBHOOK="PASTE_YOUR_MAKE_TRACKING_WEBHOOK_HERE"; // Separate Make webhook; never expose the JSONBin master key here.
- const form=document.getElementById("trackForm");if(!form)return;
- const $=id=>document.getElementById(id);
- const copy={
- ar:{nav:"تتبع طلبك",kicker:"خدمة VESTRA",title:"طلبك.",title2:"رحلتك.",intro:"تابع كل خطوة من تجهيز طلبك لحد باب بيتك.",secure:"استعلام خاص عن الطلب",live:"حالة الطلب",order:"رقم الطلب",phone:"رقم الموبايل",phOrder:"مثال: VS-8F21A4",phPhone:"نفس الرقم المستخدم وقت الطلب",btn:"تتبع طلبي",privacy:"رقم الطلب والموبايل بيُستخدموا فقط للتأكد من طلبك.",foot:"مصممة لتتحرك معاك.",missing:"ميزة التتبع محتاجة ربط رابط Make.com الآمن أولاً. ابعتلي رابط الـWebhook بعد إعداده.",invalid:"اكتب رقم الطلب ورقم الموبايل بشكل صحيح.",notfound:"مش قادرين نلاقي طلب مطابق. راجع رقم الطلب والموبايل وحاول تاني.",failed:"حصلت مشكلة في الاتصال. حاول مرة تانية بعد قليل.",new:"تم استلام الطلب",confirmed:"تم تأكيد الطلب",shipped:"تم شحن الطلب",delivered:"تم التسليم",cancelled:"تم إلغاء الطلب",steps:["تم الاستلام","قيد التجهيز","في الطريق","تم التسليم"],date:"تاريخ الطلب",total:"إجمالي الطلب",items:"المنتجات",cancelText:"تم إلغاء هذا الطلب. لو محتاج مساعدة تواصل مع VESTRA.",lookup:"جاري البحث عن طلبك…"},
- en:{nav:"Track Order",kicker:"VESTRA CARE",title:"YOUR ORDER.",title2:"YOUR JOURNEY.",intro:"Every step, from our studio to your door.",secure:"PRIVATE ORDER LOOKUP",live:"LIVE STATUS",order:"ORDER NUMBER",phone:"PHONE NUMBER",phOrder:"e.g. VS-8F21A4",phPhone:"The phone used at checkout",btn:"TRACK MY ORDER",privacy:"Your order number and phone number are used only to verify your order.",foot:"MADE TO MOVE WITH YOU.",missing:"Secure tracking needs a Make.com webhook first. Send me its URL after you set it up.",invalid:"Enter both your order number and phone number.",notfound:"We couldn't find a matching order. Check both details and try again.",failed:"Something went wrong. Please try again shortly.",new:"Order received",confirmed:"Order confirmed",shipped:"Order shipped",delivered:"Delivered",cancelled:"Order cancelled",steps:["Received","Preparing","On the way","Delivered"],date:"ORDER DATE",total:"ORDER TOTAL",items:"ITEMS",cancelText:"This order has been cancelled. Contact VESTRA if you need help.",lookup:"Looking up your order…"}
- };
- const lang=()=>document.documentElement.lang==="ar"?"ar":"en",tr=k=>copy[lang()][k]||copy.en[k]||k;
- const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
- function sync(){const a=copy[lang()];for(const [sel,k] of [["[data-track-nav]","nav"],["[data-track-kicker]","kicker"],["[data-track-title]","title"],["[data-track-title2]","title2"],["[data-track-intro]","intro"],["[data-track-secure]","secure"],["[data-track-live]","live"],["[data-track-order-label]","order"],["[data-track-phone-label]","phone"],["[data-track-btn]","btn"],["[data-track-privacy]","privacy"],["[data-track-foot]","foot"]]){const e=document.querySelector(sel);if(e)e.textContent=a[k]}$("trackOrderId").placeholder=a.phOrder;$("trackPhone").placeholder=a.phPhone;form.dir=lang()==="ar"?"rtl":"ltr"}
- sync();const langButton=$("lang");if(langButton)langButton.addEventListener("click",()=>setTimeout(sync,0));
- const result=$("trackResult"),feedback=$("trackFeedback"),submit=$("trackSubmit");
- function msg(t,ok=false){feedback.hidden=false;feedback.className="track-feedback"+(ok?" ok":"");feedback.textContent=t}
- function date(v){if(!v)return"—";const d=new Date(v);return Number.isNaN(d.getTime())?"—":d.toLocaleDateString(lang()==="ar"?"ar-EG":"en-GB",{year:"numeric",month:"short",day:"numeric"})}
- function render(o){
-  const st=String(o.status||"new").toLowerCase(),names={new:tr("new"),confirmed:tr("confirmed"),shipped:tr("shipped"),delivered:tr("delivered"),cancelled:tr("cancelled")};
-  const items=Array.isArray(o.items)?o.items:[],itemText=items.length?items.map(x=>`${esc(x.nm||x.name||"VESTRA item")} × ${Math.max(1,+x.q||+x.quantity||1)}`).join(" · "):"VESTRA";
-  const total=o.total==null?"—":Number(o.total).toLocaleString("en-US",{maximumFractionDigits:2})+" EGP";
-  let h=`<div class="track-order-meta"><div><small>${tr("order")}</small><strong>${esc(o.id||$("trackOrderId").value.trim())}</strong></div><span class="track-status-pill"><i></i>${esc(names[st]||st)}</span></div>`;
-  if(st==="cancelled")h+=`<div class="track-cancelled"><b>${tr("cancelled")}</b>${tr("cancelText")}</div>`;
-  else{const stages=["new","confirmed","shipped","delivered"],idx=stages.indexOf(st),progress=[0,28,56,84][Math.max(0,idx)];h+=`<div class="track-timeline"><i class="track-progress" style="width:${progress}%"></i>${stages.map((v,i)=>`<div class="track-step ${i<idx?"done":i===idx?"active":""}"><div class="track-step-dot">${i<idx?"✓":i+1}</div><b>${esc(tr("steps")[i])}</b></div>`).join("")}</div>`}
-  h+=`<div class="track-order-info"><div class="track-info-cell"><small>${tr("date")}</small><strong>${esc(date(o.at||o.created_at||o.date))}</strong></div><div class="track-info-cell"><small>${tr("total")}</small><strong>${esc(total)}</strong></div><div class="track-info-cell" style="grid-column:1/-1"><small>${tr("items")}</small><strong>${itemText}</strong></div></div>`;
-  result.innerHTML=h;result.hidden=false;
+/* ===== VESTRA Track Order ===== */
+/* >>> الصق رابط الـ Webhook الخاص بالتتبع (Make.com) هنا / PASTE YOUR MAKE.COM TRACKING WEBHOOK URL HERE <<< */
+const TRACK_WEBHOOK_URL="";
+(function(){
+ const $=s=>document.getElementById(s),ar=()=>document.documentElement.lang!=="en";
+ const tx=(a,e)=>ar()?a:e;
+ const STEPS=[
+  {k:"new",ar:"تم استلام الطلب",en:"Order Received",da:"استلمنا طلبك وبنراجعه.",de:"We have received your order."},
+  {k:"confirmed",ar:"تم التأكيد",en:"Confirmed",da:"تم تأكيد طلبك.",de:"Your order is confirmed."},
+  {k:"shipped",ar:"تم الشحن",en:"Shipped",da:"طلبك في الطريق إليك.",de:"Your order is on its way."},
+  {k:"delivered",ar:"تم التسليم",en:"Delivered",da:"وصل طلبك. استمتع!",de:"Your order has arrived. Enjoy!"},
+  {k:"cancelled",ar:"تم الإلغاء",en:"Cancelled",da:"تم إلغاء هذا الطلب.",de:"This order was cancelled."}];
+ const ALIAS={received:"new",order_received:"new",pending:"new",canceled:"cancelled",complete:"delivered",completed:"delivered"};
+ const ICON={new:'<path d="M5 12l5 5L20 7"/>',confirmed:'<path d="M5 12l5 5L20 7"/>',shipped:'<path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/>',delivered:'<path d="M4 11l8-7 8 7v9H4z"/><path d="M9 20v-6h6v6"/>',cancelled:'<path d="M6 6l12 12M18 6L6 18"/>'};
+ const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+ const msg=(m,err)=>{const b=$("tkMsg");if(!b)return;b.textContent=m||"";b.className="tk-msg"+(err?" err":"")};
+ function render(d,id){
+  let st=String(d.status||"").toLowerCase().trim().replace(/\s+/g,"_");st=ALIAS[st]||st;
+  let idx=STEPS.findIndex(x=>x.k===st);
+  if(idx<0){msg(tx("حالة الطلب غير معروفة حالياً. حاول مرة أخرى لاحقاً.","Order status is unavailable right now. Please try again later."),true);$("tkRes").innerHTML="";return}
+  const cx=idx===4,cur=STEPS[idx];
+  const li=STEPS.map((x,i)=>{
+   let c="off";
+   if(cx){c=i===0?"done":i===4?"now cx":"off"}else{c=i<idx?"done":i===idx?"now":"off"}
+   if(!cx&&i===4)c="off";
+   const lit=!cx&&i<idx?" lit":"";
+   return `<li class="tk-st ${c}${lit}" style="--i:${i}"><span class="tk-nd"><svg viewBox="0 0 24 24" aria-hidden="true">${ICON[x.k]}</svg></span><h4>${tx(x.ar,x.en)}</h4>${c.indexOf("off")<0?`<p>${tx(x.da,x.de)}</p>`:""}</li>`}).join("");
+  const up=d.updated_at?`<small>${tx("آخر تحديث","Last update")}: ${esc(d.updated_at)}</small>`:"";
+  $("tkRes").innerHTML=`<div class="tk-card"><div class="tk-hd"><div><small>${tx("رقم الطلب","Order ID")}</small><br><b>${esc(id)}</b>${up?"<br>"+up:""}</div><span class="tk-pill${cx?" cx":""}">${tx(cur.ar,cur.en)}</span></div><ol class="tk-tl tk-go">${li}</ol></div>`;
+  const ol=$("tkRes").querySelector(".tk-tl");ol.classList.remove("tk-go");void ol.offsetWidth;ol.classList.add("tk-go");
+  msg("");
  }
- form.addEventListener("submit",async e=>{
-  e.preventDefault();result.hidden=true;feedback.hidden=true;
-  const order_id=$("trackOrderId").value.trim(),phone=$("trackPhone").value.trim();
-  if(!order_id||phone.replace(/\D/g,"").length<7){msg(tr("invalid"));return}
-  if(!/^https:\/\/hook\.(eu|us|eu2|us1)\.make\.com\//i.test(TRACK_WEBHOOK)){msg(tr("missing"));return}
-  submit.disabled=true;submit.innerHTML=`<span><i class="track-spin"></i>${tr("lookup")}</span>`;
+ async function track(e){
+  e.preventDefault();
+  const id=$("tkId").value.trim().toUpperCase(),ph=$("tkPh").value.replace(/[\s-]/g,""),btn=$("tkBtn");
+  $("tkRes").innerHTML="";
+  if(!id||ph.replace(/\D/g,"").length<10)return msg(tx("اكتب رقم الطلب ورقم موبايل صحيح.","Please enter your order ID and a valid phone number."),true);
+  if(!TRACK_WEBHOOK_URL){console.warn("VESTRA: set TRACK_WEBHOOK_URL (Make.com tracking webhook) in index.html");return msg(tx("خدمة التتبع غير مفعّلة حالياً. تواصل معنا لمعرفة حالة طلبك.","Order tracking is not available yet. Please contact us for your order status."),true)}
+  btn.disabled=true;msg(tx("جاري البحث عن طلبك...","Looking up your order..."));
+  const ac=new AbortController(),to=setTimeout(()=>ac.abort(),20000);
   try{
-   const r=await fetch(TRACK_WEBHOOK,{method:"POST",mode:"cors",credentials:"omit",cache:"no-store",headers:{"Content-Type":"application/json"},body:JSON.stringify({event_type:"track_order_lookup",order_id,phone})});
+   const r=await fetch(TRACK_WEBHOOK_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({event_type:"track_order",order_id:id,phone:ph}),signal:ac.signal});
    if(!r.ok)throw Error("HTTP "+r.status);
-   const d=await r.json();
-   // Only accept an explicit positive match from the trusted Make scenario.
-   if(!d||d.found!==true||!d.order){msg(tr("notfound"));return}
-   const o=d.order;
-   if(!o.id||String(o.id).trim().toLowerCase()!==order_id.toLowerCase()||!["new","confirmed","shipped","delivered","cancelled"].includes(String(o.status||"").toLowerCase())){msg(tr("notfound"));return}
-   render(o);msg(lang()==="ar"?"تم العثور على طلبك بنجاح.":"Your order was found successfully.",true);
-  }catch(err){console.error("VESTRA tracking lookup:",err);msg(tr("failed"))}
-  finally{submit.disabled=false;submit.innerHTML=`<span data-track-btn>${tr("btn")}</span><b aria-hidden="true">↗</b>`}
- });
+   let d=null;try{d=await r.json()}catch(x){}
+   if(!d||d.found===false||d.status==="not_found"||!d.status){msg(tx("مفيش طلب بالبيانات دي. راجع رقم الطلب والموبايل.","No order matches these details. Please check your order ID and phone number."),true);return}
+   render(d,d.order_id||id);
+  }catch(x){msg(tx("تعذّر الاتصال بخدمة التتبع. حاول مرة أخرى.","Could not reach the tracking service. Please try again."),true)}
+  finally{clearTimeout(to);btn.disabled=false}
+ }
+ const f=$("tkForm");if(f)f.addEventListener("submit",track);
 })();
 </script>
-
 </body>
 </html>
