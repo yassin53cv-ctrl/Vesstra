@@ -841,11 +841,15 @@ addEventListener("hashchange",()=>{if(location.hash.startsWith("#p="))openPD(+lo
 /* ===== VESTRA admin + checkout + JSONBin ===== */
 /* >>> املا القيم دي بعد ما تعمل الـ bins في jsonbin.io <<< */
 const CFG={STORE_BIN:"6ae22286ac6210605a59ab23",ORDERS_BIN:"6ae22286ac6210605a59ab23",KEY:"$2a$10$ZP1FOP8MxLnt7Hf82KkOU./6k8KwwdqotzbtR8SsQFpBAnDlZRida",KEY_TYPE:"access",COLLECTION:"",IMGBB_KEY:"" /* اختياري: مفتاح ImgBB لتفعيل رفع الصور من الجهاز */};
-const MAKE_WEBHOOK="https://hook.eu1.make.com/xofs98r4pwh9keep2tt27pm3csgv9kbm";
+const MAKE_WEBHOOK="https://hook.eu1.make.com/f4cbicvinr6d69u5ku1xmu1jj49z5xfn";
 const SHIPPING_WEBHOOK_URL="https://hook.eu1.make.com/iwari7krqjc4w67sej7sk6pn27fr9dp3";
 async function notifyVestraOrder(order,status){
+ // Send the Telegram notification only when an order is confirmed.
+ if(status!=="confirmed")return;
  try{
+  const total=Number(order.total||0);
   const payload={
+   telegram_text:`you have received ${total.toFixed(2)} EGP from\n\nOrder ID: ${order.id||"—"}\nCustomer: ${order.name_en||order.name||"—"}\nPayment Method: ${order.payLabel||order.payMethod||"—"}\nStatus: CONFIRMED`, 
    order_id:order.id,
    customer_name:order.name_en||order.name,
    customer_name_ar:order.name,
