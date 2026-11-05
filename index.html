@@ -959,6 +959,7 @@ async put(id,k,d){if(!this.on())return ls(k,d);const r=await jf(`https://api.jso
 async make(d,name){if(!this.on()){const k="vs-shot-"+Date.now();ls(k,d);return k}const h={...this.h(),"X-Bin-Private":"true","X-Bin-Name":name};if(CFG.COLLECTION)h["X-Collection-Id"]=CFG.COLLECTION;const r=await jf("https://api.jsonbin.io/v3/b",{method:"POST",headers:h,body:JSON.stringify(d)});if(!r.ok)throw Error("HTTP "+r.status+" "+(await r.text()).slice(0,160));return(await r.json()).metadata.id}};
 const getStore=()=>DB.get(CFG.STORE_BIN,"vs-store"),saveStore=()=>DB.put(CFG.STORE_BIN,"vs-store",{products:ALL,settings:ST,at:Date.now()}); /* legacy (unused): replaced by persist() which merges */
 const getOrders=async()=>(await DB.get(CFG.ORDERS_BIN,"vs-orders"))?.orders||[];
+window.VESTRA_GET_ORDERS=getOrders; /* expose the scoped order reader to the standalone tracking page */
 let STORE_DOC_CACHE=null,STORE_CACHE_AT=0,STORE_WRITE_CHAIN=Promise.resolve();
 async function mutOrders(fn,providedDoc){
  const job=async()=>{
@@ -1566,10 +1567,10 @@ PAGES.img=m=>{const hk=hostKey();
  async function track(e){
   e.preventDefault();const id=$("tkId").value.trim().toUpperCase(),phone=normPhone($("tkPh").value),btn=$("tkBtn");$("tkRes").innerHTML="";
   if(!id||phone.length<10){msg(tx("اكتب رقم الطلب ورقم موبايل صحيح.","Please enter your order ID and a valid phone number."),true);return}
-  if(typeof DB==="undefined"||typeof CFG==="undefined"){msg(tx("تعذر تهيئة خدمة الطلبات. حدّث الصفحة وحاول مرة أخرى.","Order service could not initialize. Refresh and try again."),true);return}
+  if(typeof window.VESTRA_GET_ORDERS!=="function"){msg(tx("تعذر تهيئة خدمة الطلبات. حدّث الصفحة وحاول مرة أخرى.","Order service could not initialize. Refresh and try again."),true);return}
   btn.disabled=true;btn.classList.add("is-loading");msg(tx("جاري البحث عن طلبك...","Searching for your order..."));
   try{
-   const orders=await getOrders();
+   const orders=await window.VESTRA_GET_ORDERS();
    if(!Array.isArray(orders))throw Error("Invalid orders data");
    const order=orders.find(o=>String(o?.id??o?.order_id??"").trim().toUpperCase()===id&&normPhone(o?.phone??o?.tel??o?.mobile??"")===phone);
    if(!order){msg(tx("مفيش طلب مطابق للبيانات دي. راجع رقم الطلب ورقم الموبايل.","No order matches these details. Please check your order number and phone."),true);return}
