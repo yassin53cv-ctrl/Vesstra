@@ -599,7 +599,7 @@ html[dir=rtl]{--vs-d:-1}
 @media(hover:none) and (pointer:coarse){#mo.checkout-full .fld input{font-size:16px}}
 
 /* 9 — loading: two counter-rotating rings, crossfading status text */
-.vs-load{position:fixed;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px;padding:24px;background:rgba(246,246,243,.88);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);animation:vsLoadIn .55s var(--vs-out) both;touch-action:none}
+.vs-load{position:fixed;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px;padding:24px;background:rgba(246,246,243,.88);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);animation:vsLoadIn .2s ease both;touch-action:none}
 .vs-load.out{animation:vsLoadOut .4s ease forwards}
 @keyframes vsLoadIn{from{opacity:0;-webkit-backdrop-filter:blur(0);backdrop-filter:blur(0)}}
 @keyframes vsLoadOut{to{opacity:0}}
@@ -610,9 +610,10 @@ html[dir=rtl]{--vs-d:-1}
 .vs-rings b{position:absolute;inset:0;display:grid;place-items:center;font:800 17px Syne,sans-serif;letter-spacing:.1em;padding-inline-start:.1em;animation:vsBreath 2.4s ease-in-out infinite}
 @keyframes vsSpin{to{transform:rotate(360deg)}}
 @keyframes vsBreath{50%{opacity:.35;transform:scale(.9)}}
-.vs-lt{display:grid;justify-items:center;text-align:center;min-height:1.7em;font-weight:700;font-size:15px}
-.vs-lt span{grid-area:1/1;opacity:0;animation:vsLt 6.6s infinite}
-.vs-lt span:nth-child(2){animation-delay:2.2s}.vs-lt span:nth-child(3){animation-delay:4.4s}
+.vs-lt{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;font-weight:700;font-size:15px}
+.vs-lt span{opacity:1}
+.vs-lt span:nth-child(2){font-size:14px;opacity:.75}
+.vs-lt span:nth-child(3){font-size:13px;font-weight:600;opacity:.55}
 @keyframes vsLt{0%{opacity:0;transform:translate3d(0,10px,0);filter:blur(4px)}7%,28%{opacity:1;transform:none;filter:blur(0)}35%,100%{opacity:0;transform:translate3d(0,-10px,0);filter:blur(4px)}}
 
 /* 10 — success screen: SVG strokes draw themselves, text reveals in sequence */
@@ -636,8 +637,7 @@ html[dir=rtl]{--vs-d:-1}
  .vs-aura{display:none}
  .vs-rings i{animation:vsSpin 3s linear infinite!important}
  .vs-load,.vs-load *{animation:none!important}.vs-rings i{animation:vsSpin 3s linear infinite!important}
- .vs-lt span{opacity:0}.vs-lt span:first-child{opacity:1}
-}
+ }
 .promo-applied[hidden]{display:none}
 </style>
 </head>
