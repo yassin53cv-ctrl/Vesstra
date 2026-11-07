@@ -349,6 +349,35 @@ img{max-width:100%}
  .a-bk{display:block;position:fixed;inset:0;background:#000a;z-index:19;opacity:0;pointer-events:none;transition:.3s}.a-bk.on{opacity:1;pointer-events:auto}
  .a-mb{display:grid}.a-top{padding:0 14px}.a-body{padding:18px 14px 34px}.a-hd h1{font-size:28px}.a-lo span{display:none}.a-lo{padding:9px 12px}.a-who span.nm{display:none}.a-2{grid-template-columns:1fr}}
 @media(max-width:560px){.a-stg{grid-template-columns:1fr}.a-sc b{font-size:28px}.a-qa{grid-template-columns:1fr}.im-g{grid-template-columns:1fr}.a-act .a-ib.hm{display:none}}
+/* ---- Order Tracking Management (admin) ---- */
+.s-received{color:var(--wa);border-color:var(--wa);background:#f0b4291a}.s-processing{color:var(--bl);border-color:var(--bl);background:#6ea8ff1a}.s-out{color:var(--pu);border-color:var(--pu);background:#b79bff1a}.s-hold{color:var(--wa);border-color:var(--wa);border-style:dashed;background:#f0b4290d}
+.sy-ok{color:var(--ok);border-color:var(--ok);background:#34d27b1a}.sy-wr{color:var(--wa);border-color:var(--wa);background:#f0b4291a}.sy-er{color:var(--er);border-color:var(--er);background:#ff64641a}.sy-mn{color:var(--am)}
+.trk-hb{display:flex;gap:8px;flex-wrap:wrap}
+.trk-sy{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;line-height:1.9}.trk-sy .tx{flex:1;min-width:220px}.trk-sy.trk-er{border-color:#ff646488;color:var(--er)}.trk-sy.trk-er b{color:var(--er)}
+.trk-box{padding:18px}
+.trk-tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.trk-q{flex:1;min-width:220px;background:var(--in);border:1px solid var(--al);border-radius:12px;padding:10px 14px;color:var(--at);font:inherit;font-size:14px;outline:0}.trk-q:focus{border-color:var(--ac)}
+.trk-tools .a-sel{min-height:42px}
+.trk-cards{display:none;gap:12px}
+.trk-c{background:var(--ap2);border:1px solid var(--al);border-radius:16px;padding:14px;display:grid;gap:10px;min-width:0}
+.trk-c .h{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}.trk-c .h b{font-size:15px;word-break:break-all}.trk-c .nm{font-weight:700}
+.trk-c .g{display:grid;grid-template-columns:1fr 1fr;gap:10px 12px;font-size:13px}.trk-c small,.trk-kv small,.trk-nt small{display:block;color:var(--am);font-size:11.5px;font-weight:600;margin-bottom:2px}
+.trk-c .a{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.trk-m .row{flex-wrap:wrap}.trk-bt{display:flex;gap:8px;flex-wrap:wrap}
+.trk-m input[type=date]{color-scheme:dark;min-height:44px}
+.trk-hint{font-size:12.5px;color:var(--wa);min-height:0;margin:-2px 0 4px;line-height:1.7}.trk-hint:empty{display:none}
+.trk-kv{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0;font-size:14px}
+.trk-nt{background:var(--ap2,#18181b);border:1px solid #2a2a2e;border-radius:12px;padding:10px 14px;margin:8px 0;font-size:14px;white-space:pre-wrap;word-break:break-word}
+.trk-h4{font-size:15px;margin:16px 0 8px}
+.trk-h{list-style:none;margin:0;padding:0}.trk-h li{position:relative;display:flex;gap:12px;padding:0 0 16px}.trk-h li:last-child{padding-bottom:0}
+.trk-h li:before{content:"";position:absolute;inset-inline-start:5px;top:14px;bottom:-2px;width:2px;background:#2a2a2e}.trk-h li:last-child:before{display:none}
+.trk-h li i{width:12px;height:12px;border-radius:50%;background:#3a3a3f;flex:none;margin-top:5px;position:relative;z-index:1}.trk-h li.cur i{background:#34d27b;box-shadow:0 0 0 4px #34d27b33}
+.trk-h .en{color:#8e8e94;font-size:12px}.trk-h small{display:block;color:#8e8e94;font-size:12px}
+.trk-tb th,.trk-tb td{padding:11px 10px;font-size:13px}.trk-tb td.w{white-space:normal;min-width:90px}.trk-tb .btn2{padding:7px 10px}
+.trk-m select{min-height:44px}
+@media(max-width:1100px){.trk-tb{display:none}.trk-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr))}}
+@media(max-width:760px){.trk-hb{width:100%;display:grid;grid-template-columns:1fr 1fr}.trk-hb .btn2{min-width:0;white-space:normal;padding-inline:10px;min-height:44px}.trk-m .g2{grid-template-columns:1fr}.trk-m .btn2{min-height:44px}.trk-m .row .btn2{flex:1}.trk-bt{flex:1;width:100%}.trk-bt .btn2{flex:1}.trk-m input,.trk-m select,.trk-m textarea{font-size:16px}.trk-q{font-size:16px;min-width:0}.trk-tools .a-sel{width:100%}.trk-sy .btn2{width:100%}.trk-cards{grid-template-columns:1fr}}
+@media(max-width:340px){.trk-kv,.trk-c .g{grid-template-columns:1fr}}
 
 /* ===== VESTRA announcement popup (storefront) ===== */
 .adx-ov{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;padding:calc(16px + env(safe-area-inset-top,0px)) 16px calc(16px + env(safe-area-inset-bottom,0px));background:radial-gradient(ellipse at 50% 40%,rgba(24,22,20,.82),rgba(0,0,0,.93));-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);overflow:auto;animation:adxOv .3s ease both}
@@ -881,19 +910,118 @@ async make(d,name){if(!this.on()){const k="vs-shot-"+Date.now();ls(k,d);return k
 const getStore=()=>DB.get(CFG.STORE_BIN,"vs-store"),saveStore=()=>DB.put(CFG.STORE_BIN,"vs-store",{products:ALL,settings:ST,at:Date.now()}); /* legacy (unused): replaced by persist() which merges */
 const getOrders=async()=>(await DB.get(CFG.ORDERS_BIN,"vs-orders"))?.orders||[];
 let STORE_DOC_CACHE=null,STORE_CACHE_AT=0,STORE_WRITE_CHAIN=Promise.resolve();
-async function mutOrders(fn,providedDoc){
+async function mutOrders(fn,providedDoc,opts){
  const job=async()=>{
   let d0=providedDoc;
   if(!d0&&CFG.ORDERS_BIN===CFG.STORE_BIN&&STORE_DOC_CACHE&&Date.now()-STORE_CACHE_AT<10000)d0=JSON.parse(JSON.stringify(STORE_DOC_CACHE));
   if(!d0)d0=await DB.get(CFG.ORDERS_BIN,"vs-orders");
   const d=(d0&&typeof d0=="object"&&!Array.isArray(d0))?d0:{};
-  const n=fn(Array.isArray(d.orders)?d.orders:[]);d.orders=n;
+  const before=Array.isArray(d.orders)?d.orders:[];const n=fn(before);d.orders=n;
   await DB.put(CFG.ORDERS_BIN,"vs-orders",d);
+  if(!(opts&&opts.skipTrk))trkAfterOrders(before,n); /* store write succeeded → mirror new/changed orders into the tracking BIN */
   if(CFG.ORDERS_BIN===CFG.STORE_BIN){STORE_DOC_CACHE=JSON.parse(JSON.stringify(d));STORE_CACHE_AT=Date.now()}
   return n;
  };
  const next=STORE_WRITE_CHAIN.then(job,job);STORE_WRITE_CHAIN=next.catch(()=>{});return next;
 }
+/* ===== VESTRA Order Tracking sync — talks ONLY to the existing tracking JSONBin (same BIN/config the tracking site uses) ===== */
+const TRK_CFG={BIN_ID:"6aedd6a2ffd5d16053ac0f15",KEY:"$2a$10$bCPX6cOlPyhpTCvxprWGmueT3xK3Wh9PZZJEke01TGBmzXf8apCg2",BASE:"https://api.jsonbin.io/v3/b/"};
+/* tracking-site statuses (id, English, Arabic) — identical to the tracking website */
+const T_ST=[["received","Order Received","تم استلام الطلب"],["confirmed","Confirmed","تم تأكيد الطلب"],["processing","Processing","جاري تجهيز الطلب"],["shipped","Shipped","تم شحن الطلب"],["out","Out for Delivery","الطلب خرج للتوصيل"],["delivered","Delivered","تم تسليم الطلب"],["cancelled","Cancelled","تم إلغاء الطلب"],["hold","On Hold","الطلب متوقف مؤقتاً"]];
+const T_LBL=Object.fromEntries(T_ST.map(s=>[s[0],s]));
+/* status mapping: store → tracking (1:1) and tracking → store (finer tracking steps collapse; "hold" has no store equivalent) */
+const S2T={new:"received",confirmed:"confirmed",shipped:"shipped",delivered:"delivered",cancelled:"cancelled"};
+const T2S={received:"new",confirmed:"confirmed",processing:"confirmed",shipped:"shipped",out:"shipped",delivered:"delivered",cancelled:"cancelled"};
+const TRK={kt:"master",chain:Promise.resolve(),doc:null,failed:new Map(),last:null,lastOk:0,lastErr:"",tok:0,q:"",f:"all"};
+const trkNid=s=>String(s==null?"":s).trim().toUpperCase();
+const trkNp=p=>{let d=String(p||"").replace(/[٠-٩]/g,c=>c.charCodeAt(0)-1632).replace(/\D/g,"");if(d.startsWith("00"))d=d.slice(2);if(d.startsWith("20")&&d.length>=12)d=d.slice(2);return d.replace(/^0+/,"")};
+const trkLD=t=>{const d=new Date(+t||Date.now());return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")};
+const trkIso=t=>new Date(+t||Date.now()).toISOString();
+const trkItems=o=>(Array.isArray(o.items)?o.items:[]).map(i=>({name:String(i&&i.nm||"").trim(),description:[i&&i.size?"Size "+i.size:"",i&&i.q?"Qty "+i.q:""].filter(Boolean).join(" · ")})).filter(i=>i.name||i.description);
+const trkSig=o=>JSON.stringify([o.name||"",o.phone||"",+o.total||0,+o.at||0,(Array.isArray(o.items)?o.items:[]).map(i=>[i&&i.id,i&&i.nm,i&&i.size,i&&i.q,i&&i.price])]);
+/* notes: the tracking site only knows adminNotes + showNotesToCustomer. We keep those two consistent AND store the two notes separately
+   (customerNote / internalNote), so the tracking site keeps working unchanged. If someone edits the legacy fields elsewhere, they win. */
+function trkNotes(r){const show=!!r.showNotesToCustomer,a=String(r.adminNotes||"");
+ if(r.customerNote!==undefined||r.internalNote!==undefined){const c=String(r.customerNote||""),n=String(r.internalNote||"");if(show===!!c&&a===(c||n))return{customer:c,internal:n};return{customer:show?a:"",internal:show?n:a||n}}
+ return{customer:show?a:"",internal:show?"":a}}
+function trkSetNotes(r,c,n){r.customerNote=c;r.internalNote=n;if(c){r.adminNotes=c;r.showNotesToCustomer=true}else{r.adminNotes=n;r.showNotesToCustomer=false}}
+function trkNew(o,now){const mapped=S2T[o.status]||"received",h=[{status:"received",date:trkIso(o.at)}];if(mapped!=="received")h.push({status:mapped,date:now});
+ return{id:String(o.id),customerName:o.name||"",phone:o.phone||"",orderDate:trkLD(o.at),items:trkItems(o),totalAmount:money2(o.total),status:mapped,estimatedDelivery:"",adminNotes:"",showNotesToCustomer:false,customerNote:"",internalNote:"",lastUpdated:now,statusHistory:h,source:"store",storeSync:{status:o.status,sig:trkSig(o),at:now}}}
+/* apply ONE store order to a tracking doc (in memory). Returns "created" | "updated" | "same". Never creates a second record for the same ID. */
+function trkApply(d,o,now){
+ const id=trkNid(o&&o.id);if(!id)return"skip";
+ const i=d.orders.findIndex(x=>x&&trkNid(x.id)===id),sig=trkSig(o),mapped=S2T[o.status]||"received";
+ if(i<0){d.orders.push(trkNew(o,now));return"created"}
+ const old=d.orders[i],rec={...old},ss=old.storeSync;let bump=false,ch=false;
+ const inf={customerName:o.name||"",phone:o.phone||"",orderDate:trkLD(o.at),totalAmount:money2(o.total),items:trkItems(o)};
+ if(!ss||typeof ss!="object"){
+  /* a record with this ID already exists but was never linked (legacy/manual) → adopt it: fill blanks only, never touch its status */
+  ["customerName","phone","orderDate","totalAmount"].forEach(k=>{if(!String(rec[k]||"").trim()&&inf[k]){rec[k]=inf[k];bump=true}});
+  if((!Array.isArray(rec.items)||!rec.items.length)&&inf.items.length){rec.items=inf.items;bump=true}
+  rec.storeSync={status:o.status,sig,at:now};ch=true;
+ }else{
+  if(ss.sig!==sig){Object.assign(rec,inf);bump=true;ch=true}
+  if(ss.status!==o.status){
+   ch=true;
+   if(rec.status!==mapped&&T2S[rec.status]!==o.status){ /* "processing" ≈ confirmed, "out" ≈ shipped: keep the finer step */
+    const h=Array.isArray(rec.statusHistory)?rec.statusHistory.slice():[];if(!h.length)h.push({status:"received",date:trkIso(o.at)});
+    h.push({status:mapped,date:now});rec.statusHistory=h;rec.status=mapped;bump=true}
+  }
+  if(ch)rec.storeSync={status:o.status,sig,at:now};
+ }
+ if(!ch)return"same";
+ if(bump)rec.lastUpdated=now;
+ d.orders[i]=rec;return"updated"}
+/* ---- JSONBin I/O (tracking BIN) ---- */
+async function trkReq(url,o){const mk=t=>({...(o.headers||{}),[t=="master"?"X-Master-Key":"X-Access-Key"]:TRK_CFG.KEY});
+ let r=await jf0(url,{...o,headers:mk(TRK.kt)});
+ if(r.status==401||r.status==403){const alt=TRK.kt=="master"?"access":"master",r2=await jf0(url,{...o,headers:mk(alt)});if(r2.ok){TRK.kt=alt;return r2}}
+ return r}
+async function trkGet(){
+ const r=await trkReq(TRK_CFG.BASE+TRK_CFG.BIN_ID+"/latest",{headers:{"X-Bin-Meta":"false"},cache:"no-store"});
+ if(!r.ok)throw Error("HTTP "+r.status+" "+(await r.text()).slice(0,140));
+ let d=await r.json();if(d&&d.record&&!d.orders)d=d.record;
+ if(!d||typeof d!="object"||Array.isArray(d))throw Error("تنسيق قاعدة بيانات التتبع غير متوقع — لم يتم تغيير أي شيء");
+ if(!Array.isArray(d.orders)){if(Object.keys(d).length===0)d={orders:[]};else throw Error("تنسيق قاعدة بيانات التتبع غير متوقع — لم يتم تغيير أي شيء")}
+ return d}
+async function trkPut(d){
+ const r=await trkReq(TRK_CFG.BASE+TRK_CFG.BIN_ID,{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify(d)});
+ if(!r.ok)throw Error("HTTP "+r.status+" "+(await r.text()).slice(0,140));
+ let j=null;try{j=await r.json()}catch(e){}
+ const rec=j&&(j.record||j);
+ /* success is only reported if JSONBin echoes back what we wrote */
+ if(!rec||!Array.isArray(rec.orders)||rec.orders.length!==d.orders.length||!d.orders.every((x,i)=>rec.orders[i]&&rec.orders[i].id===x.id&&rec.orders[i].status===x.status&&rec.orders[i].lastUpdated===x.lastUpdated))throw Error("لم يتم تأكيد الحفظ من JSONBin — لم يُعتبر التحديث ناجحاً");
+}
+/* read-latest → change only what's needed (all other keys/records untouched) → write everything back. Serialised per tab. */
+function trkMutate(fn){
+ const job=async()=>{const d=await trkGet(),n0=d.orders.length,res=fn(d)||{};
+  if(d.orders.length<n0)throw Error("إيقاف احترازي: العملية كانت ستحذف سجلات تتبع");
+  if(!res.noop)await trkPut(d);
+  TRK.doc=d;return res};
+ const next=TRK.chain.then(job,job);TRK.chain=next.catch(()=>{});return next}
+function trkPlan(doc,orders){const c={orders:JSON.parse(JSON.stringify(doc.orders))},miss=[],stale=[];orders.forEach(o=>{const r=trkApply(c,o,"x");if(r=="created")miss.push(o);else if(r=="updated")stale.push(o)});return{miss,stale}}
+const trkAdminOn=()=>typeof adm!="undefined"&&adm.classList.contains("on");
+const trkToast=(m,k)=>{if(trkAdminOn())atoast(m,k)};
+/* sync a list of store orders → tracking BIN. Never rejects; returns {ok,created,updated} or {ok:false,error} */
+async function trkSyncOrders(list,notify){
+ const ids=list.map(o=>trkNid(o.id));
+ try{
+  const now=new Date().toISOString();
+  const r=await trkMutate(d=>{let c=0,u=0;list.forEach(o=>{const x=trkApply(d,o,now);if(x=="created")c++;else if(x=="updated")u++});return(c||u)?{created:c,updated:u}:{noop:true,created:0,updated:0}});
+  ids.forEach(i=>TRK.failed.delete(i));TRK.lastOk=Date.now();TRK.lastErr="";
+  if(notify&&(r.created||r.updated))trkToast("تمت مزامنة تتبع الطلب بنجاح ✓","ok");
+  trkUi();return{ok:true,created:r.created||0,updated:r.updated||0}
+ }catch(e){
+  const msg=e.message||String(e);ids.forEach(i=>TRK.failed.set(i,{msg,at:Date.now()}));TRK.lastErr=msg;console.warn("VESTRA tracking sync failed:",e);
+  if(notify)trkToast("فشلت مزامنة التتبع: "+msg+" — أعد المحاولة من قسم Order Tracking","er");
+  trkUi();return{ok:false,error:msg}}}
+/* hook called by mutOrders after a successful store write: sync only the orders that are new or changed */
+function trkAfterOrders(before,n){
+ try{const bm=new Map((before||[]).filter(o=>o&&o.id!=null).map(o=>[String(o.id),o]));
+  const ch=(Array.isArray(n)?n:[]).filter(o=>{if(!o||o.id==null)return false;const p=bm.get(String(o.id));return!p||p.status!==o.status||trkSig(p)!==trkSig(o)});
+  if(ch.length)TRK.last=trkSyncOrders(ch,true)}catch(e){console.warn(e)}}
+/* checkout waits (max ~6s) so the tracking record normally exists before the customer sees "order received"; a failure never blocks the order */
+const trkWait=ms=>Promise.race([TRK.last||Promise.resolve(),new Promise(r=>setTimeout(r,ms))]).catch(()=>{});
 /* ---- images / content state (stored inside the existing store bin as "images" and "content") ---- */
 const IMG0=()=>({sig:"",footer:"",col:["","","","",""],prev:{}});
 let IMG=IMG0(),CNT={ar:{},en:{}},AD=null;
@@ -1111,13 +1239,13 @@ o.querySelector("#cf").onsubmit=async e=>{e.preventDefault();const er=o.querySel
 try{const f=Object.fromEntries(new FormData(e.target)),no=shotNo||"VS-"+Date.now().toString(36).toUpperCase().slice(-6);
 const [sid,latestOrdersDoc]=await Promise.all([shotP?shotP.catch(()=>DB.make({shot},"shot-"+no)):DB.make({shot},"shot-"+no),DB.get(CFG.ORDERS_BIN,"vs-orders")]);
 const ord={id:no,at:Date.now(),...f,items:Cart.items.map(i=>{const p=P.find(x=>x.id==i.id);return{id:i.id,nm:p.nm[0],size:i.size,col:p.c[i.ci],q:i.q,price:p.p}}),sub,discount,promoCode:appliedPromo?.code||"",promoType:appliedPromo?.type||"",promoValue:appliedPromo?.value||0,ship,total:calcTotal(),shot:sid,status:"new",payMethod:pmSel,payLabel:pmLabel(pmSel),payStatus:"pending"};
-await mutOrders(a=>[ord,...a],latestOrdersDoc);notifyVestraOrder(telegramReady(ord,"new"),"new");Cart.items=[];Cart.save();renderCart();await vsLoad.wait(350);
+await mutOrders(a=>[ord,...a],latestOrdersDoc);notifyVestraOrder(telegramReady(ord,"new"),"new");Cart.items=[];Cart.save();renderCart();await trkWait(6000);await vsLoad.wait(350);
 const so=modal(`<div class="vs-aura" aria-hidden="true"><i></i><i></i></div><svg class="vs-done" viewBox="0 0 120 120" aria-hidden="true"><circle class="vd-halo" cx="60" cy="60" r="52"/><circle class="vd-ring" cx="60" cy="60" r="52"/><circle class="vd-fill" cx="60" cy="60" r="43"/><path class="vd-ck" d="M41 61l13 13 26-29"/></svg><h3 class="vs-dt">${tr("تم استلام طلبك","Order received")}</h3><p class="vs-dn">${tr("رقم الطلب","Order no.")}: <b class="wm" style="letter-spacing:.05em">${no}</b></p><p class="vs-dm">${tr("هنراجع التحويل ونتواصل معاك على الموبايل.","We'll verify the transfer and contact you by phone.")}</p><button class="btn vs-db" onclick="document.getElementById('mo').classList.remove('on')">${tr("متابعة التسوق","Continue shopping")}</button>`);so.classList.add("vs-success");vsSplit(so.querySelector(".vs-dt"))}
 catch(x){er.textContent=tr("حصل خطأ في الإرسال، حاول تاني. ","Submit failed, try again. ")+x.message;b.disabled=false;vsLoad.hide()}}};
 /* ---- secret entry: 3 consecutive clicks on the year ---- */
 const yp=document.querySelector('footer .wrap>p');yp.innerHTML=yp.innerHTML.replace("2026",'<span id="yr">2026</span>');
 async function hash(s){try{const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode("vestra:"+s));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("")==PW.sha}catch(e){let h=5381;for(const c of "vestra:"+s)h=(h*33^c.charCodeAt(0))>>>0;return String(h)==PW.fb}}
-const IC={copy:'<rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 012-2h9"/>',home:'<path d="M3 10.5L12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/>',tag:'<path d="M20.6 13.4l-7.2 7.2a2 2 0 01-2.8 0L3 13V3h10l7.6 7.6a2 2 0 010 2.8z"/><circle cx="7.5" cy="7.5" r="1.2"/>',cart:'<circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.7 12.4a2 2 0 002 1.6h8.2a2 2 0 002-1.5L21.5 8H6"/>',users:'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><path d="M16 4.5a3.5 3.5 0 010 7"/><path d="M18 14.3c2.2.7 3.5 2.6 3.5 5.7"/>',gear:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/>',layout:'<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>',chart:'<path d="M3 3v18h18"/><path d="M7 15v3M12 10v8M17 6v12"/>',image:'<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>',box:'<path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8M12 13v8"/>',coins:'<ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/>',bell:'<path d="M6 8a6 6 0 0112 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 003.4 0"/>',moon:'<path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/>',sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',expand:'<path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"/>',out:'<path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6M10 14L21 3"/>',plus:'<path d="M12 5v14M5 12h14"/>',edit:'<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/>',lock:'<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/>',eye:'<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',eyeoff:'<path d="M17.9 17.9A10.5 10.5 0 0112 19C5.6 19 2 12 2 12a18 18 0 015.1-5.9M9.9 4.2A9.7 9.7 0 0112 4c6.4 0 10 8 10 8a18 18 0 01-2.2 3.2M1 1l22 22"/><path d="M14.1 14.1a3 3 0 01-4.2-4.2"/>',cal:'<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',menu:'<path d="M3 6h18M3 12h18M3 18h18"/>',up:'<path d="M18 15l-6-6-6 6"/>',down:'<path d="M6 9l6 6 6-6"/>',trash:'<path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6M10 11v6M14 11v6"/>',upload:'<path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/>',undo:'<path d="M3 7v6h6"/><path d="M21 17a9 9 0 00-15-6.7L3 13"/>',refresh:'<path d="M21 12a9 9 0 01-15.5 6.2L3 16M3 12A9 9 0 0118.5 5.8L21 8"/><path d="M21 3v5h-5M3 21v-5h5"/>',megaphone:'<path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/>',check:'<path d="M5 12.5l4.5 4.5L19 7"/>',close:'<path d="M6 6l12 12M18 6L6 18"/>',arrow:'<path d="M5 12h14M13 6l6 6-6 6"/>'};
+const IC={copy:'<rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 012-2h9"/>',home:'<path d="M3 10.5L12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/>',tag:'<path d="M20.6 13.4l-7.2 7.2a2 2 0 01-2.8 0L3 13V3h10l7.6 7.6a2 2 0 010 2.8z"/><circle cx="7.5" cy="7.5" r="1.2"/>',cart:'<circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.7 12.4a2 2 0 002 1.6h8.2a2 2 0 002-1.5L21.5 8H6"/>',users:'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><path d="M16 4.5a3.5 3.5 0 010 7"/><path d="M18 14.3c2.2.7 3.5 2.6 3.5 5.7"/>',gear:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/>',layout:'<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>',chart:'<path d="M3 3v18h18"/><path d="M7 15v3M12 10v8M17 6v12"/>',image:'<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>',box:'<path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8M12 13v8"/>',coins:'<ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/>',bell:'<path d="M6 8a6 6 0 0112 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 003.4 0"/>',moon:'<path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/>',sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',expand:'<path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"/>',out:'<path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6M10 14L21 3"/>',plus:'<path d="M12 5v14M5 12h14"/>',edit:'<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/>',lock:'<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/>',eye:'<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',eyeoff:'<path d="M17.9 17.9A10.5 10.5 0 0112 19C5.6 19 2 12 2 12a18 18 0 015.1-5.9M9.9 4.2A9.7 9.7 0 0112 4c6.4 0 10 8 10 8a18 18 0 01-2.2 3.2M1 1l22 22"/><path d="M14.1 14.1a3 3 0 01-4.2-4.2"/>',cal:'<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',menu:'<path d="M3 6h18M3 12h18M3 18h18"/>',up:'<path d="M18 15l-6-6-6 6"/>',down:'<path d="M6 9l6 6 6-6"/>',trash:'<path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6M10 11v6M14 11v6"/>',upload:'<path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/>',undo:'<path d="M3 7v6h6"/><path d="M21 17a9 9 0 00-15-6.7L3 13"/>',refresh:'<path d="M21 12a9 9 0 01-15.5 6.2L3 16M3 12A9 9 0 0118.5 5.8L21 8"/><path d="M21 3v5h-5M3 21v-5h5"/>',megaphone:'<path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/>',check:'<path d="M5 12.5l4.5 4.5L19 7"/>',close:'<path d="M6 6l12 12M18 6L6 18"/>',arrow:'<path d="M5 12h14M13 6l6 6-6 6"/>',truck:'<path d="M3 6h11v10H3z"/><path d="M14 10h4l3 3v3h-7"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/>'};
 const ico=n=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[n]||""}</svg>`;
 let fails=0,lockUntil=0;
 function closePw(force){const o=document.getElementById("pwo");if(!o)return;if(o.dataset.lock&&force!==true)return;document.removeEventListener("keydown",o._k);o.remove();if(!adm.classList.contains("on"))document.body.style.overflow=""}
@@ -1206,13 +1334,13 @@ function drawChart(el,pts){const w=Math.max(280,el.clientWidth||600),h=270,Lm=46
 /* ---- admin shell ---- */
 const adm=document.createElement("div");adm.id="adm";adm.dir="rtl";adm.setAttribute("aria-label","لوحة التحكم");document.body.appendChild(adm);adm.addEventListener("pointerdown",warmCache,{passive:true});adm.addEventListener("focusin",warmCache);
 let imTab="site",anR=30,dR=7;
-const NAV=[["dash","home","الرئيسية"],["prod","tag","المنتجات"],["ord","cart","الطلبات"],["usr","users","المستخدمين"],["set","gear","الإعدادات"],["cnt","layout","تعديل الموقع"],["img","image","مدير صور الموقع"],["promos","tag","Promo Codes"],["pay","coins","طرق الدفع"],["ads","megaphone","الإعلانات"],["ana","chart","تحليلات المبيعات"]];
+const NAV=[["dash","home","الرئيسية"],["prod","tag","المنتجات"],["ord","cart","الطلبات"],["trk","truck","Order Tracking Management"],["usr","users","المستخدمين"],["set","gear","الإعدادات"],["cnt","layout","تعديل الموقع"],["img","image","مدير صور الموقع"],["promos","tag","Promo Codes"],["pay","coins","طرق الدفع"],["ads","megaphone","الإعلانات"],["ana","chart","تحليلات المبيعات"]];
 async function refresh(){const d=await getStore();STORE_DOC_CACHE=(d&&typeof d=="object"&&!Array.isArray(d))?JSON.parse(JSON.stringify(d)):{};STORE_CACHE_AT=Date.now();if(d&&typeof d=="object"&&!Array.isArray(d)){if(Array.isArray(d.products))ALL=d.products;Object.assign(ST,d.settings||{});PROMOS=Array.isArray(d.promos)?d.promos:[{code:"yasiiiin0",type:"percent",value:20,active:true}];IMG=normImg(d.images);CNT=normCnt(d.content);AD=normAd(d.ad);PAY=normPay(d.payments)}
  if(!ALL)ALL=JSON.parse(JSON.stringify(SEED));ORD=(CFG.ORDERS_BIN==CFG.STORE_BIN?(d&&d.orders):await getOrders())||[];if(!Array.isArray(ORD))ORD=[]}
 async function openAdmin(){adm.classList.add("on");document.body.style.overflow="hidden";adm.classList.toggle("lt",ls("vestra-admin-theme")=="light");
  adm.innerHTML='<div class="a-em" style="padding-top:30vh"><span class="pwsp" style="border-color:#ffffff33;border-top-color:#e7dccb"></span>جاري التحميل…</div>';
  try{await takePre()}catch(e){adm.innerHTML=`<div class="a-em" style="padding-top:26vh"><p style="font-size:16px;color:var(--er)">تعذّر الاتصال بـ JSONBin</p><p style="direction:ltr;margin:8px 0 18px">${esc(e.message)}</p><button class="btn2 pr" data-a="retry">إعادة المحاولة</button> <button class="btn2" data-a="out">إغلاق</button></div>`;return}
- shell();go(tab)}
+ shell();go(tab);trkCheck()}
 function closeAdmin(){adm.classList.remove("on");adm.innerHTML="";document.body.style.overflow="";redraw=null;closeM();try{document.fullscreenElement&&document.exitFullscreen()}catch(e){}}
 function shell(){const lt=adm.classList.contains("lt");
  adm.innerHTML=`<div class="a-shell"><aside class="a-sb" id="asb"><div class="a-logo">VESTRA</div><nav class="a-nv" aria-label="التنقل">${NAV.map(([k,i,n])=>`<button data-t="${k}">${ico(i)}<span>${n}</span></button>`).join("")}</nav><div class="a-key">${ico("lock")}<div><b>2026</b><span>اضغط 3 مرات للدخول إلى لوحة التحكم</span></div></div></aside><div class="a-bk" id="abk"></div>
@@ -1224,7 +1352,7 @@ function shell(){const lt=adm.classList.contains("lt");
   else if(a=="bell"){const n=ORD.filter(o=>o.status=="new").length;if(n){ofl="new";go("ord")}else atoast("لا توجد طلبات جديدة")}};
  adm.querySelector("#abk").onclick=()=>sb(false)}
 const sb=o=>{adm.querySelector("#asb")?.classList.toggle("open",o);adm.querySelector("#abk")?.classList.toggle("on",o)};
-function badges(){const n=ORD.filter(o=>o.status=="new").length,bn=adm.querySelector("#abn");if(bn){bn.hidden=!n;bn.textContent=n}const ob=adm.querySelector('.a-nv [data-t="ord"]');if(ob){ob.querySelector(".bg")?.remove();if(n)ob.insertAdjacentHTML("beforeend",`<i class="bg">${n}</i>`)}}
+function badges(){try{trkBadge()}catch(e){}const n=ORD.filter(o=>o.status=="new").length,bn=adm.querySelector("#abn");if(bn){bn.hidden=!n;bn.textContent=n}const ob=adm.querySelector('.a-nv [data-t="ord"]');if(ob){ob.querySelector(".bg")?.remove();if(n)ob.insertAdjacentHTML("beforeend",`<i class="bg">${n}</i>`)}}
 const PAGES={};
 function go(k){tab=k;redraw=null;adm.querySelectorAll(".a-nv button").forEach(b=>b.classList.toggle("on",b.dataset.t==k));sb(false);const m=adm.querySelector("#am");if(!m)return;m.onclick=m.oninput=m.onchange=null;m.innerHTML="";badges();try{PAGES[k](m)}catch(e){console.error(e);m.innerHTML=`<div class="a-em">حدث خطأ في عرض هذا القسم: ${esc(e.message)}</div>`}m.scrollTop=0}
 const hd=(t,s,x="")=>`<div class="a-hd"><div><h1>${t}</h1><p>${s}</p></div>${x}</div>`;
@@ -1283,8 +1411,8 @@ async function copyMsg(o,st){const txt=orderMsg(o,st);if(!txt){atoast("No messag
 /* ---- orders ---- */
 PAGES.ord=m=>{const L2=ORD.filter(o=>ofl=="all"||o.status==ofl);
  m.innerHTML=hd("الطلبات",`${fmtN(ORD.length)} طلب إجمالاً`,`<button class="btn2" data-r>${ico("refresh")} تحديث</button>`)+`<div class="a-pl">${["all",...Object.keys(SL)].map(k=>`<button class="pill ${k==ofl?"on":""}" data-f="${k}">${k=="all"?"الكل":SL[k]}${k!="all"?` (${ORD.filter(o=>o.status==k).length})`:""}</button>`).join("")}</div>
- <div class="a-tb"><table><tr><th>رقم</th><th>التاريخ</th><th>العميل</th><th>الموبايل</th><th>الإجمالي</th><th>الحالة</th><th></th></tr>${L2.map(o=>`<tr><td><b>${esc(o.id)}</b></td><td>${new Date(o.at).toLocaleString("ar-EG-u-nu-latn")}</td><td>${esc(o.name)}</td><td dir="ltr">${esc(o.phone)}</td><td>${money2(o.total)}</td><td><span class="bd s-${esc(o.status)}">${esc(SL[o.status]||o.status||"")}</span></td><td style="white-space:nowrap"><button class="btn2" data-v="${esc(o.id)}">عرض</button> <button class="btn2" data-cp="${esc(o.id)}" title="Copy Message">${ico("copy")} Copy Message</button> <button class="btn2" data-courier="${esc(o.id)}">بيانات المندوب</button></td></tr>`).join("")||'<tr><td colspan="9" class="a-em">لا توجد طلبات</td></tr>'}</table></div>`;
- m.onclick=async e=>{const b=e.target.closest("button");if(!b)return;if(b.dataset.f){ofl=b.dataset.f;PAGES.ord(m)}else if(b.dataset.r!==undefined){try{atoast("جاري التحديث…");ORD=await getOrders();badges();PAGES.ord(m);atoast("تم التحديث","ok")}catch(x){atoast("فشل التحديث: "+x.message,"er")}}else if(b.dataset.v)showOrd(b.dataset.v);else if(b.dataset.cp){const o=ORD.find(x=>x.id==b.dataset.cp);if(o)copyMsg(o)}else if(b.dataset.courier){showCourier(b.dataset.courier)}}};
+ <div class="a-tb"><table><tr><th>رقم</th><th>التاريخ</th><th>العميل</th><th>الموبايل</th><th>الإجمالي</th><th>الحالة</th><th></th></tr>${L2.map(o=>`<tr><td><b>${esc(o.id)}</b></td><td>${new Date(o.at).toLocaleString("ar-EG-u-nu-latn")}</td><td>${esc(o.name)}</td><td dir="ltr">${esc(o.phone)}</td><td>${money2(o.total)}</td><td><span class="bd s-${esc(o.status)}">${esc(SL[o.status]||o.status||"")}</span></td><td style="white-space:nowrap"><button class="btn2" data-v="${esc(o.id)}">عرض</button> <button class="btn2" data-cp="${esc(o.id)}" title="Copy Message">${ico("copy")} Copy Message</button> <button class="btn2" data-courier="${esc(o.id)}">بيانات المندوب</button> <button class="btn2" data-trk="${esc(o.id)}">${ico("truck")} التتبع</button></td></tr>`).join("")||'<tr><td colspan="9" class="a-em">لا توجد طلبات</td></tr>'}</table></div>`;
+ m.onclick=async e=>{const b=e.target.closest("button");if(!b)return;if(b.dataset.f){ofl=b.dataset.f;PAGES.ord(m)}else if(b.dataset.r!==undefined){try{atoast("جاري التحديث…");ORD=await getOrders();badges();PAGES.ord(m);atoast("تم التحديث","ok")}catch(x){atoast("فشل التحديث: "+x.message,"er")}}else if(b.dataset.v)showOrd(b.dataset.v);else if(b.dataset.cp){const o=ORD.find(x=>x.id==b.dataset.cp);if(o)copyMsg(o)}else if(b.dataset.courier){showCourier(b.dataset.courier)}else if(b.dataset.trk){trkOpenForOrder(b.dataset.trk)}}};
 function showCourier(id){const o=ORD.find(x=>x.id==id);if(!o)return;
  const mo=amodal(`<h3>بيانات المندوب</h3><p style="color:var(--am);margin-bottom:12px">الطلب ${esc(o.id)} — ${esc(o.name||"")}</p><label class="fld">اسم المندوب<input id="courierName" required value="${esc(o.courier_name||"")}" placeholder="اسم المندوب"></label><label class="fld">رقم تليفون المندوب<input id="courierPhone" required inputmode="tel" dir="ltr" value="${esc(o.courier_phone||"")}" placeholder="01xxxxxxxxx"></label><p class="err" id="courierErr"></p><div class="row"><button class="btn2" id="courierClose">إغلاق</button><button class="btn2 pr" id="courierSave">حفظ وإرسال إشعار الشحن</button></div>`);
  mo.querySelector("#courierClose").onclick=closeM;
@@ -1301,6 +1429,140 @@ function showOrd(id){const o=ORD.find(x=>x.id==id);if(!o)return;
  mo.querySelector("#osv").onclick=()=>{const s=mo.querySelector("#os").value,prevS=o.status;fastOrd(a=>a.map(x=>x.id==id?{...x,status:s}:x),"تم تحديث حالة الطلب ✓").then(ok=>{if(ok&&s!==prevS)notifyVestraOrder(telegramReady({...o,status:s},s),s)});closeM();badges();go(tab)};
  mo.querySelector("#od").onclick=()=>{if(!confirm("حذف الطلب نهائياً؟"))return;fastOrd(a=>a.filter(x=>x.id!=id),"تم حذف الطلب");closeM();badges();go(tab)};
  (async()=>{try{const d=await DB.get(o.shot,o.shot),box=mo.querySelector("#ss");if(!d||typeof d.shot!="string"||!d.shot.startsWith("data:image/"))throw 0;box.innerHTML=`<img src="${esc(d.shot)}" alt="Transfer screenshot" loading="lazy" decoding="async" style="width:100%;max-height:62vh;object-fit:contain;cursor:zoom-in">`;box.querySelector("img").onclick=()=>window.open(d.shot,"_blank","noopener")}catch(e){const b=mo.querySelector("#ss");if(b)b.textContent="تعذر تحميل صورة التحويل"}})()}
+/* ---- Order Tracking Management (admin section) ---- */
+const trkAr=s=>(T_LBL[s]||[s,s,s])[2],trkEn=s=>(T_LBL[s]||[s,s,s])[1];
+const trkBdg=s=>`<span class="bd s-${esc(s)}">${esc(trkAr(s))}</span>`;
+const trkDT=t=>t?new Date(t).toLocaleString("ar-EG-u-nu-latn",{dateStyle:"medium",timeStyle:"short"}):"—";
+const trkDS=t=>t?new Date(t).toLocaleString("ar-EG-u-nu-latn",{day:"numeric",month:"short",hour:"numeric",minute:"2-digit"}):"—";
+const trkD=t=>t?new Date(t).toLocaleDateString("ar-EG-u-nu-latn",{dateStyle:"medium"}):"—";
+const trkOrd=id=>ORD.find(x=>trkNid(x.id)===trkNid(id));
+const trkRec=id=>TRK.doc&&TRK.doc.orders.find(x=>x&&trkNid(x.id)===trkNid(id));
+function trkSyncB(r){const id=trkNid(r.id);
+ if(TRK.failed.has(id))return`<span class="bd sy-er" title="${esc(TRK.failed.get(id).msg)}">فشلت المزامنة</span>`;
+ const o=trkOrd(id);if(!o)return'<span class="bd sy-mn">سجل يدوي</span>';
+ const c={orders:[JSON.parse(JSON.stringify(r))]};
+ if(trkApply(c,o,"x")=="updated")return'<span class="bd sy-wr">تحتاج مزامنة</span>';
+ if(r.status!=="hold"&&T2S[r.status]!==o.status)return'<span class="bd sy-wr" title="حالة التتبع تختلف عن حالة الطلب في المتجر">حالة مختلفة</span>';
+ return'<span class="bd sy-ok">متزامن</span>'}
+function trkBadge(){const b=adm.querySelector('.a-nv [data-t="trk"]');if(!b)return;b.querySelector(".bg")?.remove();if(!TRK.doc)return;
+ const p=trkPlan(TRK.doc,ORD),n=p.miss.length+p.stale.length+TRK.failed.size;if(n)b.insertAdjacentHTML("beforeend",`<i class="bg" style="background:var(--wa);color:#17130d">${n}</i>`)}
+function trkUi(){if(!trkAdminOn())return;try{trkBadge();const m=adm.querySelector("#am");if(tab=="trk"&&m&&m.querySelector("#trkL"))trkPaint(m)}catch(e){console.warn(e)}}
+/* load the latest tracking BIN + the latest store orders, so what you see is what is really saved */
+async function trkLoad(){const [doc,ords]=await Promise.all([trkGet(),getOrders().catch(()=>null)]);TRK.doc=doc;if(ords&&!ORD_PEND)ORD=ords}
+async function trkCheck(){try{await trkLoad();trkBadge();const p=trkPlan(TRK.doc,ORD),n=p.miss.length+p.stale.length;if(n)atoast(`${n} طلب يحتاج مزامنة التتبع — افتح قسم Order Tracking`)}catch(e){atoast("تعذّر الاتصال بقاعدة بيانات التتبع: "+(e.message||e),"er")}}
+PAGES.trk=async m=>{
+ const tk=++TRK.tok,head=(x="")=>hd("Order Tracking Management","إدارة تتبع الطلبات وربطها تلقائياً بموقع التتبع عبر JSONBin",x);
+ m.innerHTML=head()+'<div class="a-em">جاري تحميل سجلات التتبع…</div>';
+ try{await trkLoad()}catch(e){if(tk!==TRK.tok||tab!="trk")return;m.innerHTML=head()+`<div class="a-nt wr"><b>تعذّر تحميل بيانات التتبع</b><br><span dir="ltr">${esc(e.message||e)}</span></div><button class="btn2 pr" data-k="reload">${ico("refresh")} إعادة المحاولة</button>`;m.onclick=ev=>{if(ev.target.closest('[data-k="reload"]'))go("trk")};return}
+ if(tk!==TRK.tok||tab!="trk")return;
+ m.innerHTML=head(`<div class="trk-hb"><button class="btn2" data-k="sync">${ico("refresh")} مزامنة الآن</button><button class="btn2" data-k="reload">تحديث</button><button class="btn2" data-k="backup">${ico("arrow")} نسخة احتياطية</button><button class="btn2 pr" data-k="new">${ico("plus")} سجل تتبع جديد</button></div>`)+
+ `<div id="trkS"></div><div class="a-cd trk-box"><div class="trk-tools"><input class="trk-q" id="trkQ" type="search" inputmode="search" placeholder="ابحث برقم الطلب أو رقم الموبايل أو الاسم" value="${esc(TRK.q)}"><select class="a-sel" id="trkF"><option value="all">كل الحالات</option>${T_ST.map(s=>`<option value="${s[0]}" ${TRK.f==s[0]?"selected":""}>${s[2]}</option>`).join("")}</select></div><div id="trkL"></div></div>`;
+ trkPaint(m);
+ m.oninput=e=>{if(e.target.id=="trkQ"){TRK.q=e.target.value;trkList(m)}};
+ m.onchange=e=>{if(e.target.id=="trkF"){TRK.f=e.target.value;trkList(m)}};
+ m.onclick=async e=>{const b=e.target.closest("[data-k]");if(!b)return;const k=b.dataset.k,id=b.dataset.i;
+  if(k=="new")trkForm(null,null);else if(k=="view")trkView(id);else if(k=="edit")trkForm(trkRec(id),null);
+  else if(k=="reload")go("trk");else if(k=="backup")trkBackup();
+  else if(k=="sync"||k=="retry"){b.disabled=true;try{await trkRunSync(k=="retry")}finally{b.disabled=false}}}};
+function trkPaint(m){
+ const doc=TRK.doc,p=trkPlan(doc,ORD),nf=TRK.failed.size,n=p.miss.length+p.stale.length;let cls="ok",txt;
+ if(nf){cls="er";txt=`<b>فشلت مزامنة ${nf} طلب</b><br><span dir="ltr">${esc(TRK.lastErr||"")}</span>${n?`<br>${p.miss.length?`${p.miss.length} طلب بدون سجل تتبع`:""}${p.miss.length&&p.stale.length?" · ":""}${p.stale.length?`${p.stale.length} سجل يحتاج تحديثاً`:""}`:""}`}
+ else if(n){cls="wr";txt=`<b>${n} طلب يحتاج مزامنة</b><br>${p.miss.length?`${p.miss.length} طلب في المتجر بدون سجل تتبع`:""}${p.miss.length&&p.stale.length?" · ":""}${p.stale.length?`${p.stale.length} سجل يحتاج تحديثاً`:""}`}
+ else txt=`<b>كل الطلبات متزامنة مع موقع التتبع ✓</b><br>${TRK.lastOk?"آخر مزامنة ناجحة: "+trkDT(TRK.lastOk):`${doc.orders.length} سجل في قاعدة بيانات التتبع`}`;
+ const s=m.querySelector("#trkS");if(s)s.innerHTML=`<div class="a-nt ${cls=="ok"?"ok":cls=="wr"?"wr":""} trk-sy ${cls=="er"?"trk-er":""}"><div class="tx">${txt}</div>${nf?`<button class="btn2 pr" data-k="retry">${ico("refresh")} إعادة محاولة المزامنة</button>`:n?`<button class="btn2 pr" data-k="sync">${ico("refresh")} مزامنة الآن</button>`:""}</div>`;
+ trkList(m);trkBadge()}
+function trkList(m){
+ const q=TRK.q.trim().toLowerCase(),qp=trkNp(q),f=TRK.f;
+ const rows=TRK.doc.orders.filter(r=>r&&(f=="all"||r.status==f)&&(!q||String(r.id||"").toLowerCase().includes(q)||String(r.customerName||"").toLowerCase().includes(q)||(qp&&trkNp(r.phone).includes(qp))||String(r.phone||"").includes(q)))
+  .sort((a,b)=>new Date(b.lastUpdated||0)-new Date(a.lastUpdated||0));
+ const act=r=>`<button class="btn2" data-k="view" data-i="${esc(r.id)}">السجل</button> <button class="btn2" data-k="edit" data-i="${esc(r.id)}">${ico("edit")} تعديل</button>`;
+ const L=m.querySelector("#trkL");if(!L)return;
+ L.innerHTML=rows.length?`<div class="a-tb trk-tb"><table><tr><th>رقم الطلب</th><th>العميل</th><th>الموبايل</th><th>الحالة</th><th>التسليم المتوقع</th><th>آخر تحديث</th><th>المزامنة</th><th></th></tr>${rows.map(r=>`<tr><td><b>${esc(r.id)}</b></td><td class="w">${esc(r.customerName||"")}</td><td dir="ltr">${esc(r.phone||"")}</td><td>${trkBdg(r.status)}</td><td>${trkD(r.estimatedDelivery)}</td><td class="w">${trkDS(r.lastUpdated)}</td><td>${trkSyncB(r)}</td><td style="white-space:nowrap">${act(r)}</td></tr>`).join("")}</table></div>
+  <div class="trk-cards">${rows.map(r=>`<article class="trk-c"><div class="h"><b>${esc(r.id)}</b>${trkBdg(r.status)}</div><div class="nm">${esc(r.customerName||"")}</div><div class="g"><div><small>الموبايل</small><span dir="ltr">${esc(r.phone||"")}</span></div><div><small>التسليم المتوقع</small>${trkD(r.estimatedDelivery)}</div><div><small>آخر تحديث</small>${trkDT(r.lastUpdated)}</div><div><small>المزامنة</small>${trkSyncB(r)}</div></div><div class="a">${act(r)}</div></article>`).join("")}</div>`
+  :`<div class="a-em">${TRK.doc.orders.length?"لا توجد نتائج مطابقة للبحث":"لا توجد سجلات تتبع بعد. سيتم إنشاء سجل تلقائياً مع كل طلب جديد، أو اضغط «مزامنة الآن»."}</div>`}
+/* manual sync / retry of failed — success is shown only when JSONBin really confirmed the write */
+async function trkRunSync(onlyFailed){
+ try{atoast("جاري المزامنة…");const orders=await getOrders();if(!ORD_PEND)ORD=orders;const doc=await trkGet();TRK.doc=doc;
+  let list=orders;if(onlyFailed){const ids=new Set(TRK.failed.keys());list=orders.filter(o=>ids.has(trkNid(o.id)));if(!list.length){TRK.failed.clear();trkUi();return atoast("لا توجد طلبات فاشلة لإعادة مزامنتها")}}
+  const p=trkPlan(doc,list);
+  if(p.miss.length>=10&&!confirm(`سيتم إنشاء ${p.miss.length} سجل تتبع جديد و تحديث ${p.stale.length} سجل. متابعة؟`))return atoast("تم إلغاء المزامنة");
+  const r=await trkSyncOrders(list,false);
+  if(r.ok)atoast(r.created||r.updated?`تمت المزامنة بنجاح ✓ — جديد: ${r.created} · محدّث: ${r.updated}`:"لا توجد تغييرات — كل شيء متزامن بالفعل","ok");
+  else atoast("فشلت المزامنة: "+r.error,"er")
+ }catch(e){atoast("فشلت المزامنة: "+(e.message||e),"er")}
+ trkUi()}
+async function trkBackup(){try{const d=await trkGet();TRK.doc=d;const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(d,null,2)],{type:"application/json"}));a.download="vestra-tracking-backup-"+trkLD()+".json";document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500);atoast("تم تنزيل نسخة احتياطية من بيانات التتبع ✓","ok")}catch(e){atoast("فشل تنزيل النسخة الاحتياطية: "+(e.message||e),"er")}}
+/* opened from the Orders table: edit the order's tracking record, or offer to create it */
+async function trkOpenForOrder(id){const o=trkOrd(id);if(!o)return;
+ try{atoast("جاري تحميل بيانات التتبع…");await trkLoad();const r=trkRec(id);atoast(r?"تم التحميل":"لا يوجد سجل تتبع لهذا الطلب بعد — يمكنك إنشاؤه الآن");if(r)trkForm(r,null);else trkForm(null,o)}
+ catch(e){atoast("تعذّر تحميل بيانات التتبع: "+(e.message||e),"er")}}
+function trkView(id){const r=trkRec(id);if(!r)return;const n=trkNotes(r),h=[...(r.statusHistory||[])].reverse(),o=trkOrd(r.id);
+ const mo=amodal(`<div class="trk-m"><h3>سجل الطلب ${esc(r.id)}</h3><p><b>${esc(r.customerName||"")}</b> · <span dir="ltr">${esc(r.phone||"")}</span></p>
+ <div class="trk-kv"><div><small>الحالة الحالية</small>${trkBdg(r.status)}</div><div><small>التسليم المتوقع</small>${trkD(r.estimatedDelivery)}</div><div><small>تاريخ الطلب</small>${trkD(r.orderDate)}</div><div><small>الإجمالي</small>${esc(r.totalAmount||"—")}</div><div><small>آخر تحديث</small>${trkDT(r.lastUpdated)}</div><div><small>المزامنة</small>${trkSyncB(r)}</div></div>
+ <div class="trk-nt"><small>ملاحظة تظهر للعميل</small>${n.customer?esc(n.customer):"—"}</div><div class="trk-nt"><small>ملاحظة داخلية (لا تظهر للعميل)</small>${n.internal?esc(n.internal):"—"}</div>
+ <h4 class="trk-h4">سجل الحالات</h4><ol class="trk-h">${h.map((x,i)=>`<li class="${i==0?"cur":""}"><i></i><div><b>${esc(trkAr(x.status))}</b> <span class="en">${esc(trkEn(x.status))}</span><small>${trkDT(x.date)}</small></div></li>`).join("")||'<li><div><small>لا يوجد سجل حالات</small></div></li>'}</ol>
+ <div class="row"><button class="btn2" id="tk-x">إغلاق</button><button class="btn2 pr" id="tk-e">${ico("edit")} تعديل</button></div></div>`);
+ mo.querySelector("#tk-x").onclick=closeM;mo.querySelector("#tk-e").onclick=()=>trkForm(trkRec(id),null)}
+/* create / edit form. rec = existing tracking record (edit) | null (create, optionally prefilled from a store order `pre`) */
+function trkForm(rec,pre){
+ if(!TRK.doc)return;const isNew=!rec,n=rec?trkNotes(rec):{customer:"",internal:""};
+ const v=rec||(pre?{id:pre.id,customerName:pre.name||"",phone:pre.phone||"",orderDate:trkLD(pre.at),totalAmount:money2(pre.total),status:S2T[pre.status]||"received",estimatedDelivery:""}:{id:"",customerName:"",phone:"",orderDate:trkLD(),totalAmount:"",status:"received",estimatedDelivery:""});
+ const avail=ORD.filter(o=>!TRK.doc.orders.some(r=>trkNid(r.id)===trkNid(o.id)));
+ const mo=amodal(`<div class="trk-m"><h3>${isNew?"سجل تتبع جديد":"تعديل سجل التتبع"}</h3>
+ ${isNew?`<label class="fld">ربط بطلب من المتجر (اختياري)<select id="tk-src"><option value="">— إدخال يدوي —</option>${avail.map(o=>`<option value="${esc(o.id)}" ${pre&&pre.id==o.id?"selected":""}>${esc(o.id)} · ${esc(o.name||"")}</option>`).join("")}</select></label>`:""}
+ <div class="g2"><label class="fld">رقم الطلب<input id="tk-id" dir="ltr" value="${esc(v.id)}" ${isNew?"":"readonly"} autocomplete="off"></label><label class="fld">اسم العميل<input id="tk-nm" value="${esc(v.customerName)}" autocomplete="off"></label></div>
+ <div class="g2"><label class="fld">رقم الموبايل<input id="tk-ph" dir="ltr" inputmode="tel" value="${esc(v.phone)}" autocomplete="off"></label><label class="fld">تاريخ الطلب<input id="tk-dt" type="date" value="${esc(v.orderDate||"")}"></label></div>
+ <div class="g2"><label class="fld">الإجمالي<input id="tk-tt" value="${esc(v.totalAmount||"")}" placeholder="مثال: 1,250 EGP"></label><label class="fld">موعد التسليم المتوقع<input id="tk-eta" type="date" value="${esc(v.estimatedDelivery||"")}"></label></div>
+ <label class="fld">حالة التتبع<select id="tk-st">${T_ST.map(s=>`<option value="${s[0]}" ${s[0]==v.status?"selected":""}>${s[2]} — ${s[1]}</option>`).join("")}</select></label><div class="trk-hint" id="tk-hint"></div>
+ <label class="fld">ملاحظة تظهر للعميل في صفحة التتبع<textarea id="tk-cn" rows="2" placeholder="اتركها فارغة لعدم إظهار أي ملاحظة للعميل">${esc(n.customer)}</textarea></label>
+ <label class="fld">ملاحظة داخلية (للإدارة فقط)<textarea id="tk-in" rows="2">${esc(n.internal)}</textarea></label>
+ <p class="err" id="tk-er" role="alert"></p>
+ <div class="row"><button class="btn2" id="tk-x">إغلاق</button><span class="trk-bt">${isNew?"":'<button class="btn2" id="tk-hv">سجل الحالات</button>'}<button class="btn2 pr" id="tk-s">${isNew?"إنشاء السجل":"حفظ التعديلات"}</button></span></div></div>`);
+ const $=s=>mo.querySelector(s),er=m=>{$("#tk-er").textContent=m||""};
+ $("#tk-x").onclick=closeM;if(!isNew)$("#tk-hv").onclick=()=>trkView(rec.id);
+ const hint=()=>{const o=trkOrd($("#tk-id").value),s=$("#tk-st").value,w=s!=="hold"&&T2S[s],ch=isNew?(o?s!==(S2T[o.status]||"received"):false):s!==rec.status;
+  $("#tk-hint").textContent=o&&ch&&w&&w!==o.status?`سيتم أيضاً تحديث حالة الطلب في المتجر إلى «${SL[w]}».`:ch?"سيتم إضافة هذه الحالة إلى سجل الحالات الظاهر للعميل.":""};
+ $("#tk-st").onchange=hint;$("#tk-id").oninput=hint;hint();
+ if(isNew)$("#tk-src").onchange=e=>{const o=trkOrd(e.target.value);if(!o)return;$("#tk-id").value=o.id;$("#tk-nm").value=o.name||"";$("#tk-ph").value=o.phone||"";$("#tk-dt").value=trkLD(o.at);$("#tk-tt").value=money2(o.total);$("#tk-st").value=S2T[o.status]||"received";hint()};
+ $("#tk-s").onclick=async()=>{
+  const f={id:$("#tk-id").value.trim(),name:$("#tk-nm").value.trim(),phone:$("#tk-ph").value.trim(),date:$("#tk-dt").value,total:$("#tk-tt").value.trim(),eta:$("#tk-eta").value,status:$("#tk-st").value,cn:$("#tk-cn").value.trim(),inn:$("#tk-in").value.trim()};
+  er("");if(!f.id)return er("اكتب رقم الطلب");if(!f.name)return er("اكتب اسم العميل");if(trkNp(f.phone).length<7)return er("رقم الموبايل غير صالح");
+  const b=$("#tk-s");b.disabled=true;let storeDone=false;
+  try{
+   atoast("جاري الحفظ…");
+   const fresh=await trkGet();TRK.doc=fresh; /* always decide on the latest data */
+   const exists=fresh.orders.some(x=>x&&trkNid(x.id)===trkNid(f.id));
+   if(isNew&&exists)throw Error("يوجد سجل تتبع بنفس رقم الطلب بالفعل — لا يمكن إنشاء سجل مكرر");
+   if(!isNew&&!exists)throw Error("هذا السجل لم يعد موجوداً في قاعدة بيانات التتبع");
+   const so=trkOrd(f.id),base=isNew?null:fresh.orders.find(x=>trkNid(x.id)===trkNid(f.id));
+   const changed=isNew?(so?f.status!==(S2T[so.status]||"received"):false):f.status!==base.status,want=f.status!=="hold"&&T2S[f.status];
+   let newStoreStatus=null;
+   /* 1) store first (its own safe read-merge-write). If this fails nothing else is changed. */
+   if(so&&changed&&want&&want!==so.status){
+    const n2=await mutOrders(a=>{if(!a.some(x=>x&&x.id==so.id))throw Error("الطلب لم يعد موجوداً في المتجر");return a.map(x=>x&&x.id==so.id?{...x,status:want}:x)},undefined,{skipTrk:true});
+    if(!ORD_PEND)ORD=n2;storeDone=true;
+    notifyVestraOrder(telegramReady({...so,status:want},want),want)}
+   if(so&&changed&&want)newStoreStatus=want;
+   /* 2) tracking BIN */
+   const now=new Date().toISOString();
+   await trkMutate(d=>{
+    const i=d.orders.findIndex(x=>x&&trkNid(x.id)===trkNid(f.id));
+    if(isNew&&i>=0)throw Error("يوجد سجل تتبع بنفس رقم الطلب بالفعل — لا يمكن إنشاء سجل مكرر");
+    if(!isNew&&i<0)throw Error("هذا السجل لم يعد موجوداً في قاعدة بيانات التتبع");
+    const cur=trkOrd(f.id),r=i>=0?{...d.orders[i]}:(cur?trkNew(cur,now):{id:f.id,items:[],status:f.status,statusHistory:[{status:f.status,date:now}],source:"manual"});
+    const prev=r.status;
+    Object.assign(r,{id:r.id||f.id,customerName:f.name,phone:f.phone,orderDate:f.date,totalAmount:f.total,estimatedDelivery:f.eta});
+    trkSetNotes(r,f.cn,f.inn);
+    if(f.status!==prev){const h=Array.isArray(r.statusHistory)?r.statusHistory.slice():[];if(!h.length&&prev)h.push({status:prev,date:r.orderDate?new Date(r.orderDate).toISOString():now});h.push({status:f.status,date:now});r.statusHistory=h;r.status=f.status}
+    if(r.storeSync&&newStoreStatus)r.storeSync={...r.storeSync,status:newStoreStatus};
+    r.lastUpdated=now;if(i>=0)d.orders[i]=r;else d.orders.push(r);return{updated:1}});
+   TRK.failed.delete(trkNid(f.id));
+   atoast(isNew?"تم إنشاء سجل التتبع بنجاح ✓":"تم حفظ سجل التتبع بنجاح ✓","ok");closeM();badges();trkUi();if(tab=="ord")go("ord")
+  }catch(e){
+   const msg=e.message||String(e);
+   if(storeDone){TRK.failed.set(trkNid(f.id),{msg,at:Date.now()});TRK.lastErr=msg;er("تم تحديث حالة الطلب في المتجر لكن فشل حفظ التتبع: "+msg+" — اضغط حفظ لإعادة المحاولة");atoast("فشل حفظ التتبع: "+msg,"er");trkUi()}
+   else{er("فشل الحفظ: "+msg);atoast("فشل الحفظ: "+msg,"er")}
+   b.disabled=false}}}
 /* ---- products ---- */
 PAGES.prod=m=>{m.innerHTML=hd("المنتجات",`${ALL.length} منتج`,`<button class="btn2 pr" data-e="0">${ico("plus")} منتج جديد</button>`)+`<div class="a-tb"><table><tr><th></th><th>الاسم</th><th>القسم</th><th>السعر قبل الخصم</th><th>السعر بعد الخصم</th><th>الخصم</th><th>المخزون</th><th>الحالة</th><th></th></tr>${ALL.map(p=>`<tr><td style="width:60px"><div class="th">${art(p,0,0)}</div></td><td>${esc(p.nm[0])}<div style="font-size:12px;color:var(--am)" dir="ltr">${esc(p.nm[1])}</div></td><td>${T.ar.cats[p.t]||""}</td><td>${money2(oldPrice(p))}</td><td><b>${money2(p.p)}</b></td><td>${discountPct(p)?`<b style="color:var(--ok)">${discountPct(p)}%</b>`:"—"}</td><td>${stkH(p)}</td><td><span class="bd ${p.hidden?"":"s-delivered"}">${p.hidden?"مخفي":"ظاهر"}</span></td><td><button class="btn2" data-e="${p.id}">تعديل</button> <button class="btn2 dg" data-d="${p.id}">حذف</button></td></tr>`).join("")||'<tr><td colspan="7" class="a-em">لا توجد منتجات. أضف أول منتج.</td></tr>'}</table></div>`;
  m.onclick=async e=>{const b=e.target.closest("button");if(!b)return;if(b.dataset.e!==undefined)editP(+b.dataset.e);else if(b.dataset.d&&confirm("حذف المنتج نهائياً؟")){const id=b.dataset.d;if(await run(()=>persist(d=>{d.products=(Array.isArray(d.products)?d.products:ALL).filter(p=>p.id!=id)}),"تم حذف المنتج"))go("prod")}}};
