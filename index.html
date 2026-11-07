@@ -1247,7 +1247,7 @@ const ord={id:no,at:Date.now(),...f,items:Cart.items.map(i=>{const p=P.find(x=>x
 await mutOrders(a=>[ord,...a],latestOrdersDoc);notifyVestraOrder(telegramReady(ord,"new"),"new");Cart.items=[];Cart.save();renderCart();await trkWait(6000);await vsLoad.wait(350);
 const so=modal(`<div class="vs-aura" aria-hidden="true"><i></i><i></i></div><svg class="vs-done" viewBox="0 0 120 120" aria-hidden="true"><circle class="vd-halo" cx="60" cy="60" r="52"/><circle class="vd-ring" cx="60" cy="60" r="52"/><circle class="vd-fill" cx="60" cy="60" r="43"/><path class="vd-ck" d="M41 61l13 13 26-29"/></svg><h3 class="vs-dt">${tr("تم استلام طلبك","Order received")}</h3><p class="vs-dn">${tr("رقم الطلب","Order no.")}: <b class="wm" style="letter-spacing:.05em">${no}</b></p><p class="vs-dm">${tr("هنراجع التحويل ونتواصل معاك على الموبايل.","We'll verify the transfer and contact you by phone.")}</p><button class="btn vs-db" onclick="document.getElementById('mo').classList.remove('on')">${tr("متابعة التسوق","Continue shopping")}</button>`);so.classList.add("vs-success");vsSplit(so.querySelector(".vs-dt"))}
 catch(x){er.textContent=tr("حصل خطأ في الإرسال، حاول تاني. ","Submit failed, try again. ")+x.message;b.disabled=false;vsLoad.hide()}}};
-/* ---- secret entry: click the year to open NFC card scanning ---- */
+/* ---- secret entry: 3 consecutive clicks on the year ---- */
 const yp=document.querySelector('footer .wrap>p');yp.innerHTML=yp.innerHTML.replace("2026",'<span id="yr">2026</span>');
 const IC={copy:'<rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 012-2h9"/>',home:'<path d="M3 10.5L12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/>',tag:'<path d="M20.6 13.4l-7.2 7.2a2 2 0 01-2.8 0L3 13V3h10l7.6 7.6a2 2 0 010 2.8z"/><circle cx="7.5" cy="7.5" r="1.2"/>',cart:'<circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.7 12.4a2 2 0 002 1.6h8.2a2 2 0 002-1.5L21.5 8H6"/>',users:'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><path d="M16 4.5a3.5 3.5 0 010 7"/><path d="M18 14.3c2.2.7 3.5 2.6 3.5 5.7"/>',gear:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/>',layout:'<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>',chart:'<path d="M3 3v18h18"/><path d="M7 15v3M12 10v8M17 6v12"/>',image:'<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>',box:'<path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8M12 13v8"/>',coins:'<ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/>',bell:'<path d="M6 8a6 6 0 0112 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 003.4 0"/>',moon:'<path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/>',sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',expand:'<path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"/>',out:'<path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6M10 14L21 3"/>',plus:'<path d="M12 5v14M5 12h14"/>',edit:'<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/>',lock:'<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/>',eye:'<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',eyeoff:'<path d="M17.9 17.9A10.5 10.5 0 0112 19C5.6 19 2 12 2 12a18 18 0 015.1-5.9M9.9 4.2A9.7 9.7 0 0112 4c6.4 0 10 8 10 8a18 18 0 01-2.2 3.2M1 1l22 22"/><path d="M14.1 14.1a3 3 0 01-4.2-4.2"/>',cal:'<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',menu:'<path d="M3 6h18M3 12h18M3 18h18"/>',up:'<path d="M18 15l-6-6-6 6"/>',down:'<path d="M6 9l6 6 6-6"/>',trash:'<path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6M10 11v6M14 11v6"/>',upload:'<path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/>',undo:'<path d="M3 7v6h6"/><path d="M21 17a9 9 0 00-15-6.7L3 13"/>',refresh:'<path d="M21 12a9 9 0 01-15.5 6.2L3 16M3 12A9 9 0 0118.5 5.8L21 8"/><path d="M21 3v5h-5M3 21v-5h5"/>',megaphone:'<path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/>',check:'<path d="M5 12.5l4.5 4.5L19 7"/>',close:'<path d="M6 6l12 12M18 6L6 18"/>',arrow:'<path d="M5 12h14M13 6l6 6-6 6"/>',truck:'<path d="M3 6h11v10H3z"/><path d="M14 10h4l3 3v3h-7"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/>'};
 const ico=n=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[n]||""}</svg>`;
@@ -1264,6 +1264,13 @@ function playAdminSuccessSound(){
   if(playPromise && typeof playPromise.catch === "function") playPromise.catch(()=>{});
  }catch(e){}
 }
+async function pwSuccess(o,card){o.dataset.lock="1";document.removeEventListener("keydown",o._k);
+ card.classList.remove("sh","busy");card.classList.add("ok");
+ card.innerHTML='<div class="pwok" role="status" aria-live="polite"><svg class="pwck" viewBox="0 0 80 80" aria-hidden="true"><circle class="pwck-bg" cx="40" cy="40" r="36"/><circle class="pwck-c" cx="40" cy="40" r="36"/><path class="pwck-p" d="M24 41.5l11.5 11.5L57 28"/></svg><div class="pwwel"><span>Welcome</span> <b>Yassin</b></div><div class="pwsub">Verified successfully · Welcome back</div><div class="pwbar"><i></i></div></div>';
+ setTimeout(playAdminSuccessSound,1050);
+ await Promise.all([new Promise(r=>setTimeout(r,2500)),prefetchAdmin().catch(()=>{})]);
+ if(!o.isConnected)return;
+ openAdmin();o.classList.add("out");setTimeout(()=>closePw(true),380)}
 /* ---- admin entry: NFC card-only authentication (Web NFC / NDEFReader). Front-end convenience check only — the expected value is visible in this file's source ---- */
 const NFC_EXPECTED="if(Yassin) connect();"; /* plain-text NDEF record value; compared as a string, never executed */
 const nfcDecode=r=>{try{return r&&r.recordType==="text"&&r.data?new TextDecoder(r.encoding||"utf-8").decode(r.data):null}catch(e){return null}};
@@ -1290,9 +1297,8 @@ function nfcStep(o,card){
    rd.onreading=ev=>{if(c.signal.aborted||done)return;
     const recs=(ev.message&&ev.message.records)||[];
     if(recs.some(r=>nfcDecode(r)===NFC_EXPECTED)){ /* exact plain-text match only */
-     done=true;stop();clearTimeout(rt);o.dataset.lock="1";document.removeEventListener("keydown",o._k);
-     card.classList.add("nfc-ok");set("Access granted ✓","ok");
-     playAdminSuccessSound();openAdmin();o.classList.add("out");setTimeout(()=>closePw(true),380)}
+     done=true;stop();clearTimeout(rt);card.classList.add("nfc-ok");set("Card verified ✓","ok");
+     setTimeout(()=>{if(o.isConnected){card.classList.remove("nfc","nfc-ok");pwSuccess(o,card)}},650)}
     else bad("This card isn't authorized. Try the correct card.")};
    await rd.scan({signal:c.signal});
   }catch(e){if(c.signal.aborted||done)return;const n=e&&e.name;
@@ -1306,7 +1312,8 @@ function openNfcLogin(){if(document.getElementById("pwo"))return; /* only one sc
  nfcStep(o,o.querySelector(".pwc"))}
 const yE=document.getElementById("yr");
 ["mousedown","selectstart","dblclick","dragstart"].forEach(ev=>yE.addEventListener(ev,e=>e.preventDefault()));
-yE.addEventListener("click",e=>{e.preventDefault();try{getSelection().removeAllRanges()}catch(x){}openNfcLogin()});
+let cc=0,ct=0;
+yE.addEventListener("click",e=>{e.preventDefault();try{getSelection().removeAllRanges()}catch(x){}const n=Date.now();cc=(n-ct<=800)?cc+1:1;ct=n;if(cc>=3){cc=0;ct=0;openNfcLogin()}});
 /* ---- admin helpers ---- */
 const amodal=h=>{const o=modal(h);o.classList.add("dk");return o};
 let _at;function atoast(m,k){let e=document.getElementById("atoast");if(!e){e=document.createElement("div");e.id="atoast";document.body.appendChild(e)}e.textContent=m;e.className="a-toast on "+(k||"");clearTimeout(_at);_at=setTimeout(()=>e.classList.remove("on"),k=="er"?5500:2800)}
