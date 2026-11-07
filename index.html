@@ -32,6 +32,16 @@ a{color:inherit;text-decoration:none}
 .dock i{font-style:normal;position:absolute;top:2px;inset-inline-end:2px;background:#fff;color:#000;font:700 10px/16px Syne;min-width:16px;height:16px;border-radius:8px;text-align:center;transition:transform .4s var(--ease)}
 .dock i.pop{transform:scale(1.5)}
 @media(max-width:700px){.dock a span,.dock button span{display:none}.dock a,.dock button{padding:11px}}
+/* track-order button */
+.dock a.trk{opacity:1;background:#f4f4f2;color:#0a0a0a;margin-inline-start:8px;padding:9px 16px;font-family:'Syne','Alexandria',sans-serif;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;-webkit-tap-highlight-color:transparent;touch-action:manipulation;transition:background .3s var(--ease),transform .3s var(--ease),box-shadow .3s var(--ease),gap .3s var(--ease)}
+.dock a.trk svg{width:16px;height:16px}
+.dock a.trk .t-s{display:none}
+[dir=rtl] .dock a.trk{letter-spacing:0;text-transform:none;font-size:13px}
+@media(hover:hover){.dock a.trk:hover{background:#fff;transform:translateY(-1px);gap:11px;box-shadow:0 6px 18px -6px rgba(255,255,255,.45)}}
+.dock a.trk:active{transform:scale(.97)}
+@media(max-width:700px){.dock a.trk{padding:9px 13px;margin-inline-start:4px}.dock a.trk span{display:inline}.dock a.trk .t-f{display:none}.dock a.trk .t-s{display:inline}.dock a{padding:9px}.dock button{padding:9px}}
+@media(max-width:380px){.dock{padding-inline:8px}.dock a.trk{padding:9px 11px;font-size:11px}.dock a.trk svg{display:none}}
+@media(max-width:340px){.dock{padding-inline:6px}.dock a,.dock button{padding:7px}.dock a.trk{padding:8px 10px;margin-inline-start:2px}.dock .logo{padding:6px 8px}}
 /* hero */
 .hero{min-height:100svh;position:relative;display:grid;align-items:end;padding:110px 0 40px;overflow:hidden;animation:bgin 1.2s both}
 @keyframes bgin{from{opacity:0}}
@@ -649,6 +659,7 @@ html[dir=rtl]{--vs-d:-1}
  <button id="nSearch" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></button>
  <button id="nBag" aria-label="Cart" style="opacity:1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 01-8 0"/></svg><i id="cnt">0</i></button>
  <button id="lang" aria-label="Language"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg><span id="lt">EN</span></button>
+ <a class="trk" href="https://trackingvestra.vercel.app/" aria-label="Track Your Order"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8M12 13v8"/></svg><span class="t-f" data-i="track"></span><span class="t-s" data-i="trackS"></span></a>
 </nav>
 
 <main id="top">
@@ -706,7 +717,7 @@ html[dir=rtl]{--vs-d:-1}
 
 <script>
 /* ===== i18n ===== */
-const T={ar:{nShop:"المتجر",nCol:"المجموعات",nNew:"وصل حديثاً",heroP:"قطع بتتقال بصمتك. تصميم نظيف، خامات فاخرة، وستايل مالوش حدود.",heroCta:"اكتشف المجموعة",heroNew:"استكشف الوصول الجديد",tagM:"فلسفتنا",tagS:"التوقيع",
+const T={ar:{nShop:"المتجر",track:"تتبع طلبك",trackS:"تتبع",nCol:"المجموعات",nNew:"وصل حديثاً",heroP:"قطع بتتقال بصمتك. تصميم نظيف، خامات فاخرة، وستايل مالوش حدود.",heroCta:"اكتشف المجموعة",heroNew:"استكشف الوصول الجديد",tagM:"فلسفتنا",tagS:"التوقيع",
  man:"مش مجرد لبس. دي طريقة تقول بيها أنت مين من غير ما تتكلم.",colH:"مجموعات تتحكي.",shopH:"اختار قطعتك.",sigH:"التفاصيل هي اللي بتفرق.",
  hl:["ستايلك.","هويتك.","VESTRA."],search:"ابحث عن قطعة…",all:"الكل",newest:"الأحدث",best:"الأكثر مبيعاً",pl:"السعر: الأقل أولاً",ph:"السعر: الأعلى أولاً",
  empty:"مفيش نتائج. جرّب كلمة تانية.",add:"أضف للسلة",added:"اتضافت للسلة",bag:"السلة",sub:"المجموع",checkout:"إتمام الشراء",chkNote:"",chkMsg:"إتمام الشراء",
@@ -714,7 +725,7 @@ const T={ar:{nShop:"المتجر",nCol:"المجموعات",nNew:"وصل حدي�
  fAbout:"VESTRA — ستايل مينيمال بشخصية جريئة.",join:"اشترك",email:"بريدك الإلكتروني",fNav:"تنقّل",fSup:"الدعم",fSoc:"تابعنا",ship:"الشحن",ret:"الاسترجاع",contact:"تواصل معنا",soon:"قريباً",rights:"جميع الحقوق محفوظة.",nlOk:"شكراً لاشتراكك!",
  cats:{tee:"تيشيرتات",hood:"هودي",pants:"بناطيل",jacket:"جاكيتات"},ccur:"ج.م",
  col:[["وصل حديثاً","أحدث القطع هذا الموسم"],["أساسيات","أساس كل إطلالة"],["ستريت وير","للشارع بروحه"],["أوفر سايز","راحة بقَصّة جريئة"],["الأكثر مبيعاً","اختيارات الجميع"]]},
-en:{nShop:"Shop",nCol:"Collections",nNew:"New",heroP:"Pieces that speak your signature. Clean design, premium fabrics, style without limits.",heroCta:"Discover the collection",heroNew:"Explore new arrivals",tagM:"Philosophy",tagS:"Signature",
+en:{nShop:"Shop",track:"Track Your Order",trackS:"Track",nCol:"Collections",nNew:"New",heroP:"Pieces that speak your signature. Clean design, premium fabrics, style without limits.",heroCta:"Discover the collection",heroNew:"Explore new arrivals",tagM:"Philosophy",tagS:"Signature",
  man:"Not just clothes. A way to say who you are without saying a word.",colH:"Collections with a voice.",shopH:"Pick your piece.",sigH:"Details make the difference.",
  hl:["Your style.","Your identity.","VESTRA."],search:"Search products…",all:"All",newest:"Newest",best:"Best sellers",pl:"Price: low to high",ph:"Price: high to low",
  empty:"No matches. Try another word.",add:"Add to cart",added:"Added to cart",bag:"Bag",sub:"Subtotal",checkout:"Checkout",chkNote:"",chkMsg:"Checkout",
