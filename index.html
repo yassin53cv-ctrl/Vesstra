@@ -1120,108 +1120,8 @@ function vsRoll(el,from,dur,delay){const txt=el.textContent,to=vsNum(txt);if(isN
   if(p>0){const v=from+(to-from)*(1-Math.pow(2,-10*p));el._vsC=v;put(v)}
   requestAnimationFrame(step)};
  requestAnimationFrame(step)}
-/* ===== VESTRA global count-up: one centralized driver that reuses vsRoll() everywhere (presentation only; never touches data or calculations) ===== */
-let vsGF=null;
-function vsFl(el){if(vsObs&&!el._vsG)vsObs.takeRecords();if(vsGF)vsGF(el)} /* checkout-owned elements keep their original flush; globally managed ones must never swallow the checkout observer's records */
-const vsG=(()=>{
- const RMQ=matchMedia("(prefers-reduced-motion: reduce)"),
-  U="(?:EGP|%|ج\\.م|جنيه|قطعة)",
-  CUR=new RegExp("^\\s*[-+\\u2212]?\\s*\\d[\\d,]*(?:\\.\\d+)?\\s*"+U+"\\s*$"),
-  INT=/^\s*\d[\d,]*(?:\.\d+)?\s*$/,
-  PLAIN="#cnt,#abn,.bg,.qty>span,.a-sc b,.a-big,.a-bars b,.a-tb td",
-  SKIP="script,style,textarea,input,select,option,svg,[contenteditable],[data-vs-skip],#adm,.pm-num,.pm-hold,.wm",
-  DUR1=1200,DUR2=750,
-  mem={pg:new Map,pd:new Map,dr:new Map,mo:new Map,adm:new Map},live=new Set,pend=new Set;
- let obs=null,io=null;
- const scopeOf=el=>el.closest("#pd")?"pd":el.closest("#drawer")?"dr":el.closest("#mo")?"mo":el.closest("#adm")?"adm":"pg";
- const owner=r=>r.target.nodeType===3?r.target.parentElement:r.target;
- /* which elements count as real numeric values (prices, discounts, totals, quantities, stats) — never phones, ids or dates */
- function eligible(el){
-  if(!el||el.nodeType!==1||el.childNodes.length!==1||el.firstChild.nodeType!==3)return false;
-  const t=el.textContent;let plain=false;
-  if(!CUR.test(t)){if(!INT.test(t)||!el.matches(PLAIN))return false;if(t.replace(/\D/g,"").length>8||/^\s*0\d/.test(t))return false;plain=true}
-  if(el.closest(SKIP))return false;
-  if(el.id==="checkoutTotal"||el.id==="promoDiscountAmount"||el.closest(".vs-sum"))return false; /* owned by the checkout animation */
-  return plain||true}
- /* stable identity for a number so a re-rendered element can continue from its previous value instead of restarting */
- function keyOf(el){
-  if(el.classList.contains("payTot"))return"payTot";
-  const role=String(el.className||el.tagName).replace(/\b(vs-tick|vs-nw)\b/g,"").trim()||el.tagName;let b="",x;
-  if(x=el.closest(".it")){const s=x.querySelector("strong"),c=x.querySelector(".sw>span");b="line:"+(s?s.textContent:"")+"|"+(s&&s.nextElementSibling?s.nextElementSibling.textContent:"")+"|"+(c?c.style.getPropertyValue("--c"):"")}
-  else if(x=el.closest(".card")){b="card:"+(x.dataset.id||(x.querySelector("h3")||{}).textContent)}
-  else if(x=el.closest("#pdc")){const h=x.querySelector("h2");b="pd:"+(h?h.textContent:"")}
-  else if(x=el.closest("[data-o]")){b="o:"+x.dataset.o}
-  else if(x=el.closest("tr")){const tds=[...x.children],f=tds.find(c=>c.textContent.trim()&&!CUR.test(c.textContent));b="tr:"+(f?f.textContent.trim():"")+":"+tds.indexOf(el.closest("td,th")||el)}
-  if(b)return b+"#"+role;
-  const seg=[];let n=el;for(let i=0;n&&n.nodeType===1&&i<9;i++,n=n.parentElement){if(n.id){seg.push("#"+n.id);break}const p=n.parentElement;seg.push(n.tagName+(p?Array.prototype.indexOf.call(p.children,n):""))}
-  return seg.reverse().join(">")}
- const inView=el=>{const r=el.getBoundingClientRect();return(r.width||r.height)&&r.bottom>0&&r.top<innerHeight&&r.right>0&&r.left<innerWidth};
- const delayOf=el=>{const d=el.closest(".rv");return d&&!d.classList.contains("in")?(parseFloat(d.style.getPropertyValue("--d"))||0)*1000:0};
- /* reserve the final width while counting so neighbours never shift */
- function unlock(el){clearTimeout(el._vsL);if(el._vsM){el.style.minWidth=el._vsM[0];el.style.boxSizing=el._vsM[1];el._vsM=undefined}}
- function lock(el,ms){
-  clearTimeout(el._vsL);if(el._vsM===undefined)el._vsM=[el.style.minWidth,el.style.boxSizing];
-  const cs=getComputedStyle(el),w=el.getBoundingClientRect().width;
-  if(cs.display!=="inline"&&w>0){el.style.boxSizing="border-box";el.style.minWidth=w+"px"}
-  if(ms)el._vsL=setTimeout(()=>unlock(el),ms)}
- function run(el,from,dur,delay){lock(el,dur+delay+150);vsRoll(el,from,dur,delay)}
- function zero(el){unlock(el);lock(el,0);el._vsR=(el._vsR||0)+1;el._vsC=0;el._vsPend=true;pend.add(el);el._vsZ=vsFmt(el._vsF,0);el.textContent=el._vsZ;io.observe(el)}
- function start(el){pend.delete(el);io.unobserve(el);if(!el._vsPend||!el.isConnected)return;el._vsPend=false;el.textContent=el._vsF;run(el,0,DUR1,delayOf(el))}
- function release(el){unlock(el);if(!el._vsPend)return;pend.delete(el);io.unobserve(el);el._vsPend=false;el.textContent=el._vsF;el._vsC=vsNum(el._vsF)}
- /* first appearance: count up from zero (immediately if on screen, otherwise the moment it scrolls / opens into view) */
- function first(el){
-  const txt=el.textContent,to=vsNum(txt);if(isNaN(to))return;
-  el._vsG=true;el._vsS=scopeOf(el);el._vsK=keyOf(el);el._vsF=txt;el._vsPend=false;live.add(el);
-  if(to===0){el._vsC=0;return}
-  if(inView(el)){run(el,0,DUR1,delayOf(el))}else zero(el)}
- function handle(el){
-  if(RMQ.matches||!el.isConnected||!eligible(el))return;
-  const txt=el.textContent,to=vsNum(txt);if(isNaN(to))return;
-  if(el._vsPend){if(txt===el._vsZ)return;el._vsF=txt;zero(el);return}
-  if(el._vsG&&txt===el._vsF)return; /* same value re-rendered: leave any running count alone */
-  const sc=scopeOf(el),key=keyOf(el);let prev;
-  if(el._vsG&&el._vsK===key)prev=el._vsC;else prev=mem[sc].get(key);
-  el._vsG=true;el._vsS=sc;el._vsK=key;el._vsF=txt;live.add(el);
-  if(prev===undefined||isNaN(prev)){first(el);return}
-  if(prev===to){el._vsR=(el._vsR||0)+1;el._vsC=to;return}
-  run(el,prev,DUR2,0)}
- /* remember what a removed element was showing, so its re-rendered twin continues from there */
- function cleanup(){live.forEach(el=>{if(el.isConnected)return;if(el._vsK!=null&&!el._vsPend&&!isNaN(el._vsC)){const M=mem[el._vsS||"pg"];M.set(el._vsK,el._vsC);if(M.size>3000)M.delete(M.keys().next().value)}
-  live.delete(el);pend.delete(el);io&&io.unobserve(el);clearTimeout(el._vsL)})}
- function textCand(tn,set){
-  const p=tn.parentElement;if(!p||!/\d/.test(tn.data))return;
-  if(p.childNodes.length===1){set.add(p);return}
-  if(CUR.test(tn.data)&&!p.closest(SKIP)&&!p.closest(".vs-sum")){const s=document.createElement("span");s.className="vs-nw";p.replaceChild(s,tn);s.appendChild(tn);set.add(s)}}
- function gather(root,set){
-  const tw=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;
-  while(n=tw.nextNode())textCand(n,set)}
- function onMut(recs){
-  cleanup();watch(document.getElementById("mo"),"on","mo");
-  const set=new Set;
-  recs.forEach(r=>{
-   if(r.type==="characterData")textCand(r.target,set);
-   else r.addedNodes.forEach(n=>{if(n.nodeType===3)textCand(n,set);else if(n.nodeType===1)gather(n,set)})});
-  set.forEach(handle)}
- /* called by vsRoll after each frame it writes: drop only the records that frame itself produced */
- vsGF=el=>{if(!obs)return;const rs=obs.takeRecords();if(rs.length)onMut(rs.filter(r=>owner(r)!==el))};
- function rewind(el){if(el._vsPend||el._vsF==null)return;el._vsR=(el._vsR||0)+1;unlock(el);el.textContent=el._vsF;first(el)}
- function watch(box,cls,sc){
-  if(!box||box._vsW)return;box._vsW=1;let was=box.classList.contains(cls);
-  new MutationObserver(()=>{const now=box.classList.contains(cls);if(now===was)return;was=now;
-   if(now){if(!RMQ.matches&&sc!=="mo")live.forEach(el=>{if(box.contains(el))rewind(el)})}
-   else{mem[sc].clear();live.forEach(el=>{if(box.contains(el))el._vsK=null})}}).observe(box,{attributes:true,attributeFilter:["class"]})}
- function restoreAll(){pend.forEach(release);live.forEach(el=>{if(el._vsF==null)return;el._vsR=(el._vsR||0)+1;unlock(el);if(el.isConnected&&!el._vsPend){el.textContent=el._vsF;el._vsC=vsNum(el._vsF)}})}
- function init(){
-  io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&e.target._vsPend)start(e.target)}),{threshold:0});
-  obs=new MutationObserver(onMut);
-  if(!RMQ.matches){const s=new Set;gather(document.body,s);s.forEach(handle)}
-  obs.observe(document.body,{childList:true,characterData:true,subtree:true});
-  watch(document.getElementById("pd"),"open","pd");watch(document.getElementById("drawer"),"open","dr");watch(document.getElementById("mo"),"on","mo");
-  const rm=()=>{if(RMQ.matches)restoreAll()};RMQ.addEventListener?RMQ.addEventListener("change",rm):RMQ.addListener(rm);
-  addEventListener("beforeprint",restoreAll);
-  setInterval(()=>{if(!pend.size||RMQ.matches)return;pend.forEach(el=>{if(!el.isConnected)return;if(inView(el))start(el)})},1500)}
- return{init}})();
-try{vsG.init()}catch(x){}
+/* flush the checkout observer so a frame written by vsRoll is never mistaken for an external change (the transfer-amount figure is not observed, so it must not flush) */
+function vsFl(el){if(vsObs&&!el._vsN)vsObs.takeRecords()}
 function vsCopied(cp){const n=cp.closest(".pm-panel")?.querySelector(".pm-num");[[cp,"vs-pop"],[n,"vs-flash"]].forEach(([e,c])=>{if(!e)return;e.classList.remove(c);void e.offsetWidth;e.classList.add(c)})}
 const vsLoad={t0:0,el:null,
  show(o){this.hide(true);this.t0=Date.now();const e=document.createElement("div");e.className="vs-load";e.setAttribute("role","status");e.setAttribute("aria-live","polite");
@@ -1279,7 +1179,9 @@ const o=modal(`<h3>${tr("إتمام الشراء","Checkout")}</h3><form id="cf"
 o.classList.add("checkout-full");document.body.style.overflow="hidden";o.querySelector(".mdl").scrollTop=0;vsEnhance(o);
 o.querySelector("#cc").onclick=closeM;
 let pmSel="";const pmg=o.querySelector("#pmg");
-const setTot=()=>o.querySelectorAll(".payTot").forEach(e=>e.textContent=money(calcTotal()));
+let payLast=NaN,payEl=null;const payRM=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+const setTot=()=>{const txt=money(calcTotal()),to=vsNum(txt);o.querySelectorAll(".payTot").forEach(e=>{e.textContent=txt;e._vsN=1;if(payRM||isNaN(to))return;
+ const first=isNaN(payLast),from=first?0:(payEl&&!isNaN(payEl._vsC)?payEl._vsC:payLast);payEl=e;payLast=to;vsRoll(e,from,first?1200:750,0)})};
 const pmCard=k=>{const i=pmInfo(k),n=pmLabel(k),lg=(i.c.logo||PMLOGO[k])?`<img src="${esc(i.c.logo||PMLOGO[k])}" alt="${n}" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'pm-wm',textContent:'${n}'}))">`:`<span class="pm-wm">${n}</span>`;
  return `<button type="button" class="pm-card" data-pm="${k}" aria-pressed="${pmSel==k}" ${i.avail?"":"disabled"}>${pmSel==k?VSPK:""}<span class="pm-lg">${lg}</span>${i.avail?"":`<span class="pm-un">${tr("غير متاح حالياً","Currently unavailable")}</span>`}</button>`};
 const pmPanel=k=>{const i=pmInfo(k),c=i.c,cardLike=k=="meeza"||k=="mastercard";
