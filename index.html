@@ -670,6 +670,54 @@ html[dir=rtl]{--vs-d:-1}
  .vs-lt span{opacity:0}.vs-lt span:first-child{opacity:1}
 }
 .promo-applied[hidden]{display:none}
+
+/* ===== الحماية (Security) section + admin login additions ===== */
+.sec-g{display:flex;flex-direction:column;gap:20px;max-width:900px}
+.sec-g [hidden]{display:none!important}
+.sec-opts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.sec-o{position:relative;display:block;cursor:pointer;min-width:0}
+.sec-o input,.sec-sg input{position:absolute;opacity:0;pointer-events:none;width:1px;height:1px}
+.sec-bx{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;min-height:132px;padding:22px 14px;text-align:center;border:1px solid var(--al);border-radius:14px;background:var(--ap2);transition:border-color .25s,box-shadow .25s,background .25s}
+.sec-o:hover .sec-bx{border-color:var(--am)}
+.sec-oi{width:46px;height:46px;flex:none;border-radius:50%;display:grid;place-items:center;background:var(--in);border:1px solid var(--al);color:var(--at);transition:.25s}
+.sec-oi svg{width:22px;height:22px}
+.sec-ot{font-size:14.5px;font-weight:600;line-height:1.6}
+.sec-ck{position:absolute;top:10px;inset-inline-end:10px;width:20px;height:20px;border-radius:50%;border:1.5px solid var(--al);display:grid;place-items:center;transition:.25s}
+.sec-ck::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--acx);transform:scale(0);transition:transform .25s var(--ease)}
+.sec-o input:checked+.sec-bx{border-color:var(--ac);box-shadow:0 0 0 1px var(--ac)}
+.sec-o input:checked+.sec-bx .sec-oi{background:var(--ac);border-color:var(--ac);color:var(--acx)}
+.sec-o input:checked+.sec-bx .sec-ck{background:var(--ac);border-color:var(--ac)}
+.sec-o input:checked+.sec-bx .sec-ck::after{transform:scale(1)}
+.sec-o input:focus-visible+.sec-bx,.sec-sg input:focus-visible+span{outline:2px solid var(--bl);outline-offset:2px}
+.sec-pw{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px}
+.a-fm .sec-f label{margin:10px 0 0}
+.sec-pf{position:relative}
+.a-fm .sec-pf input{margin-top:5px;padding-inline-end:50px;letter-spacing:.14em}
+.sec-eye{position:absolute;bottom:3px;inset-inline-end:5px;width:38px;height:38px;border-radius:10px;display:grid;place-items:center;color:var(--am);transition:.25s}
+.sec-eye:hover{color:var(--at);background:var(--ap2)}
+.sec-eye svg{width:18px;height:18px}
+.sec-seg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;padding:5px;border:1px solid var(--al);border-radius:14px;background:var(--in)}
+.sec-sg{position:relative;display:block;min-width:0;cursor:pointer}
+.sec-sg span{display:flex;align-items:center;justify-content:center;min-height:46px;padding:8px 10px;border-radius:10px;font-size:14px;font-weight:600;color:var(--am);text-align:center;transition:.25s}
+.sec-sg:hover span{color:var(--at)}
+.sec-sg input:checked+span{background:var(--ac);color:var(--acx)}
+.sec-cu{margin-top:14px;max-width:260px}
+.sec-act{display:flex}
+.sec-act .btn2{padding:13px 30px;font-size:14px;min-width:170px}
+@media(max-width:760px){.sec-opts{grid-template-columns:1fr}.sec-bx{flex-direction:row;justify-content:flex-start;min-height:0;padding:14px 16px;gap:14px;text-align:start}.sec-ot{flex:1}.sec-ck{position:static;flex:none}.sec-pw{grid-template-columns:1fr}.sec-seg{grid-template-columns:repeat(2,minmax(0,1fr))}.sec-act .btn2{width:100%}.sec-g .a-cd{padding:18px}.a-fm .sec-pf input,.sec-cu input{font-size:16px}.sec-cu{max-width:none}}
+/* numeric-password login (reuses the NFC card look) */
+.pwo.sec-b{overflow-y:auto;align-items:flex-start}.pwo.sec-b .pwc{margin:auto}
+.pin-f{position:relative;margin-top:18px}
+.pin-f input{display:block;width:100%;padding:14px 52px;border-radius:14px;background:#1c1c20;border:1px solid #2e2e33;color:#f3f3f1;font:600 18px/1.2 Alexandria,Syne,sans-serif;letter-spacing:.35em;text-align:center;outline:0;transition:border-color .25s,box-shadow .25s}
+.pin-f input::placeholder{letter-spacing:.25em;color:#55555c;font-weight:400}
+.pin-f input:focus{border-color:#e7dccb88;box-shadow:0 0 0 3px #e7dccb14}
+.pin-e{position:absolute;top:50%;right:8px;translate:0 -50%;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:#8e8e94;transition:.2s}
+.pin-e:hover{background:#ffffff14;color:#fff}.pin-e svg{width:18px;height:18px}
+.pin-w .nfs{min-height:22px;margin:12px 0}
+.pin-w .pwb{margin-bottom:10px}
+.pin-or{display:flex;align-items:center;gap:12px;margin-top:6px;color:#6b6b72;font-size:11px;letter-spacing:.2em}
+.pin-or::before,.pin-or::after{content:"";flex:1;height:1px;background:#2a2a2e}
+@media(max-width:480px){.pin-f input{font-size:16px}}
 </style>
 </head>
 <body>
@@ -908,7 +956,20 @@ h:()=>({"Content-Type":"application/json",[CFG.KEY_TYPE=="master"?"X-Master-Key"
 async get(id,k){if(!this.on())return ls(k);const r=await jf(`https://api.jsonbin.io/v3/b/${id}/latest`,{headers:{...this.h(),"X-Bin-Meta":"false"}});if(!r.ok)throw Error("HTTP "+r.status+" "+(await r.text()).slice(0,160));return r.json()},
 async put(id,k,d){if(!this.on())return ls(k,d);const r=await jf(`https://api.jsonbin.io/v3/b/${id}`,{method:"PUT",headers:this.h(),body:JSON.stringify(d)});if(!r.ok)throw Error("HTTP "+r.status+" "+(await r.text()).slice(0,160))},
 async make(d,name){if(!this.on()){const k="vs-shot-"+Date.now();ls(k,d);return k}const h={...this.h(),"X-Bin-Private":"true","X-Bin-Name":name};if(CFG.COLLECTION)h["X-Collection-Id"]=CFG.COLLECTION;const r=await jf("https://api.jsonbin.io/v3/b",{method:"POST",headers:h,body:JSON.stringify(d)});if(!r.ok)throw Error("HTTP "+r.status+" "+(await r.text()).slice(0,160));return(await r.json()).metadata.id}};
-const getStore=()=>DB.get(CFG.STORE_BIN,"vs-store"),saveStore=()=>DB.put(CFG.STORE_BIN,"vs-store",{products:ALL,settings:ST,at:Date.now()}); /* legacy (unused): replaced by persist() which merges */
+/* ===== VESTRA security settings — stored as "security" inside the SAME store bin (no new bin / database) ===== */
+const sha256=m=>{const b=new TextEncoder().encode(m),l=b.length,n=((l+9+63)>>6)<<4,w=new Uint32Array(n);for(let i=0;i<l;i++)w[i>>2]|=b[i]<<(24-(i&3)*8);w[l>>2]|=128<<(24-(l&3)*8);w[n-1]=l*8;const K=[],H=[];for(let c=0,p=2;c<64;p++){let q=1;for(let d=2;d*d<=p;d++)if(p%d==0){q=0;break}if(q){if(c<8)H[c]=(Math.pow(p,.5)*4294967296)|0;K[c++]=(Math.pow(p,1/3)*4294967296)|0}}
+for(let o=0;o<n;o+=16){const x=new Uint32Array(64);x.set(w.subarray(o,o+16));for(let i=16;i<64;i++){const a=x[i-15],c=x[i-2];x[i]=x[i-16]+(((a>>>7)|(a<<25))^((a>>>18)|(a<<14))^(a>>>3))+x[i-7]+(((c>>>17)|(c<<15))^((c>>>19)|(c<<13))^(c>>>10))}
+let[a,B,C,D,E,F,G,h]=H;for(let i=0;i<64;i++){const t1=(h+(((E>>>6)|(E<<26))^((E>>>11)|(E<<21))^((E>>>25)|(E<<7)))+((E&F)^(~E&G))+K[i]+x[i])|0,t2=((((a>>>2)|(a<<30))^((a>>>13)|(a<<19))^((a>>>22)|(a<<10)))+((a&B)^(a&C)^(B&C)))|0;h=G;G=F;F=E;E=(D+t1)|0;D=C;C=B;B=a;a=(t1+t2)|0}
+H[0]=H[0]+a|0;H[1]=H[1]+B|0;H[2]=H[2]+C|0;H[3]=H[3]+D|0;H[4]=H[4]+E|0;H[5]=H[5]+F|0;H[6]=H[6]+G|0;H[7]=H[7]+h|0}
+return H.map(v=>(v>>>0).toString(16).padStart(8,"0")).join("")};
+const SEC_D={method:"nfc",clicks:3,pin:"",salt:"",h:0};
+function secNorm(x){const o={...SEC_D};if(x&&typeof x=="object"&&!Array.isArray(x)){if(x.method=="nfc"||x.method=="pin"||x.method=="both")o.method=x.method;const c=Math.floor(+x.clicks);if(c>=1&&c<=50)o.clicks=c;if(typeof x.pin=="string")o.pin=x.pin.slice(0,200);if(typeof x.salt=="string")o.salt=x.salt.slice(0,64);o.h=x.h?1:0}if(o.method!="nfc"&&!o.pin)o.method="nfc";return o}
+let SEC=secNorm(ls("vestra-sec")),SEC_FRESH=false,SEC_RES=()=>{};const SEC_P=new Promise(r=>{SEC_RES=r});
+function secIngest(d){if(d&&typeof d=="object"&&!Array.isArray(d)){SEC=secNorm(d.security);ls("vestra-sec",SEC);SEC_FRESH=true;SEC_RES()}return d}
+const secWait=()=>SEC_FRESH?Promise.resolve():Promise.race([SEC_P,new Promise(r=>setTimeout(r,2500))]);
+const secHash=(pin,salt)=>sha256(salt+":"+pin);
+const secSalt=()=>{try{const a=new Uint8Array(8);crypto.getRandomValues(a);return[...a].map(b=>b.toString(16).padStart(2,"0")).join("")}catch(e){return Math.random().toString(16).slice(2,18).padEnd(16,"0")}};
+const getStore=()=>DB.get(CFG.STORE_BIN,"vs-store").then(secIngest),saveStore=()=>DB.put(CFG.STORE_BIN,"vs-store",{products:ALL,settings:ST,at:Date.now()}); /* legacy (unused): replaced by persist() which merges */
 const getOrders=async()=>(await DB.get(CFG.ORDERS_BIN,"vs-orders"))?.orders||[];
 let STORE_DOC_CACHE=null,STORE_CACHE_AT=0,STORE_WRITE_CHAIN=Promise.resolve();
 async function mutOrders(fn,providedDoc,opts){
@@ -1310,10 +1371,47 @@ function openNfcLogin(){if(document.getElementById("pwo"))return; /* only one sc
  document.body.appendChild(o);document.body.style.overflow="hidden";
  o.addEventListener("mousedown",e=>{if(e.target===o)closePw()});
  nfcStep(o,o.querySelector(".pwc"))}
+/* ---- admin entry routed by the method chosen in «الحماية»: NFC only / numeric password only / either ---- */
+let PIN_FAILS=0,PIN_LOCK=0,LOGIN_BUSY=false;
+const pinLeft=()=>Math.max(0,Math.ceil((PIN_LOCK-Date.now())/1000));
+const secCheck=v=>{if(!SEC.pin||!v)return false;return SEC.h?secHash(v,SEC.salt)===SEC.pin:v===SEC.pin};
+const pinBlock=ph=>`<div class="pin-w"><div class="pin-f"><input id="pin-i" type="password" inputmode="numeric" pattern="[0-9]*" autocomplete="off" maxlength="16" placeholder="${ph}" aria-label="Numeric password"><button class="pin-e" id="pin-v" type="button" aria-label="Show password">${ico("eye")}</button></div><p class="nfs" id="pin-s" role="status" aria-live="polite"></p><button class="pwb" id="pin-g" type="button">Sign in</button></div>`;
+function pinWire(o,card){
+ const i=card.querySelector("#pin-i"),s=card.querySelector("#pin-s"),g=card.querySelector("#pin-g"),v=card.querySelector("#pin-v");
+ const say=(m,k)=>{s.textContent=m||"";s.className="nfs "+(k||"")};
+ const shake=()=>{card.classList.remove("sh");void card.offsetWidth;card.classList.add("sh")};
+ v.onclick=()=>{const h=i.type=="password";i.type=h?"text":"password";v.innerHTML=ico(h?"eyeoff":"eye");v.setAttribute("aria-label",h?"Hide password":"Show password");i.focus()};
+ i.oninput=()=>{const c=i.value.replace(/\D/g,"");if(c!==i.value)i.value=c;say("")};
+ const submit=()=>{if(!o.isConnected||o.dataset.lock)return;
+  const w=pinLeft();if(w>0){say("Too many attempts. Try again in "+w+" seconds.","er");return shake()}
+  if(!i.value){say("Enter your numeric password","er");return shake()}
+  if(secCheck(i.value)){PIN_FAILS=0;if(o._nfcStop)o._nfcStop();i.blur();say("");return pwSuccess(o,card)} /* same success experience as the NFC path */
+  if(++PIN_FAILS>=5){PIN_FAILS=0;PIN_LOCK=Date.now()+30000;say("Too many attempts. Try again in 30 seconds.","er")}else say("Incorrect password. Please try again.","er");
+  i.value="";shake();i.focus()};
+ g.onclick=submit;i.onkeydown=e=>{if(e.key=="Enter"){e.preventDefault();submit()}}}
+function pinStep(o,card){
+ card.classList.remove("sh","scan","nfc-ok");card.classList.add("nfc");
+ card.innerHTML=`<button class="pwx" type="button" aria-label="Close">×</button><div class="nfc-ic" aria-hidden="true"><b></b><svg viewBox="0 0 48 48"><g transform="translate(10.8 10.8) scale(1.1)">${IC.lock}</g></svg></div><h3 class="nfc-t" id="pwt">VESTRA ADMIN ACCESS</h3><p class="sub" style="margin-bottom:0">Enter your numeric password</p>${pinBlock("Numeric password")}<button class="nfc-cancel" id="nfx" type="button">Cancel</button>`;
+ const cancel=()=>closePw(true);
+ card.querySelector("#nfx").onclick=cancel;card.querySelector(".pwx").onclick=cancel;
+ o._k=e=>{if(e.key=="Escape")cancel()};document.addEventListener("keydown",o._k);
+ pinWire(o,card);setTimeout(()=>{const i=card.querySelector("#pin-i");if(i&&o.isConnected)i.focus()},60)}
+async function openAdminLogin(){
+ if(LOGIN_BUSY||document.getElementById("pwo"))return;
+ LOGIN_BUSY=true;try{await secWait()}catch(e){}LOGIN_BUSY=false; /* make sure the saved method is loaded before choosing the screen */
+ if(document.getElementById("pwo"))return;
+ if(SEC.method=="nfc")return openNfcLogin(); /* untouched existing NFC flow */
+ const o=document.createElement("div");o.id="pwo";o.className="pwo sec-b";o.dir="ltr";
+ o.innerHTML='<div class="pwc" role="dialog" aria-modal="true" aria-labelledby="pwt"></div>';
+ document.body.appendChild(o);document.body.style.overflow="hidden";
+ o.addEventListener("mousedown",e=>{if(e.target===o)closePw()});
+ const card=o.querySelector(".pwc");
+ if(SEC.method=="both"){nfcStep(o,card);card.querySelector("#nfx").insertAdjacentHTML("beforebegin",'<div class="pin-or"><span>OR</span></div>'+pinBlock("Numeric password"));pinWire(o,card)} /* NFC keeps scanning while the password field is available */
+ else pinStep(o,card)}
 const yE=document.getElementById("yr");
 ["mousedown","selectstart","dblclick","dragstart"].forEach(ev=>yE.addEventListener(ev,e=>e.preventDefault()));
 let cc=0,ct=0;
-yE.addEventListener("click",e=>{e.preventDefault();try{getSelection().removeAllRanges()}catch(x){}const n=Date.now();cc=(n-ct<=800)?cc+1:1;ct=n;if(cc>=3){cc=0;ct=0;openNfcLogin()}});
+yE.addEventListener("click",e=>{e.preventDefault();try{getSelection().removeAllRanges()}catch(x){}const n=Date.now();cc=(n-ct<=800)?cc+1:1;ct=n;if(cc>=SEC.clicks){cc=0;ct=0;openAdminLogin()}});
 /* ---- admin helpers ---- */
 const amodal=h=>{const o=modal(h);o.classList.add("dk");return o};
 let _at;function atoast(m,k){let e=document.getElementById("atoast");if(!e){e=document.createElement("div");e.id="atoast";document.body.appendChild(e)}e.textContent=m;e.className="a-toast on "+(k||"");clearTimeout(_at);_at=setTimeout(()=>e.classList.remove("on"),k=="er"?5500:2800)}
@@ -1368,7 +1466,7 @@ new MutationObserver(ms=>{if(AL!=="en")return;for(const m of ms){if(m.type=="cha
 /* ---- admin shell ---- */
 const adm=document.createElement("div");adm.id="adm";adm.dir=AL=="en"?"ltr":"rtl";adm.setAttribute("aria-label","لوحة التحكم");document.body.appendChild(adm);adm.addEventListener("pointerdown",warmCache,{passive:true});adm.addEventListener("focusin",warmCache);
 let imTab="site",anR=30,dR=7;
-const NAV=[["dash","home","Home"],["prod","tag","Products"],["ord","cart","Orders"],["trk","truck","Order Tracking"],["usr","users","Users"],["set","gear","Settings"],["cnt","layout","Edit Site"],["img","image","Site Images"],["promos","tag","Promo Codes"],["pay","coins","Payment Methods"],["ads","megaphone","Ads"],["ana","chart","Sales Analytics"]];
+const NAV=[["dash","home","Home"],["prod","tag","Products"],["ord","cart","Orders"],["trk","truck","Order Tracking"],["usr","users","Users"],["set","gear","Settings"],["sec","lock","الحماية"],["cnt","layout","Edit Site"],["img","image","Site Images"],["promos","tag","Promo Codes"],["pay","coins","Payment Methods"],["ads","megaphone","Ads"],["ana","chart","Sales Analytics"]];
 async function refresh(){const d=await getStore();STORE_DOC_CACHE=(d&&typeof d=="object"&&!Array.isArray(d))?JSON.parse(JSON.stringify(d)):{};STORE_CACHE_AT=Date.now();if(d&&typeof d=="object"&&!Array.isArray(d)){if(Array.isArray(d.products))ALL=d.products;Object.assign(ST,d.settings||{});PROMOS=Array.isArray(d.promos)?d.promos:[{code:"yasiiiin0",type:"percent",value:20,active:true}];IMG=normImg(d.images);CNT=normCnt(d.content);AD=normAd(d.ad);PAY=normPay(d.payments)}
  if(!ALL)ALL=JSON.parse(JSON.stringify(SEED));ORD=(CFG.ORDERS_BIN==CFG.STORE_BIN?(d&&d.orders):await getOrders())||[];if(!Array.isArray(ORD))ORD=[]}
 async function openAdmin(){adm.classList.add("on");document.body.style.overflow="hidden";adm.classList.toggle("lt",ls("vestra-admin-theme")=="light");
@@ -1666,6 +1764,38 @@ PAGES.pay=m=>{const blk=(k,nm,fields)=>{const c=PAY[k];return `<div class="a-cd"
   const pay=normPay(raw),vc=clean(v("vodafone.num")).slice(0,60),ip=clean(v("instapay.num")).slice(0,120);
   if(await run(()=>persist(d=>{d.settings={...(d.settings||{}),vcash:vc,insta:ip};d.payments=pay},true),"تم حفظ طرق الدفع ✓"))go("pay")}};
 PAGES.usr=m=>{const cs=custs();m.innerHTML=hd("المستخدمين",`${fmtN(cs.length)} عميل`)+`<div class="a-nt">المتجر لا يحتوي على نظام حسابات أو تسجيل مستخدمين، لذلك هذه القائمة <b>مبنية بالكامل من بيانات الطلبات</b> (العميل = رقم موبايل مميّز).</div><div class="a-tb"><table><tr><th>الاسم</th><th>الموبايل</th><th>المحافظة</th><th>عدد الطلبات</th><th>إجمالي الإنفاق</th><th>آخر طلب</th></tr>${cs.map(c=>`<tr><td>${esc(c.name)}</td><td dir="ltr">${esc(c.phone)}</td><td>${esc(c.gov)}</td><td>${c.n}</td><td>${money2(c.total)}</td><td>${ago(c.last)}</td></tr>`).join("")||'<tr><td colspan="6" class="a-em">لا توجد بيانات عملاء بعد — ستظهر هنا بعد أول طلب.</td></tr>'}</table></div>`};
+/* ---- الحماية: login method, numeric password, 2026 click count ---- */
+PAGES.sec=m=>{
+ const sI=p=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${p}</svg>`,
+ MT=[["nfc","بطاقة NFC فقط",'<rect x="3" y="6" width="13" height="12" rx="2.5"/><path d="M7.5 11h4M7.5 14h2.5"/><path d="M19 9.3c1.1 1.6 1.1 4.8 0 6.4"/><path d="M21.8 6.8c2 3.4 2 7.6 0 11"/>'],["pin","كلمة مرور رقمية فقط",IC.lock],["both","بطاقة NFC أو كلمة مرور رقمية",'<path d="M12 3l8 3v5c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/>']],
+ isC=![1,3,5].includes(SEC.clicks),cur=isC?"c":String(SEC.clicks),
+ CK=[["1","1 نقرة"],["3","3 نقرات"],["5","5 نقرات"],["c","مخصص"]],
+ pf=(id,l)=>`<div class="sec-f"><label for="${id}">${l}</label><div class="sec-pf"><input id="${id}" type="password" inputmode="numeric" pattern="[0-9]*" autocomplete="new-password" maxlength="16" placeholder="••••"><button class="sec-eye" type="button" aria-label="إظهار كلمة المرور">${ico("eye")}</button></div></div>`;
+ m.innerHTML=hd("الحماية","")+`<form class="sec-g" id="secf" autocomplete="off" novalidate>
+ <div class="a-cd"><div class="a-ch"><h3>طريقة تسجيل دخول المدير</h3></div><div class="sec-opts" role="radiogroup" aria-label="طريقة تسجيل دخول المدير">${MT.map(([k,t,i])=>`<label class="sec-o"><input type="radio" name="mt" value="${k}" ${SEC.method==k?"checked":""}><span class="sec-bx"><span class="sec-oi">${sI(i)}</span><span class="sec-ot">${t}</span><i class="sec-ck"></i></span></label>`).join("")}</div></div>
+ <div class="a-cd" id="sec-pc" ${SEC.method=="nfc"?"hidden":""}><div class="a-ch"><h3>${SEC.pin?"تغيير كلمة المرور الرقمية":"تعيين كلمة مرور رقمية"}</h3></div><div class="a-fm sec-pw">${pf("sec-np","كلمة المرور الجديدة")}${pf("sec-cp","تأكيد كلمة المرور")}</div></div>
+ <div class="a-cd"><div class="a-ch"><h3>عدد النقرات على 2026</h3></div><div class="sec-seg" role="radiogroup" aria-label="عدد النقرات">${CK.map(([k,t])=>`<label class="sec-sg"><input type="radio" name="ck" value="${k}" ${cur==k?"checked":""}><span>${t}</span></label>`).join("")}</div><div class="sec-cu a-fm" id="sec-cu" ${isC?"":"hidden"}><label for="sec-cn">العدد المخصص<input id="sec-cn" type="number" min="1" max="50" step="1" inputmode="numeric" value="${isC?SEC.clicks:""}" placeholder="1 – 50"></label></div></div>
+ <div class="sec-act"><button class="btn2 pr" id="sec-save" type="submit">حفظ الإعدادات</button></div></form>`;
+ const f=m.querySelector("#secf"),pc=m.querySelector("#sec-pc"),cu=m.querySelector("#sec-cu"),cn=m.querySelector("#sec-cn"),sv=m.querySelector("#sec-save"),pw=[...f.querySelectorAll(".sec-pf input")],eyes=[...f.querySelectorAll(".sec-eye")];
+ f.querySelectorAll("input[name=mt]").forEach(r=>r.onchange=()=>{pc.hidden=f.elements.mt.value=="nfc"});
+ f.querySelectorAll("input[name=ck]").forEach(r=>r.onchange=()=>{const c=f.elements.ck.value=="c";cu.hidden=!c;if(c)cn.focus()});
+ pw.forEach(i=>i.oninput=()=>{const c=i.value.replace(/\D/g,"");if(c!==i.value)i.value=c});
+ eyes.forEach(b=>b.onclick=()=>{const h=pw[0].type=="password";pw.forEach(i=>i.type=h?"text":"password");eyes.forEach(x=>{x.innerHTML=ico(h?"eyeoff":"eye");x.setAttribute("aria-label",h?"إخفاء كلمة المرور":"إظهار كلمة المرور")})});
+ f.onsubmit=async e=>{e.preventDefault();if(sv.disabled)return;
+  const mt=f.elements.mt.value,cs=f.elements.ck.value,ck=cs=="c"?Math.floor(+cn.value):+cs;
+  if(!(ck>=1&&ck<=50))return atoast("أدخل عدد نقرات صحيحاً من 1 إلى 50","er");
+  const np=pw[0].value,cp=pw[1].value,sec={method:mt,clicks:ck,pin:SEC.pin,salt:SEC.salt,h:SEC.h};
+  if(mt!="nfc"){
+   if(np||cp){
+    if(!/^\d{4,16}$/.test(np))return atoast("كلمة المرور الرقمية يجب أن تكون من 4 إلى 16 رقماً","er");
+    if(np!==cp)return atoast("كلمة المرور وتأكيدها غير متطابقتين","er");
+    const salt=secSalt();sec.salt=salt;sec.pin=secHash(np,salt);sec.h=1
+   }else if(!SEC.pin)return atoast("عيّن كلمة مرور رقمية أولاً","er")
+  }
+  sv.disabled=true;let dd=null;
+  const ok=await run(async()=>{dd=await persist(d=>{d.security=sec})},"تم حفظ إعدادات الحماية ✓");
+  sv.disabled=false;
+  if(ok){secIngest(dd);if(tab=="sec")go("sec")}}};
 /* ---- analytics ---- */
 PAGES.ana=m=>{const now=Date.now(),inR=ORD.filter(o=>o.at>=now-anR*D1),ok=inR.filter(o=>o.status!="cancelled"),rev=ok.reduce((a,o)=>a+(+o.total||0),0),canc=inR.length-ok.length;
  const tp={};ok.forEach(o=>(o.items||[]).forEach(i=>{const t=tp[i.id]||(tp[i.id]={nm:i.nm,q:0,r:0});t.q+=+i.q||0;t.r+=(+i.price||0)*(+i.q||0)}));const top=Object.values(tp).sort((a,b)=>b.q-a.q).slice(0,6),mq=Math.max(1,...top.map(t=>t.q)),mc=Math.max(1,...Object.keys(SL).map(k=>inR.filter(o=>o.status==k).length));
