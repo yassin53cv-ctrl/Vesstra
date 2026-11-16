@@ -1435,7 +1435,7 @@ async function openAdminLogin(){
 const yE=document.getElementById("yr");
 ["mousedown","selectstart","dblclick","dragstart"].forEach(ev=>yE.addEventListener(ev,e=>e.preventDefault()));
 let cc=0,ct=0;
-yE.addEventListener("click",e=>{e.preventDefault();try{getSelection().removeAllRanges()}catch(x){}}); /* old 2026 admin trigger disabled: use the separate admin page */
+yE.addEventListener("click",e=>{e.preventDefault();try{getSelection().removeAllRanges()}catch(x){}const n=Date.now();cc=(n-ct<=800)?cc+1:1;ct=n;if(cc>=SEC.clicks){cc=0;ct=0;openAdminLogin()}});
 /* ---- admin helpers ---- */
 const amodal=h=>{const o=modal(h);o.classList.add("dk");return o};
 let _at;function atoast(m,k){let e=document.getElementById("atoast");if(!e){e=document.createElement("div");e.id="atoast";document.body.appendChild(e)}e.textContent=m;e.className="a-toast on "+(k||"");clearTimeout(_at);_at=setTimeout(()=>e.classList.remove("on"),k=="er"?5500:2800)}
