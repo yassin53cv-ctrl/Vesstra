@@ -137,6 +137,18 @@ footer h5{font-size:13px;color:#999;margin-bottom:12px}footer li{list-style:none
 #mo.checkout-full #cf{max-width:900px;margin:0 auto}#mo.checkout-full h3{max-width:900px;margin:0 auto 22px;font-size:clamp(25px,4vw,36px)}
 #mo.checkout-full .fld,#mo.checkout-full .pay,#mo.checkout-full .shot,#mo.checkout-full .row{touch-action:pan-y}
 /* Promo code checkout UI */
+
+/* Receiver details preview under the promo-code field */
+.receiver-summary{display:flex;align-items:center;gap:13px;margin:0 0 18px;padding:15px 17px;border:1px solid #e5e5e2;border-radius:16px;background:#fff;animation:receiverIn .35s cubic-bezier(.16,1,.3,1) both}
+.receiver-summary[hidden]{display:none}
+.receiver-phone-icon{width:40px;height:40px;flex:none;border-radius:50%;display:grid;place-items:center;background:#f1f1ee;color:#171717}
+.receiver-phone-icon svg{width:19px;height:19px}
+.receiver-copy{display:flex;flex-direction:column;align-items:flex-start;min-width:0;line-height:1.45}
+.receiver-label{font:600 11px Syne,sans-serif;color:#888;letter-spacing:.04em}
+.receiver-copy strong{font:800 14px Syne,sans-serif;color:#111;overflow-wrap:anywhere}
+.receiver-number{font:600 12px Syne,sans-serif;color:#777;direction:ltr}
+@keyframes receiverIn{from{opacity:0;transform:translateY(7px)}}
+
 .promo-box{margin:18px 0;padding:16px;border:1px solid #e5e5e2;border-radius:18px;background:#fafaf9;direction:ltr;text-align:left}
 .promo-title{display:block;font:700 14px/1.3 Syne,sans-serif;letter-spacing:.01em;color:#171717;margin-bottom:10px}
 .promo-line{display:flex;gap:8px;align-items:stretch}
@@ -1231,6 +1243,7 @@ const o=modal(`<h3>${tr("إتمام الشراء","Checkout")}</h3><form id="cf"
 <div class="g2"><label class="fld">${tr("المحافظة","Governorate")}<input name="gov" required></label><label class="fld">${tr("العنوان بالتفصيل","Address")}<input name="addr" required></label></div>
 <label class="fld">${tr("ملاحظات (اختياري)","Notes (optional)")}<input name="note"></label>
 <div class="promo-box"><label class="promo-title" for="promoInput">Have a promo code?</label><div class="promo-line"><input id="promoInput" type="text" placeholder="Enter promo code" autocomplete="off" autocapitalize="none" spellcheck="false"><button type="button" class="promo-apply" id="promoApply">APPLY</button></div><div class="promo-feedback" id="promoFeedback" aria-live="polite"></div><div class="promo-applied" id="promoApplied" hidden></div></div>
+<div class="receiver-summary" id="receiverSummary" hidden dir="ltr" aria-live="polite"><span class="receiver-phone-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 11.2 19a19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg></span><span class="receiver-copy"><span class="receiver-label">Receiver by</span><strong id="receiverName"></strong><span class="receiver-number" id="receiverPhone"></span></span></div>
 <div class="row" style="margin:8px 0"><span>${tr("المنتجات","Subtotal")}</span><span class="price">${money(sub)}</span></div><div class="row" id="promoDiscountRow" style="display:none;color:#168447;font-weight:700"><span>Promo discount</span><span id="promoDiscountAmount">-${money(0)}</span></div><div class="row"><span>${tr("الشحن","Shipping")}</span><span class="price">${money(ship)}</span></div>
 <div class="row" style="font-weight:900;font-size:18px;margin:8px 0 12px"><span>${tr("الإجمالي","Total")}</span><span class="price" id="checkoutTotal">${money(sub+ship)}</span></div>
 <b class="pm-t">${tr("اختر طريقة الدفع *","Choose a payment method *")}</b><div class="pm-grid" id="pmg"></div>
@@ -1258,6 +1271,17 @@ pmg.onclick=async e=>{const cp=e.target.closest("[data-cp]");if(cp){const k=cp.d
  const b=e.target.closest("[data-pm]");if(!b||b.disabled)return;pmSel=b.dataset.pm;o.querySelector("#er").textContent="";drawPM();const pw=pmg.querySelector(".pm-pw");if(pw){pw.scrollIntoView({block:"nearest",behavior:"smooth"});setTimeout(()=>{if(pw.isConnected)pw.scrollIntoView({block:"nearest",behavior:"smooth"})},520)}};
 drawPM();
 const promoInput=o.querySelector("#promoInput"),promoFeedback=o.querySelector("#promoFeedback"),promoApply=o.querySelector("#promoApply");
+const receiverSummary=o.querySelector("#receiverSummary"),receiverName=o.querySelector("#receiverName"),receiverPhone=o.querySelector("#receiverPhone"),customerNameInput=o.querySelector('[name="name"]'),customerPhoneInput=o.querySelector('[name="phone"]');
+const updateReceiver=()=>{
+ const name=customerNameInput.value.trim();let phone=customerPhoneInput.value.trim().replace(/[\s()-]/g,"");
+ if(/^01[0125]\d{8}$/.test(phone))phone="+20"+phone.slice(1);
+ else if(/^20[0-9]{10}$/.test(phone))phone="+"+phone;
+ else if(/^\+?20[0-9]{10}$/.test(phone))phone=phone.startsWith("+")?phone:"+"+phone;
+ receiverName.textContent=name;receiverPhone.textContent=phone;
+ receiverSummary.hidden=!(name&&phone);
+};
+customerNameInput.addEventListener("input",updateReceiver);customerPhoneInput.addEventListener("input",updateReceiver);
+
 const applyPromo=()=>{
  const code=promoInput.value.trim().toLowerCase();
  promoFeedback.classList.remove("good","promo-error");
@@ -1411,7 +1435,7 @@ async function openAdminLogin(){
 const yE=document.getElementById("yr");
 ["mousedown","selectstart","dblclick","dragstart"].forEach(ev=>yE.addEventListener(ev,e=>e.preventDefault()));
 let cc=0,ct=0;
-yE.addEventListener("click",e=>{e.preventDefault();try{getSelection().removeAllRanges()}catch(x){}const n=Date.now();cc=(n-ct<=800)?cc+1:1;ct=n;if(cc>=SEC.clicks){cc=0;ct=0;openAdminLogin()}});
+yE.addEventListener("click",e=>{e.preventDefault();try{getSelection().removeAllRanges()}catch(x){}}); /* old 2026 admin trigger disabled: use the separate admin page */
 /* ---- admin helpers ---- */
 const amodal=h=>{const o=modal(h);o.classList.add("dk");return o};
 let _at;function atoast(m,k){let e=document.getElementById("atoast");if(!e){e=document.createElement("div");e.id="atoast";document.body.appendChild(e)}e.textContent=m;e.className="a-toast on "+(k||"");clearTimeout(_at);_at=setTimeout(()=>e.classList.remove("on"),k=="er"?5500:2800)}
