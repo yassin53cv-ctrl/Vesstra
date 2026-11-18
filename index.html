@@ -937,10 +937,20 @@ const PUSHOVER_CFG={TOKEN:"abdz178d3h7m9f5hu4fziinkh6x831",USER:"uhtt5wbafn6degj
 function notifyPushover(order,status){
  try{
   if(status!=="new")return; /* الإشعار للأوردر الجديد بس */
-  const items=(order.items||[]).map(i=>(i.name_en||i.nm||"")+" x"+(i.q||1)+(i.size?" ("+i.size+")":"")).join("\n");
-  const msg="Order #"+order.id+"\n"+(order.name_en||order.name||"")+" - "+(order.phone||"")+"\n"+(order.gov_en||order.gov||"")+"\n"+items+"\nTotal: "+order.total+" EGP"+(order.payLabel||order.payMethod?"\nPay: "+(order.payLabel||order.payMethod):"");
-  const body=new URLSearchParams({token:PUSHOVER_CFG.TOKEN,user:PUSHOVER_CFG.USER,title:"🛒 New VESTRA Order",message:msg,priority:"1",sound:"cashregister"});
-  fetch(PUSHOVER_CFG.URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:body.toString()}).catch(e=>console.warn("Pushover failed:",e));
+  /* القيم زي ما العميل كتبها بالظبط (بدون ترجمة) */
+  const items=(order.items||[]).map(i=>(i.nm||i.name||"")+" x"+(i.q||1)+(i.size?" ("+i.size+")":"")).join("\n");
+  const pay=order.payLabel||order.payMethod||"";
+  const msg="Order #"+order.id+"\n"+(order.name||"")+" - "+(order.phone||"")+"\n"+(order.gov||"")+(order.addr?" - "+order.addr:"")+(order.note?"\nNote: "+order.note:"")+"\n\n"+items+"\n\nTotal: "+order.total+" EGP"+(pay?"\nPay: "+pay:"");
+  /* لينك واتساب للعميل برسالة الترحيب الجاهزة */
+  let digits=String(order.phone||"").replace(/\D/g,"");
+  if(/^01[0125]\d{8}$/.test(digits))digits="2"+digits;
+  const params={token:PUSHOVER_CFG.TOKEN,user:PUSHOVER_CFG.USER,title:"🛒 New VESTRA Order #"+order.id,message:msg.slice(0,1000),priority:"1",sound:"cashregister"};
+  if(digits){
+   let wa="https://wa.me/"+digits+"?text="+encodeURIComponent(order.customer_message||"");
+   if(wa.length>500)wa="https://wa.me/"+digits; /* حد Pushover للينك 512 حرف */
+   params.url=wa;params.url_title="💬 Open WhatsApp with customer";
+  }
+  fetch(PUSHOVER_CFG.URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:new URLSearchParams(params).toString()}).catch(e=>console.warn("Pushover failed:",e));
  }catch(e){console.warn("Pushover error:",e)}
 }
 const SHIPPING_WEBHOOK_URL="https://hook.eu1.make.com/iwari7krqjc4w67sej7sk6pn27fr9dp3";
