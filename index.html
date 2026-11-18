@@ -933,8 +933,19 @@ addEventListener("hashchange",()=>{if(location.hash.startsWith("#p="))openPD(+lo
 /* >>> املا القيم دي بعد ما تعمل الـ bins في jsonbin.io <<< */
 const CFG={STORE_BIN:"6ae22286ac6210605a59ab23",ORDERS_BIN:"6ae22286ac6210605a59ab23",KEY:"$2a$10$ZP1FOP8MxLnt7Hf82KkOU./6k8KwwdqotzbtR8SsQFpBAnDlZRida",KEY_TYPE:"access",COLLECTION:"",IMGBB_KEY:"" /* اختياري: مفتاح ImgBB لتفعيل رفع الصور من الجهاز */};
 const MAKE_WEBHOOK="https://hook.eu1.make.com/xofs98r4pwh9keep2tt27pm3csgv9kbm";
+const PUSHOVER_CFG={TOKEN:"azGDORePK8gMaC0QOYAMyEEuzJnyUi",USER:"uQiRzpo4DXghDmr9QzzfQu27cmVRsG",URL:"https://api.pushover.net/1/messages.json"};
+function notifyPushover(order,status){
+ try{
+  if(status!=="new")return; /* الإشعار للأوردر الجديد بس */
+  const items=(order.items||[]).map(i=>(i.name_en||i.nm||"")+" x"+(i.q||1)+(i.size?" ("+i.size+")":"")).join("\n");
+  const msg="Order #"+order.id+"\n"+(order.name_en||order.name||"")+" - "+(order.phone||"")+"\n"+(order.gov_en||order.gov||"")+"\n"+items+"\nTotal: "+order.total+" EGP"+(order.payLabel||order.payMethod?"\nPay: "+(order.payLabel||order.payMethod):"");
+  const body=new URLSearchParams({token:PUSHOVER_CFG.TOKEN,user:PUSHOVER_CFG.USER,title:"🛒 New VESTRA Order",message:msg,priority:"1",sound:"cashregister"});
+  fetch(PUSHOVER_CFG.URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:body.toString()}).catch(e=>console.warn("Pushover failed:",e));
+ }catch(e){console.warn("Pushover error:",e)}
+}
 const SHIPPING_WEBHOOK_URL="https://hook.eu1.make.com/iwari7krqjc4w67sej7sk6pn27fr9dp3";
 async function notifyVestraOrder(order,status){
+ notifyPushover(order,status);
  try{
   const payload={
    order_id:order.id,
