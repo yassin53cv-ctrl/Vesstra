@@ -956,6 +956,7 @@ function notifyPushover(order,status){
 const SHIPPING_WEBHOOK_URL="https://hook.eu1.make.com/iwari7krqjc4w67sej7sk6pn27fr9dp3";
 async function notifyVestraOrder(order,status){
  notifyPushover(order,status);
+ if(status==="new")return; /* الأوردر الجديد: Pushover بس، من غير تليجرام */
  try{
   const payload={
    order_id:order.id,
