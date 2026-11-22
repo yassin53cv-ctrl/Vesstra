@@ -773,11 +773,13 @@ function css(){let o="";
   o+=S([".blob"])+"{background:#ffffff14}";
   o+=S([".toast"])+"{background:#fff;color:#0a0a0a}";
   o+=S([":focus-visible"])+"{outline-color:#0a0a0a;box-shadow:0 0 0 5px #fff}";
-  /* top bar (dock) turns white */
-  o+=S([".dock"])+"{background:#fff;color:#0a0a0a}";
-  o+=S([".dock a:hover",".dock button:hover",".dock .on"])+"{background:#0000001a}";
-  o+=S([".dock i"])+"{background:#0a0a0a;color:#fff}";
-  o+=S([".dock :focus-visible"])+"{outline-color:#fff;box-shadow:0 0 0 5px #0a0a0a}";
+  /* top bar (dock): black on the black theme (white buttons), white on red/pink */
+  const bk=n==="black";
+  o+=S([".dock"])+(bk?"{background:#0a0a0a;color:#fff;box-shadow:0 0 0 1px #ffffff33}":"{background:#fff;color:#0a0a0a}");
+  if(bk)o+=S([".dock a",".dock button",".dock a svg",".dock button svg"])+"{color:#fff;opacity:.9}";
+  o+=S([".dock a:hover",".dock button:hover",".dock .on"])+(bk?"{background:#ffffff26;color:#fff;opacity:1}":"{background:#0000001a}");
+  o+=S([".dock i"])+(bk?"{background:#fff;color:#000}":"{background:#0a0a0a;color:#fff}");
+  o+=S([".dock :focus-visible"])+(bk?"{outline-color:#0a0a0a;box-shadow:0 0 0 5px #fff}":"{outline-color:#fff;box-shadow:0 0 0 5px #0a0a0a}");
  }
  return o}
 let st=null;
