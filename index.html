@@ -1,21 +1,24 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="preconnect" href="https://api.jsonbin.io" crossorigin>
 <link rel="dns-prefetch" href="https://api.jsonbin.io">
-<title>VESTRA — ستايلك. هويتك.</title>
-<meta name="description" content="VESTRA: ملابس عصرية بتصميم مينيمال وجودة فاخرة. اكتشف المجموعة الجديدة.">
+<title>VESTRA — Your style. Your identity.</title>
+<meta name="description" content="VESTRA: modern clothing with minimal design and premium quality. Discover the new collection.">
 <meta name="color-scheme" content="light">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@500;700;900&family=Syne:wght@600;800&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@500;700;900&family=Syne:wght@600;800&family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Outfit:wght@500;600;700;800&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#f4f4f2;--ink:#0a0a0a;--g1:#e6e6e3;--g2:#8a8a86;--ease:cubic-bezier(.16,1,.3,1);color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 html{scroll-behavior:smooth;scroll-padding-top:90px;height:auto}
 *,*::before,*::after{box-sizing:border-box;margin:0}
 body{background:var(--bg);color:var(--ink);font:500 16px/1.7 'Alexandria',system-ui,sans-serif;overflow-x:hidden}
-html[lang=en] body{font-family:'Syne','Alexandria',sans-serif}
+html[lang=en] body{font-family:'Outfit',system-ui,-apple-system,'Segoe UI',sans-serif;font-weight:600;letter-spacing:0;-webkit-font-smoothing:antialiased}
+html[lang=en] .big,html[lang=en] main h3{font-family:'Bricolage Grotesque','Outfit',system-ui,sans-serif;font-optical-sizing:auto;font-weight:800;letter-spacing:-.035em}
+html[lang=en] .big{line-height:1.02;text-transform:none}
+html[lang=en] .price,html[lang=en] .price-sale .now{font-family:'Outfit',system-ui,sans-serif;font-weight:800;letter-spacing:0}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 a{color:inherit;text-decoration:none}
 :focus-visible{outline:2px solid #fff;outline-offset:3px;box-shadow:0 0 0 5px #0a0a0a}
@@ -798,7 +801,7 @@ html[dir=rtl]{--vs-d:-1}
 <script>
 /* ===== i18n ===== */
 const T={ar:{nShop:"المتجر",nCol:"المجموعات",nNew:"وصل حديثاً",heroP:"قطع بتتقال بصمتك. تصميم نظيف، خامات فاخرة، وستايل مالوش حدود.",heroCta:"اكتشف المجموعة",heroNew:"استكشف الوصول الجديد",tagM:"فلسفتنا",tagS:"التوقيع",
- man:"مش مجرد لبس. دي طريقة تقول بيها أنت مين من غير ما تتكلم.",colH:"مجموعات تتحكي.",shopH:"اختار قطعتك.",sigH:"التفاصيل هي اللي بتفرق.",
+ man:"قطع مريحة ، تصميم نضيف ، ستايل يناسب ذوقك ؟ هنا هنا",colH:"مجموعات جديدة",shopH:"اختار قطعتك.",sigH:"التفاصيل هي اللي بتفرق.",
  hl:["ستايلك.","هويتك.","VESTRA."],search:"ابحث عن قطعة…",all:"الكل",newest:"الأحدث",best:"الأكثر مبيعاً",pl:"السعر: الأقل أولاً",ph:"السعر: الأعلى أولاً",
  empty:"مفيش نتائج. جرّب كلمة تانية.",add:"أضف للسلة",added:"اتضافت للسلة",bag:"السلة",sub:"المجموع",checkout:"إتمام الشراء",chkNote:"",chkMsg:"إتمام الشراء",
  cartEmpty:"سلتك فاضية.",size:"المقاس",color:"اللون",qty:"الكمية",desc:"الوصف",shipT:"الشحن",shipD:"شحن خلال 3–5 أيام عمل. استرجاع خلال 14 يوم.",related:"قد يعجبك أيضاً",back:"رجوع",remove:"إزالة",
@@ -806,7 +809,7 @@ const T={ar:{nShop:"المتجر",nCol:"المجموعات",nNew:"وصل حدي�
  cats:{tee:"تيشيرتات",hood:"هودي",pants:"بناطيل",jacket:"جاكيتات"},ccur:"ج.م",
  col:[["وصل حديثاً","أحدث القطع هذا الموسم"],["أساسيات","أساس كل إطلالة"],["ستريت وير","للشارع بروحه"],["أوفر سايز","راحة بقَصّة جريئة"],["الأكثر مبيعاً","اختيارات الجميع"]]},
 en:{nShop:"Shop",nCol:"Collections",nNew:"New",heroP:"Pieces that speak your signature. Clean design, premium fabrics, style without limits.",heroCta:"Discover the collection",heroNew:"Explore new arrivals",tagM:"Philosophy",tagS:"Signature",
- man:"Not just clothes. A way to say who you are without saying a word.",colH:"Collections with a voice.",shopH:"Pick your piece.",sigH:"Details make the difference.",
+ man:"Comfortable pieces, clean design, a style that suits your taste? Right here.",colH:"New collections",shopH:"Pick your piece.",sigH:"Details make the difference.",
  hl:["Your style.","Your identity.","VESTRA."],search:"Search products…",all:"All",newest:"Newest",best:"Best sellers",pl:"Price: low to high",ph:"Price: high to low",
  empty:"No matches. Try another word.",add:"Add to cart",added:"Added to cart",bag:"Bag",sub:"Subtotal",checkout:"Checkout",chkNote:"",chkMsg:"Checkout",
  cartEmpty:"Your bag is empty.",size:"Size",color:"Color",qty:"Quantity",desc:"Description",shipT:"Shipping",shipD:"Ships in 3–5 business days. 14-day returns.",related:"You may also like",back:"Back",remove:"Remove",
@@ -841,7 +844,7 @@ const Cart={items:[],load(){try{this.items=JSON.parse(localStorage.getItem("vest
  set(i,q){q<=0?this.items.splice(i,1):this.items[i].q=q;this.save()},
  count(){return this.items.reduce((a,b)=>a+b.q,0)},total(){return this.items.reduce((a,b)=>a+b.q*P.find(p=>p.id==b.id).p,0)}};
 /* ===== state & helpers ===== */
-let L=localStorage.getItem?"ar":"ar";try{L=localStorage.getItem("vestra-lang")||"ar"}catch(e){}
+let L="en";try{L=localStorage.getItem("vestra-lang-v2")||"en"}catch(e){}
 const S={cat:"all",q:"",sort:"newest"};const $=s=>document.querySelector(s),t=k=>T[L][k];
 const money=n=>Number(n||0).toLocaleString("en-US",{maximumFractionDigits:2})+" EGP";
 const oldPrice=p=>Math.max(+p.p||0,+p.oldPrice||+p.p||0);
@@ -908,7 +911,7 @@ $("#cols").onclick=e=>{const a=e.target.closest("[data-f]");if(!a)return;S.cat=a
 const setNew=()=>{S.cat="new";S.sort="newest";applyLang()};
 $("#nNew").onclick=setNew;const heroNewEl=$("#heroNew");if(heroNewEl)heroNewEl.onclick=setNew;
 $("#nSearch").onclick=()=>{$("#shop").scrollIntoView();setTimeout(()=>$("#q").focus(),500)};
-$("#lang").onclick=()=>{L=L=="ar"?"en":"ar";try{localStorage.setItem("vestra-lang",L)}catch(e){}applyLang()};
+$("#lang").onclick=()=>{L=L=="ar"?"en":"ar";try{localStorage.setItem("vestra-lang-v2",L)}catch(e){}applyLang()};
 $("#nlf").onsubmit=e=>{e.preventDefault();toast(t("nlOk"));e.target.reset()};
 /* ===== motion ===== */
 const RM=matchMedia("(prefers-reduced-motion:reduce)").matches;
@@ -925,6 +928,7 @@ function frame(){tk=0;const y=scrollY,h=innerHeight;ps.forEach(e=>{if(e.id=="sig
  fr.style.clipPath=`inset(${m}% ${m*1.2}% round 28px)`;$("#sigArt").style.transform=`scale(${1.15-k*.1}) translateY(${(.5-k)*30}px)`}
 if(!RM){addEventListener("scroll",()=>{tk||(tk=requestAnimationFrame(frame))},{passive:true});frame()}else fr.style.clipPath="none";
 /* ===== init ===== */
+window.__T0=JSON.parse(JSON.stringify(T));try{const cc=JSON.parse(localStorage.getItem("vestra-cnt-cache-v1")||"null");if(cc)for(const l of["ar","en"]){const c=cc[l]||{},tl=T[l];if(!tl)continue;for(const k in c)if(k!="col"&&typeof c[k]=="string"&&c[k]&&typeof tl[k]=="string")tl[k]=c[k].replace(/[<>]/g,"");(c.col||[]).forEach((e,i)=>{if(tl.col[i]&&Array.isArray(e)){if(e[0])tl.col[i][0]=e[0];if(e[1])tl.col[i][1]=e[1]}})}}catch(e){}
 Cart.load();applyLang();
 addEventListener("hashchange",()=>{if(location.hash.startsWith("#p="))openPD(+location.hash.slice(3),true)});
 </script>
@@ -1130,7 +1134,7 @@ const normImg=x=>{const b=IMG0();if(!x||typeof x!="object")return b;
  if(x.prev&&typeof x.prev=="object")for(const k in x.prev)if(Array.isArray(x.prev[k]))b.prev[k]=x.prev[k].filter(okUrl).slice(0,6);
  if(Object.keys(bad).length)b.bad=bad;return b};
 const CK=[["heroP","نص الهيرو (الفقرة)"],["heroCta","زر الهيرو الرئيسي"],["heroNew","رابط «الوصول الجديد»"],["man","جملة الفلسفة"],["colH","عنوان المجموعات"],["shopH","عنوان المتجر"],["sigH","عنوان قسم التوقيع"],["fAbout","نبذة الفوتر"],["shipD","نص الشحن في صفحة المنتج"]];
-const T0=JSON.parse(JSON.stringify(T)),clean=s=>String(s).replace(/[<>]/g,"").trim();
+const T0=window.__T0||JSON.parse(JSON.stringify(T)),clean=s=>String(s).replace(/[<>]/g,"").trim();
 const normCnt=x=>{const o={ar:{},en:{}};if(!x||typeof x!="object")return o;for(const l of["ar","en"]){const c=x[l];if(!c||typeof c!="object")continue;CK.forEach(([k])=>{if(typeof c[k]=="string"&&clean(c[k]))o[l][k]=clean(c[k])});if(Array.isArray(c.col)){o[l].col=[];for(let i=0;i<5;i++){const e=c.col[i];o[l].col[i]=Array.isArray(e)?[typeof e[0]=="string"?clean(e[0]):"",typeof e[1]=="string"?clean(e[1]):""]:["",""]}}}return o};
 /* ---- payment methods config (stored in the existing store bin as "payments") ---- */
 const PAY0=()=>({vodafone:{on:true,note:"",logo:""},instapay:{on:true,note:"",logo:""},meeza:{on:true,num:"5078 0350 9685 2431",holder:"",note:"",logo:""},mastercard:{on:true,num:"5484 4602 3027 8236",holder:"",ok:false,note:"",logo:""}});
@@ -1148,7 +1152,7 @@ const imgTag=(u,alt,eager)=>`<img src="${esc(u)}" alt="${esc(alt)}" ${eager?'fet
 const _a=art;art=function(p,ci=0,v=0){if(!p)return"";const im=Array.isArray(p.img)?p.img.filter(okUrl):[];return im.length?imgTag(im[v%im.length],(p.nm&&p.nm[1])||"VESTRA"):_a(p,ci,v)};
 /* ---- image cache: last-known-good ---- */
 const IMG_CACHE_KEY="vestra-img-cache-v1";
-function cacheImgs(){try{localStorage.setItem(IMG_CACHE_KEY,JSON.stringify({images:{sig:IMG.sig,footer:IMG.footer,col:IMG.col},at:Date.now()}))}catch(e){}}
+function cacheImgs(){try{localStorage.setItem("vestra-cnt-cache-v1",JSON.stringify(CNT))}catch(e){}try{localStorage.setItem(IMG_CACHE_KEY,JSON.stringify({images:{sig:IMG.sig,footer:IMG.footer,col:IMG.col},at:Date.now()}))}catch(e){}}
 function readImgCache(){try{const c=JSON.parse(localStorage.getItem(IMG_CACHE_KEY)||"null");return c&&c.images?normImg(c.images):null}catch(e){return null}}
 function vImgErr(el){el.style.visibility="hidden"}
 window.vImgErr=vImgErr; /* inline onerror="" handlers can only see globals */
