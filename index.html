@@ -751,6 +751,11 @@ const D={ /* bg, surface, dark-text-on-light? */
 const N=":not(#adm *)";
 function css(){let o="";
  for(const n in D){const t=D[n],H='html[data-vt="'+n+'"] ',S=a=>a.map(x=>H+x+N).join(",");
+  o+=S(["footer.dark"])+"{background:#0a0a0a;color:#fff;border-top:1px solid #ffffff26}";
+  o+=S(["footer p[style]","footer span[style]","footer h5"])+"{color:#bdbdbd!important}";
+  o+=S(["footer a b"])+"{color:#fff!important}";
+  o+=S(["footer .wm"])+"{color:#fff}";
+  o+=S(["footer .nl input"])+"{color:#fff;border-color:#ffffff59;background:none}";
   if(!t.dk){o+=`${H.trim()}{--bg:#fff;--ink:#0a0a0a;--g1:#efefed;--g2:#7d7d79}`;continue}
   o+=`${H.trim()}{--bg:${t.bg};--ink:#fff;--g1:#ffffff26;--g2:#ffffffb3;color-scheme:${t.cs||"dark"}}`;
   o+=S(["body"])+`{background:${t.bg};color:#fff}`;
