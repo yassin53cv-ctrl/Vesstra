@@ -1841,5 +1841,36 @@ PAGES.img=m=>{const hk=hostKey();
 })();
 
 </script>
+
+<!-- Screenshot share prompt -->
+<style>
+#ss-share{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);opacity:0;pointer-events:none;z-index:2147483000;width:min(92vw,360px);background:#0a0a0a;color:#f4f4f2;border-radius:18px;padding:16px 18px;box-shadow:0 14px 40px rgba(0,0,0,.35);font-family:'Alexandria',system-ui,sans-serif;text-align:center;direction:rtl;transition:transform .5s cubic-bezier(.16,1,.3,1),opacity .35s}
+#ss-share.on{transform:translate(-50%,0);opacity:1;pointer-events:auto}
+#ss-share b{display:block;font-size:16px;font-weight:700;margin-bottom:8px}
+#ss-share a{display:block;direction:ltr;font-size:14px;font-weight:500;color:#fff;background:rgba(255,255,255,.12);border-radius:10px;padding:9px 10px;text-decoration:none;word-break:break-all}
+#ss-share button{position:absolute;top:6px;left:8px;background:none;border:0;color:#8a8a86;font-size:20px;line-height:1;cursor:pointer;padding:6px}
+</style>
+<div id="ss-share" role="dialog" aria-live="polite">
+ <button type="button" aria-label="إغلاق">×</button>
+ <b>عايز تشارك؟</b>
+ <a href="https://vesstra.vercel.app/" target="_blank" rel="noopener">https://vesstra.vercel.app/</a>
+</div>
+<script>
+(function(){
+ var box=document.getElementById('ss-share'),t;
+ function show(){box.classList.add('on');clearTimeout(t);t=setTimeout(hide,9000)}
+ function hide(){box.classList.remove('on')}
+ box.querySelector('button').addEventListener('click',hide);
+ document.addEventListener('keyup',function(e){
+  var k=e.key,c=e.code;
+  if(k==='PrintScreen'||c==='PrintScreen')show();
+ });
+ document.addEventListener('keydown',function(e){
+  var k=(e.key||'').toLowerCase();
+  // Windows: Win+Shift+S | Mac: Cmd+Shift+3/4/5
+  if((e.metaKey&&e.shiftKey&&(k==='s'||k==='3'||k==='4'||k==='5'||e.code==='Digit3'||e.code==='Digit4'||e.code==='Digit5'))||(e.key==='PrintScreen'))show();
+ });
+})();
+</script>
 </body>
 </html>
