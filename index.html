@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -844,7 +844,7 @@ const Cart={items:[],load(){try{this.items=JSON.parse(localStorage.getItem("vest
  set(i,q){q<=0?this.items.splice(i,1):this.items[i].q=q;this.save()},
  count(){return this.items.reduce((a,b)=>a+b.q,0)},total(){return this.items.reduce((a,b)=>a+b.q*P.find(p=>p.id==b.id).p,0)}};
 /* ===== state & helpers ===== */
-let L="en";try{L=localStorage.getItem("vestra-lang-v2")||"en"}catch(e){}
+let L="ar";try{L=localStorage.getItem("vestra-lang-v2")||"ar"}catch(e){}
 const S={cat:"all",q:"",sort:"newest"};const $=s=>document.querySelector(s),t=k=>T[L][k];
 const money=n=>Number(n||0).toLocaleString("en-US",{maximumFractionDigits:2})+" EGP";
 const oldPrice=p=>Math.max(+p.p||0,+p.oldPrice||+p.p||0);
