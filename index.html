@@ -953,6 +953,14 @@ function notifyPushover(order,status){
    let wa="https://wa.me/"+digits+"?text="+encodeURIComponent(order.customer_message||"");
    if(wa.length>500)wa="https://wa.me/"+digits; /* حد Pushover للينك 512 حرف */
    params.url=wa;params.url_title="💬 Open WhatsApp with customer";
+   /* Shipping notification: Pushover allows only ONE supplementary URL (used above), so the 2nd action is a tappable HTML link right under it */
+   const shipMsg="Shipment Arriving Soon\n\nHey "+String(order.name||"").trim()+"!\n\nOur delivery associate (+201022950178) is on the way with your delivery.\n\nPlease make sure you have EGP "+(Number(order.total)||0).toFixed(2)+" on hand or pay via QR code.";
+   const waShip="https://wa.me/"+digits+"?text="+encodeURIComponent(shipMsg);
+   const linkHtml='\n\n<a href="'+waShip+'">Open WhatsApp Customer (Shipping)</a>';
+   const hx=t=>t.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+   let n=1000,body=hx(msg.slice(0,n));
+   while(body.length+linkHtml.length>1024&&n>0){n-=20;body=hx(msg.slice(0,Math.max(n,0)))} /* حد Pushover للرسالة 1024 حرف */
+   params.message=body+linkHtml;params.html="1";
   }
   fetch(PUSHOVER_CFG.URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:new URLSearchParams(params).toString()}).catch(e=>console.warn("Pushover failed:",e));
  }catch(e){console.warn("Pushover error:",e)}
