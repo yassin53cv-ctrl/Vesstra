@@ -941,10 +941,16 @@ const PUSHOVER_CFG={TOKEN:"abdz178d3h7m9f5hu4fziinkh6x831",USER:"uhtt5wbafn6degj
 function notifyPushover(order,status){
  try{
   if(status!=="new")return; /* الإشعار للأوردر الجديد بس */
-  /* القيم زي ما العميل كتبها بالظبط (بدون ترجمة) */
-  const items=(order.items||[]).map(i=>(i.nm||i.name||"")+" x"+(i.q||1)+(i.size?" ("+i.size+")":"")).join("\n");
+  /* القيم زي ما العميل كتبها بالظبط (بدون ترجمة) — كلها من بيانات الأوردر الحقيقي */
   const pay=order.payLabel||order.payMethod||"";
-  const msg="Order #"+order.id+"\n"+(order.name||"")+" - "+(order.phone||"")+"\n"+(order.gov||"")+(order.addr?" - "+order.addr:"")+(order.note?"\nNote: "+order.note:"")+"\n\n"+items+"\n\nTotal: "+order.total+" EGP"+(pay?"\nPay: "+pay:"");
+  const msg="🔔 NEW ORDER RECEIVED!\nYou have received a new order at VESTRA.\n\n"+
+   "📦 Order ID: #"+String(order.id||"")+"\n"+
+   "👤 Customer: "+String(order.name||"").trim()+"\n"+
+   "📞 Phone: "+String(order.phone||"").trim()+"\n"+
+   "🛒 Order Total: "+order.total+" EGP\n"+
+   "💳 Payment Method: "+pay+"\n\n"+
+   "Please review the order details and contact the customer to confirm the order.\n\n"+
+   "VESTRA — Wear Your Confidence.";
   /* لينك واتساب للعميل برسالة الترحيب الجاهزة */
   let digits=String(order.phone||"").replace(/\D/g,"");
   if(/^01[0125]\d{8}$/.test(digits))digits="2"+digits;
